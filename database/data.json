@@ -1,0 +1,1345 @@
+[{
+  "_id": {
+    "$oid": "5f997ca27af74027cc79df11"
+  },
+  "name": "Dr.B.R. Ambedkar Institute of Technology (Id: C-6528)",
+  "type_of_college": "Affiliated College",
+  "state": "Andaman & Nicobar Islands",
+  "city": "South Andaman",
+  "country": "india",
+  "no_of_student": "100",
+  "year_founded": "2008",
+  "courses": "CE,IT"
+},{
+  "_id": {
+    "$oid": "5f997ca27af74027cc79df12"
+  },
+  "name": "Mahatma Gandhi Govt. College (Id: C-6547)",
+  "type_of_college": "Affiliated College",
+  "state": "Andaman & Nicobar Islands",
+  "city": "North & Middle Andaman",
+  "country": "india",
+  "no_of_student": "100",
+  "year_founded": "2009",
+  "courses": "BE,mechanical,electronics"
+},{
+  "_id": {
+    "$oid": "5f997ca27af74027cc79df13"
+  },
+  "name": "Zoological Survey of India (Id: C-6560)",
+  "type_of_college": "Affiliated College",
+  "state": "Andaman & Nicobar Islands",
+  "city": "Nicobars",
+  "country": "india",
+  "no_of_student": "100",
+  "year_founded": "2010",
+  "courses": "aeronautical,automobile"
+},{
+  "_id": {
+    "$oid": "5f997ca27af74027cc79df14"
+  },
+  "name": "Y.V.Nagi Reddy Degree College (Id: C-30232)",
+  "type_of_college": "Affiliated College",
+  "state": "Andhra Pradesh",
+  "city": "Y.S.R.",
+  "country": "india",
+  "no_of_student": "100",
+  "year_founded": "2013",
+  "courses": "pharmeasy,medical"
+},{
+  "_id": {
+    "$oid": "5f997ca27af74027cc79df15"
+  },
+  "name": "YVNR Degree College (Id: C-30204)",
+  "type_of_college": "Affiliated College",
+  "state": "Andhra Pradesh",
+  "city": "Y.S.R.",
+  "country": "india",
+  "no_of_student": "100",
+  "year_founded": "2014",
+  "courses": "computer,arts,chemical"
+},{
+  "_id": {
+    "$oid": "5f997ca27af74027cc79df16"
+  },
+  "name": "Zion College of Physical Education (Id: C-30307)",
+  "type_of_college": "Affiliated College",
+  "state": "Andhra Pradesh",
+  "city": "Y.S.R.",
+  "country": "india",
+  "no_of_student": "100",
+  "year_founded": "2016",
+  "courses": "diploma"
+},{
+  "_id": {
+    "$oid": "5f997ca27af74027cc79df17"
+  },
+  "name": "College of Horticulture and Forestry, Pasighat (Id: C-26828)",
+  "type_of_college": "Constituent / University College",
+  "state": "Arunachal Pradesh",
+  "city": "East Siang",
+  "country": "india",
+  "no_of_student": "100",
+  "year_founded": "2012",
+  "courses": "network,machine-lerning"
+},{
+  "_id": {
+    "$oid": "5f997ca27af74027cc79df18"
+  },
+  "name": "TT COLLEGE, AALO (Id: C-47707)",
+  "type_of_college": "Affiliated College",
+  "state": "Arunachal Pradesh",
+  "city": "West Siang",
+  "country": "india",
+  "no_of_student": "100",
+  "year_founded": "2008",
+  "courses": "webdevlopment"
+},{
+  "_id": {
+    "$oid": "5f997ca27af74027cc79df19"
+  },
+  "name": "Wangcha Rajkumar Government College, Deomali (Id: C-16300)",
+  "type_of_college": "Affiliated College",
+  "state": "Arunachal Pradesh",
+  "city": "Tirap",
+  "country": "india",
+  "no_of_student": "100",
+  "year_founded": "2009",
+  "courses": "Bsc,Msc"
+},{
+  "_id": {
+    "$oid": "5f997ca27af74027cc79df1a"
+  },
+  "name": "RIDLEY COLLEGE OF OPTOMETRY, JORHAT (Id: C-48735)",
+  "type_of_college": "Affiliated College",
+  "state": "Assam",
+  "city": "Jorhat",
+  "country": "india",
+  "no_of_student": "100",
+  "year_founded": "2010",
+  "courses": "CE,IT"
+},{
+  "_id": {
+    "$oid": "5f997ca27af74027cc79df1b"
+  },
+  "name": "SRI SANKARADEVA NETHRALAYA, GUWAHATI (Id: C-48740)",
+  "type_of_college": "Affiliated College",
+  "state": "Assam",
+  "city": "Kamrup Metropolitan",
+  "country": "india",
+  "no_of_student": "100",
+  "year_founded": "2013",
+  "courses": "BE,mechanical,electronics"
+},{
+  "_id": {
+    "$oid": "5f997ca27af74027cc79df1c"
+  },
+  "name": "SWAGAT ACADEMY OF MEDICAL SCIENCES, GUWAHATI (Id: C-48743)",
+  "type_of_college": "Affiliated College",
+  "state": "Assam",
+  "city": "Kamrup Metropolitan",
+  "country": "india",
+  "no_of_student": "100",
+  "year_founded": "2014",
+  "courses": "aeronautical,automobile"
+},{
+  "_id": {
+    "$oid": "5f997ca27af74027cc79df1d"
+  },
+  "name": "TEZPUR MEDICAL COLLEGE, TEZPUR, BIHAGURI (Id: C-48749)",
+  "type_of_college": "Affiliated College",
+  "state": "Assam",
+  "city": "Sonitpur",
+  "country": "india",
+  "no_of_student": "100",
+  "year_founded": "2016",
+  "courses": "pharmeasy,medical"
+},{
+  "_id": {
+    "$oid": "5f997ca27af74027cc79df1e"
+  },
+  "name": "T.N.A. Teachers Training College, Harigaon, Bhojpur (Id: C-36590)",
+  "type_of_college": "Affiliated College",
+  "state": "Bihar",
+  "city": "Bhojpur",
+  "country": "india",
+  "no_of_student": "100",
+  "year_founded": "2012",
+  "courses": "computer,arts,chemical"
+},{
+  "_id": {
+    "$oid": "5f997ca27af74027cc79df1f"
+  },
+  "name": "T.S.I. Mahila College, Ara (Id: C-27155)",
+  "type_of_college": "Affiliated College",
+  "state": "Bihar",
+  "city": "Bhojpur",
+  "country": "india",
+  "no_of_student": "100",
+  "year_founded": "2008",
+  "courses": "diploma"
+},{
+  "_id": {
+    "$oid": "5f997ca27af74027cc79df20"
+  },
+  "name": "U.C.M. College, Udaipur, Sanjhauli (Id: C-36595)",
+  "type_of_college": "Affiliated College",
+  "state": "Bihar",
+  "city": "Rohtas",
+  "country": "india",
+  "no_of_student": "100",
+  "year_founded": "2009",
+  "courses": "network,machine-lerning"
+},{
+  "_id": {
+    "$oid": "5f997ca27af74027cc79df21"
+  },
+  "name": "V.K.S. College, Dharupur (Id: C-27142)",
+  "type_of_college": "Affiliated College",
+  "state": "Bihar",
+  "city": "Rohtas",
+  "country": "india",
+  "no_of_student": "100",
+  "year_founded": "2010",
+  "courses": "webdevlopment"
+},{
+  "_id": {
+    "$oid": "5f997ca27af74027cc79df22"
+  },
+  "name": "V.K.S. Mahila College, Kashi Mednipur (Id: C-36593)",
+  "type_of_college": "Affiliated College",
+  "state": "Bihar",
+  "city": "Rohtas",
+  "country": "india",
+  "no_of_student": "100",
+  "year_founded": "2013",
+  "courses": "Bsc,Msc"
+},{
+  "_id": {
+    "$oid": "5f997ca27af74027cc79df23"
+  },
+  "name": "VIVEKANAND INSTITUTE OF SCIENCE AND TECHNOLOGY (Id: C-49993)",
+  "type_of_college": "Affiliated College",
+  "state": "Chhatisgarh",
+  "city": "Surguja",
+  "country": "india",
+  "no_of_student": "100",
+  "year_founded": "2014",
+  "courses": "CE,IT"
+},{
+  "_id": {
+    "$oid": "5f997ca27af74027cc79df24"
+  },
+  "name": "DR B B A GOVERNMENT POLYTECHNIC (Id: C-47929)",
+  "type_of_college": "Affiliated College",
+  "state": "Dadra & Nagar Haveli",
+  "city": "Dadra & Nagar Haveli",
+  "country": "india",
+  "no_of_student": "100",
+  "year_founded": "2016",
+  "courses": "BE,mechanical,electronics"
+},{
+  "_id": {
+    "$oid": "5f997ca27af74027cc79df25"
+  },
+  "name": "Swargeeya Sanjibhai Rupajibhai Memorial Trusts Arts, Commerce & Science College, Sanjibhai Dilkar Marg,Dadra Nagar Haveli, Sayali Silvasa 396230 (Id: C-41385)",
+  "type_of_college": "Affiliated College",
+  "state": "Dadra & Nagar Haveli",
+  "city": "Dadra & Nagar Haveli",
+  "country": "india",
+  "no_of_student": "100",
+  "year_founded": "2012",
+  "courses": "aeronautical,automobile"
+},{
+  "_id": {
+    "$oid": "5f997ca27af74027cc79df26"
+  },
+  "name": "Vaidik Dental College and Research Centre (Id: C-5962)",
+  "type_of_college": "Affiliated College",
+  "state": "Daman & Diu",
+  "city": "Daman",
+  "country": "india",
+  "no_of_student": "100",
+  "year_founded": "2008",
+  "courses": "pharmeasy,medical"
+},{
+  "_id": {
+    "$oid": "5f997ca27af74027cc79df27"
+  },
+  "name": "College of Education, Nani Daman (Id: C-620)",
+  "type_of_college": "Affiliated College",
+  "state": "Daman & Diu",
+  "city": "Daman",
+  "country": "india",
+  "no_of_student": "100",
+  "year_founded": "2009",
+  "courses": "computer,arts,chemical"
+},{
+  "_id": {
+    "$oid": "5f997ca27af74027cc79df28"
+  },
+  "name": "Government College (Id: C-687)",
+  "type_of_college": "Affiliated College",
+  "state": "Daman & Diu",
+  "city": "Daman",
+  "country": "india",
+  "no_of_student": "100",
+  "year_founded": "2010",
+  "courses": "diploma"
+},{
+  "_id": {
+    "$oid": "5f997ca27af74027cc79df29"
+  },
+  "name": "Vivekananda College (Id: C-6382)",
+  "type_of_college": "Affiliated College",
+  "state": "Delhi",
+  "city": "East",
+  "country": "india",
+  "no_of_student": "100",
+  "year_founded": "2013",
+  "courses": "network,machine-lerning"
+},{
+  "_id": {
+    "$oid": "5f997ca27af74027cc79df2a"
+  },
+  "name": "Zakir Husain College (Id: C-6383)",
+  "type_of_college": "Affiliated College",
+  "state": "Delhi",
+  "city": "Central",
+  "country": "india",
+  "no_of_student": "100",
+  "year_founded": "2014",
+  "courses": "webdevlopment"
+},{
+  "_id": {
+    "$oid": "5f997ca27af74027cc79df2b"
+  },
+  "name": "Zakir Husain P.G. Evening College (Id: C-22458)",
+  "type_of_college": "Affiliated College",
+  "state": "Delhi",
+  "city": "Central",
+  "country": "india",
+  "no_of_student": "100",
+  "year_founded": "2016",
+  "courses": "Bsc,Msc"
+},{
+  "_id": {
+    "$oid": "5f997ca27af74027cc79df2c"
+  },
+  "name": "National Institute of Oceanography, Dona Paula, Goa-403004 (Id: C-16821)",
+  "type_of_college": "Recognized Center",
+  "state": "Goa",
+  "city": "North Goa",
+  "country": "india",
+  "no_of_student": "100",
+  "year_founded": "2012",
+  "courses": "CE,IT"
+},{
+  "_id": {
+    "$oid": "5f997ca27af74027cc79df2d"
+  },
+  "name": "Syngenta Biosciences Pvt. Ltd., Santa Monica Works, Corlim, Ilhas, Goa - 403110 (Id: C-17004)",
+  "type_of_college": "Recognized Center",
+  "state": "Goa",
+  "city": "North Goa",
+  "country": "india",
+  "no_of_student": "100",
+  "year_founded": "2008",
+  "courses": "BE,mechanical,electronics"
+},{
+  "_id": {
+    "$oid": "5f997ca27af74027cc79df2e"
+  },
+  "name": "Pragati Women's College of Education (Id: C-44330)",
+  "type_of_college": "Affiliated College",
+  "state": "Goa",
+  "city": "South Goa",
+  "country": "india",
+  "no_of_student": "100",
+  "year_founded": "2009",
+  "courses": "aeronautical,automobile"
+},{
+  "_id": {
+    "$oid": "5f997ca27af74027cc79df2f"
+  },
+  "name": "Vivekanand College for Advanced Computer and Information Science (Id: C-562)",
+  "type_of_college": "Affiliated College",
+  "state": "Gujarat",
+  "city": "Surat",
+  "country": "india",
+  "no_of_student": "100",
+  "year_founded": "2010",
+  "courses": "pharmeasy,medical"
+},{
+  "_id": {
+    "$oid": "5f997ca27af74027cc79df30"
+  },
+  "name": "Vivekanand College for BBA (Id: C-636)",
+  "type_of_college": "Affiliated College",
+  "state": "Gujarat",
+  "city": "Surat",
+  "country": "india",
+  "no_of_student": "100",
+  "year_founded": "2013",
+  "courses": "computer,arts,chemical"
+},{
+  "_id": {
+    "$oid": "5f997ca27af74027cc79df31"
+  },
+  "name": "Vivekanand College for B. Ed. (Id: C-659)",
+  "type_of_college": "Affiliated College",
+  "state": "Gujarat",
+  "city": "Surat",
+  "country": "india",
+  "no_of_student": "100",
+  "year_founded": "2014",
+  "courses": "diploma"
+},{
+  "_id": {
+    "$oid": "5f997ca27af74027cc79df32"
+  },
+  "name": "Vivekanand Commerce College (Id: C-517)",
+  "type_of_college": "Affiliated College",
+  "state": "Gujarat",
+  "city": "Surat",
+  "country": "india",
+  "no_of_student": "100",
+  "year_founded": "2016",
+  "courses": "network,machine-lerning"
+},{
+  "_id": {
+    "$oid": "5f997ca27af74027cc79df33"
+  },
+  "name": "V. S. Patel Arts & Science College (B. C. A.) (Id: C-682)",
+  "type_of_college": "Affiliated College",
+  "state": "Gujarat",
+  "city": "Navsari",
+  "country": "india",
+  "no_of_student": "100",
+  "year_founded": "2012",
+  "courses": "webdevlopment"
+},{
+  "_id": {
+    "$oid": "5f997ca27af74027cc79df34"
+  },
+  "name": "V. S. Patel College of Arts & Science (B. B. A.) (Id: C-703)",
+  "type_of_college": "Affiliated College",
+  "state": "Gujarat",
+  "city": "Navsari",
+  "country": "india",
+  "no_of_student": "100",
+  "year_founded": "2008",
+  "courses": "Bsc,Msc"
+},{
+  "_id": {
+    "$oid": "5f997ca27af74027cc79df35"
+  },
+  "name": "V. T. Choksi Sarvajanik College of Education (Id: C-693)",
+  "type_of_college": "Affiliated College",
+  "state": "Gujarat",
+  "city": "Surat",
+  "country": "india",
+  "no_of_student": "100",
+  "year_founded": "2009",
+  "courses": "CE,IT"
+},{
+  "_id": {
+    "$oid": "5f997ca27af74027cc79df36"
+  },
+  "name": "V. T. Choksi Sarvajanik Law College (Id: C-674)",
+  "type_of_college": "Affiliated College",
+  "state": "Gujarat",
+  "city": "Surat",
+  "country": "india",
+  "no_of_student": "100",
+  "year_founded": "2010",
+  "courses": "BE,mechanical,electronics"
+},{
+  "_id": {
+    "$oid": "5f997ca27af74027cc79df37"
+  },
+  "name": "WELFARE INSTITUTE OF NURSING & MIDWIFERY, BHARUCH (Id: C-46594)",
+  "type_of_college": "Affiliated College",
+  "state": "Gujarat",
+  "city": "Bharuch",
+  "country": "india",
+  "no_of_student": "100",
+  "year_founded": "2013",
+  "courses": "aeronautical,automobile"
+},{
+  "_id": {
+    "$oid": "5f997ca27af74027cc79df38"
+  },
+  "name": "Z. F. Wadia Womens College and N. K. Johta College of Commerce (Id: C-556)",
+  "type_of_college": "Affiliated College",
+  "state": "Gujarat",
+  "city": "Surat",
+  "country": "india",
+  "no_of_student": "100",
+  "year_founded": "2014",
+  "courses": "pharmeasy,medical"
+},{
+  "_id": {
+    "$oid": "5f997ca27af74027cc79df39"
+  },
+  "name": "Ved Nursing College, 98, Milestone, G.T.Road, Barauli, Panipat (Id: C-30712)",
+  "type_of_college": "Affiliated College",
+  "state": "Haryana",
+  "city": "Panipat",
+  "country": "india",
+  "no_of_student": "100",
+  "year_founded": "2016",
+  "courses": "computer,arts,chemical"
+},{
+  "_id": {
+    "$oid": "5f997ca27af74027cc79df3a"
+  },
+  "name": "Vidyawati College of Nursing, Mohindergarh (Id: C-48367)",
+  "type_of_college": "Affiliated College",
+  "state": "Haryana",
+  "city": "Mahendragarh",
+  "country": "india",
+  "no_of_student": "100",
+  "year_founded": "2012",
+  "courses": "diploma"
+},{
+  "_id": {
+    "$oid": "5f997ca27af74027cc79df3b"
+  },
+  "name": "YAMUNA INSTITUTE OF DENTAL SCIENCES AND RESEARCH (Id: C-48346)",
+  "type_of_college": "Affiliated College",
+  "state": "Haryana",
+  "city": "Yamunanagar",
+  "country": "india",
+  "no_of_student": "100",
+  "year_founded": "2008",
+  "courses": "network,machine-lerning"
+},{
+  "_id": {
+    "$oid": "5f997ca27af74027cc79df3c"
+  },
+  "name": "NATIONAL INSTITUTE OF FASHION TECHNOLOGY, KANGRA (Id: C-47474)",
+  "type_of_college": "PG Center / Off-Campus Center",
+  "state": "Himachal Pradesh",
+  "city": "Kangra",
+  "country": "india",
+  "no_of_student": "100",
+  "year_founded": "2009",
+  "courses": "webdevlopment"
+},{
+  "_id": {
+    "$oid": "5f997ca27af74027cc79df3d"
+  },
+  "name": "Writers' Home (Id: C-22285)",
+  "type_of_college": "PG Center / Off-Campus Center",
+  "state": "Himachal Pradesh",
+  "city": "Kangra",
+  "country": "india",
+  "no_of_student": "100",
+  "year_founded": "2010",
+  "courses": "Bsc,Msc"
+},{
+  "_id": {
+    "$oid": "5f997ca27af74027cc79df3e"
+  },
+  "name": "VEDVYAS CAMPUS (Id: C-27023)",
+  "type_of_college": "PG Center / Off-Campus Center",
+  "state": "Himachal Pradesh",
+  "city": "Kangra",
+  "country": "india",
+  "no_of_student": "100",
+  "year_founded": "2013",
+  "courses": "CE,IT"
+},{
+  "_id": {
+    "$oid": "5f997ca27af74027cc79df3f"
+  },
+  "name": "WULAR VALLEY COLLEGE OF EDUCATION, BANDIPORE (Id: C-45958)",
+  "type_of_college": "Affiliated College",
+  "state": "Jammu and Kashmir",
+  "city": "Bandipore",
+  "country": "india",
+  "no_of_student": "100",
+  "year_founded": "2014",
+  "courses": "BE,mechanical,electronics"
+},{
+  "_id": {
+    "$oid": "5f997ca27af74027cc79df40"
+  },
+  "name": "ZAKIR MEMORIAL COLLEGE OF EDUCARTION, PULWAMA (Id: C-45998)",
+  "type_of_college": "Affiliated College",
+  "state": "Jammu and Kashmir",
+  "city": "Pulwama",
+  "country": "india",
+  "no_of_student": "100",
+  "year_founded": "2016",
+  "courses": "aeronautical,automobile"
+},{
+  "_id": {
+    "$oid": "5f997ca27af74027cc79df41"
+  },
+  "name": "BIT Extension Center Deoghar (Id: C-8344)",
+  "type_of_college": "PG Center / Off-Campus Center",
+  "state": "Jharkhand",
+  "city": "Deoghar",
+  "country": "india",
+  "no_of_student": "100",
+  "year_founded": "2012",
+  "courses": "pharmeasy,medical"
+},{
+  "_id": {
+    "$oid": "5f997ca27af74027cc79df42"
+  },
+  "name": "VISHWESHWARAIYA B.ED. COLLEGE, GOVINDPUR (Id: C-44435)",
+  "type_of_college": "Affiliated College",
+  "state": "Jharkhand",
+  "city": "Dhanbad",
+  "country": "india",
+  "no_of_student": "100",
+  "year_founded": "2008",
+  "courses": "computer,arts,chemical"
+},{
+  "_id": {
+    "$oid": "5f997ca27af74027cc79df43"
+  },
+  "name": "VISTHAPIT COLLEGE, BALIDIH, BOKARO (Id: C-44384)",
+  "type_of_college": "Affiliated College",
+  "state": "Jharkhand",
+  "city": "Bokaro",
+  "country": "india",
+  "no_of_student": "100",
+  "year_founded": "2009",
+  "courses": "diploma"
+},{
+  "_id": {
+    "$oid": "5f997ca27af74027cc79df44"
+  },
+  "name": "Amrita School of Arts and Sciences, Mysore (Id: C-7035)",
+  "type_of_college": "PG Center / Off-Campus Center",
+  "state": "Karnataka",
+  "city": "Mysore",
+  "country": "india",
+  "no_of_student": "100",
+  "year_founded": "2010",
+  "courses": "network,machine-lerning"
+},{
+  "_id": {
+    "$oid": "5f997ca27af74027cc79df45"
+  },
+  "name": "Yenepoya Dental College (Id: C-8528)",
+  "type_of_college": "Constituent / University College",
+  "state": "Karnataka",
+  "city": "Dakshina Kannada",
+  "country": "india",
+  "no_of_student": "100",
+  "year_founded": "2013",
+  "courses": "webdevlopment"
+},{
+  "_id": {
+    "$oid": "5f997ca27af74027cc79df46"
+  },
+  "name": "Yenepoya Medical College (Id: C-8526)",
+  "type_of_college": "Constituent / University College",
+  "state": "Karnataka",
+  "city": "Dakshina Kannada",
+  "country": "india",
+  "no_of_student": "100",
+  "year_founded": "2014",
+  "courses": "Bsc,Msc"
+},{
+  "_id": {
+    "$oid": "5f997ca27af74027cc79df47"
+  },
+  "name": "Yenepoya Nursing College (Id: C-8527)",
+  "type_of_college": "Constituent / University College",
+  "state": "Karnataka",
+  "city": "Dakshina Kannada",
+  "country": "india",
+  "no_of_student": "100",
+  "year_founded": "2016",
+  "courses": "CE,IT"
+},{
+  "_id": {
+    "$oid": "5f997ca27af74027cc79df48"
+  },
+  "name": "Yenepoya Physiotherapy College (Id: C-8525)",
+  "type_of_college": "Constituent / University College",
+  "state": "Karnataka",
+  "city": "Dakshina Kannada",
+  "country": "india",
+  "no_of_student": "100",
+  "year_founded": "2012",
+  "courses": "BE,mechanical,electronics"
+},{
+  "_id": {
+    "$oid": "5f997ca27af74027cc79df49"
+  },
+  "name": "AMU MALLAPURAM CENTRE (Id: C-22861)",
+  "type_of_college": "PG Center / Off-Campus Center",
+  "state": "Kerala",
+  "city": "Malappuram",
+  "country": "india",
+  "no_of_student": "100",
+  "year_founded": "2008",
+  "courses": "aeronautical,automobile"
+},{
+  "_id": {
+    "$oid": "5f997ca27af74027cc79df4a"
+  },
+  "name": "Amrita Centre for Nanomedical Sciences, Kochi (Id: C-7027)",
+  "type_of_college": "PG Center / Off-Campus Center",
+  "state": "Kerala",
+  "city": "Ernakulam",
+  "country": "india",
+  "no_of_student": "100",
+  "year_founded": "2009",
+  "courses": "pharmeasy,medical"
+},{
+  "_id": {
+    "$oid": "5f997ca27af74027cc79df4b"
+  },
+  "name": "Amrita College of Nursing, Kochi (Id: C-7028)",
+  "type_of_college": "PG Center / Off-Campus Center",
+  "state": "Kerala",
+  "city": "Ernakulam",
+  "country": "india",
+  "no_of_student": "100",
+  "year_founded": "2010",
+  "courses": "computer,arts,chemical"
+},{
+  "_id": {
+    "$oid": "5f997ca27af74027cc79df4c"
+  },
+  "name": "Tirur (Id: C-44603)",
+  "type_of_college": "PG Center / Off-Campus Center",
+  "state": "Kerala",
+  "city": "Malappuram",
+  "country": "india",
+  "no_of_student": "100",
+  "year_founded": "2013",
+  "courses": "diploma"
+},{
+  "_id": {
+    "$oid": "5f997ca27af74027cc79df4d"
+  },
+  "name": "Calicut University Centre, Kadamat (Id: C-8081)",
+  "type_of_college": "PG Center / Off-Campus Center",
+  "state": "Lakshadweep",
+  "city": "Lakshadweep",
+  "country": "india",
+  "no_of_student": "100",
+  "year_founded": "2014",
+  "courses": "network,machine-lerning"
+},{
+  "_id": {
+    "$oid": "5f997ca27af74027cc79df4e"
+  },
+  "name": "College of Education. Kavaratti (Id: C-8246)",
+  "type_of_college": "PG Center / Off-Campus Center",
+  "state": "Lakshadweep",
+  "city": "Lakshadweep",
+  "country": "india",
+  "no_of_student": "100",
+  "year_founded": "2016",
+  "courses": "webdevlopment"
+},{
+  "_id": {
+    "$oid": "5f997ca27af74027cc79df4f"
+  },
+  "name": "PM Sayeed Centre, Andrott (Id: C-8069)",
+  "type_of_college": "PG Center / Off-Campus Center",
+  "state": "Lakshadweep",
+  "city": "Lakshadweep",
+  "country": "india",
+  "no_of_student": "100",
+  "year_founded": "2012",
+  "courses": "Bsc,Msc"
+},{
+  "_id": {
+    "$oid": "5f997ca27af74027cc79df50"
+  },
+  "name": "V.S.Institute of Prof.Studies, Ujjain (Id: C-31688)",
+  "type_of_college": "Affiliated College",
+  "state": "Madhya Pradesh",
+  "city": "Ujjain",
+  "country": "india",
+  "no_of_student": "100",
+  "year_founded": "2008",
+  "courses": "CE,IT"
+},{
+  "_id": {
+    "$oid": "5f997ca27af74027cc79df51"
+  },
+  "name": "Yogindra Sagar Institute of Tech & Sc.Dharad, Ratlam (Id: C-32612)",
+  "type_of_college": "Affiliated College",
+  "state": "Madhya Pradesh",
+  "city": "Ratlam",
+  "country": "india",
+  "no_of_student": "100",
+  "year_founded": "2009",
+  "courses": "BE,mechanical,electronics"
+},{
+  "_id": {
+    "$oid": "5f997ca27af74027cc79df52"
+  },
+  "name": "Homi Bhabha Centre for Science Education (Id: C-40057)",
+  "type_of_college": "PG Center / Off-Campus Center",
+  "state": "Maharashtra",
+  "city": "Mumbai",
+  "country": "india",
+  "no_of_student": "100",
+  "year_founded": "2010",
+  "courses": "aeronautical,automobile"
+},{
+  "_id": {
+    "$oid": "5f997ca27af74027cc79df53"
+  },
+  "name": "National Cetre for Radio Astrophysics (Id: C-40055)",
+  "type_of_college": "PG Center / Off-Campus Center",
+  "state": "Maharashtra",
+  "city": "Pune",
+  "country": "india",
+  "no_of_student": "100",
+  "year_founded": "2013",
+  "courses": "pharmeasy,medical"
+},{
+  "_id": {
+    "$oid": "5f997ca27af74027cc79df54"
+  },
+  "name": "Institute of Immunoheamatology, Mumbai (Id: C-16420)",
+  "type_of_college": "Recognized Center",
+  "state": "Maharashtra",
+  "city": "Mumbai",
+  "country": "india",
+  "no_of_student": "100",
+  "year_founded": "2014",
+  "courses": "computer,arts,chemical"
+},{
+  "_id": {
+    "$oid": "5f997ca27af74027cc79df55"
+  },
+  "name": "College of Agriculture, Imphal (Id: C-26831)",
+  "type_of_college": "Constituent / University College",
+  "state": "Manipur",
+  "city": "Imphal West",
+  "country": "india",
+  "no_of_student": "100",
+  "year_founded": "2016",
+  "courses": "diploma"
+},{
+  "_id": {
+    "$oid": "5f997ca27af74027cc79df56"
+  },
+  "name": "Regional Campus Manipur (Id: C-32591)",
+  "type_of_college": "PG Center / Off-Campus Center",
+  "state": "Manipur",
+  "city": "Imphal East",
+  "country": "india",
+  "no_of_student": "100",
+  "year_founded": "2012",
+  "courses": "network,machine-lerning"
+},{
+  "_id": {
+    "$oid": "5f997ca27af74027cc79df57"
+  },
+  "name": "Yairipok Universal College (Id: C-9433)",
+  "type_of_college": "Affiliated College",
+  "state": "Manipur",
+  "city": "Thoubal",
+  "country": "india",
+  "no_of_student": "100",
+  "year_founded": "2008",
+  "courses": "webdevlopment"
+},{
+  "_id": {
+    "$oid": "5f997ca27af74027cc79df58"
+  },
+  "name": "Y.K. College (Id: C-9404)",
+  "type_of_college": "Affiliated College",
+  "state": "Manipur",
+  "city": "Thoubal",
+  "country": "india",
+  "no_of_student": "100",
+  "year_founded": "2009",
+  "courses": "Bsc,Msc"
+},{
+  "_id": {
+    "$oid": "5f997ca27af74027cc79df59"
+  },
+  "name": "College of Home Science, Tura (Id: C-26830)",
+  "type_of_college": "Constituent / University College",
+  "state": "Meghalaya",
+  "city": "West Garo Hills",
+  "country": "india",
+  "no_of_student": "100",
+  "year_founded": "2010",
+  "courses": "CE,IT"
+},{
+  "_id": {
+    "$oid": "5f997ca27af74027cc79df5a"
+  },
+  "name": "Regional Campus, Shillong (Id: C-36916)",
+  "type_of_college": "PG Center / Off-Campus Center",
+  "state": "Meghalaya",
+  "city": "East Khasi Hills",
+  "country": "india",
+  "no_of_student": "100",
+  "year_founded": "2013",
+  "courses": "BE,mechanical,electronics"
+},{
+  "_id": {
+    "$oid": "5f997ca27af74027cc79df5b"
+  },
+  "name": "College of Veterinary sciences & Animal Husbandry, Aizawl (Id: C-26833)",
+  "type_of_college": "Constituent / University College",
+  "state": "Mizoram",
+  "city": "Aizawl",
+  "country": "india",
+  "no_of_student": "100",
+  "year_founded": "2014",
+  "courses": "aeronautical,automobile"
+},{
+  "_id": {
+    "$oid": "5f997ca27af74027cc79df5c"
+  },
+  "name": "Regional Institute of Paramedical and Nursing Sciences (Id: C-8298)",
+  "type_of_college": "Affiliated College",
+  "state": "Mizoram",
+  "city": "Aizawl",
+  "country": "india",
+  "no_of_student": "100",
+  "year_founded": "2016",
+  "courses": "pharmeasy,medical"
+},{
+  "_id": {
+    "$oid": "5f997ca27af74027cc79df5d"
+  },
+  "name": "BIRGUNJ INSTITUTE OF INFORMATION TECHNOLOGY BIRGUNJ (Id: C-31574)",
+  "type_of_college": "Recognized Center",
+  "state": "Nagaland",
+  "city": "Kohima",
+  "country": "india",
+  "no_of_student": "100",
+  "year_founded": "2012",
+  "courses": "computer,arts,chemical"
+},{
+  "_id": {
+    "$oid": "5f997ca27af74027cc79df5e"
+  },
+  "name": "LORD BUDDHA EDUCATION FOUNDATION KATHMANDU (Id: C-31429)",
+  "type_of_college": "Recognized Center",
+  "state": "Nagaland",
+  "city": "Kohima",
+  "country": "india",
+  "no_of_student": "100",
+  "year_founded": "2008",
+  "courses": "diploma"
+},{
+  "_id": {
+    "$oid": "5f997ca27af74027cc79df5f"
+  },
+  "name": "Zunheboto College (Id: C-16703)",
+  "type_of_college": "Affiliated College",
+  "state": "Nagaland",
+  "city": "Zunheboto",
+  "country": "india",
+  "no_of_student": "100",
+  "year_founded": "2009",
+  "courses": "network,machine-lerning"
+},{
+  "_id": {
+    "$oid": "5f997ca27af74027cc79df60"
+  },
+  "name": "Academy of Technocrats, Berhampur (Id: C-39331)",
+  "type_of_college": "Affiliated College",
+  "state": "Odisha",
+  "city": "Ganjam",
+  "country": "india",
+  "no_of_student": "100",
+  "year_founded": "2010",
+  "courses": "webdevlopment"
+},{
+  "_id": {
+    "$oid": "5f997ca27af74027cc79df61"
+  },
+  "name": "Adivasi College, Balliguda (Id: C-39426)",
+  "type_of_college": "Affiliated College",
+  "state": "Odisha",
+  "city": "Kandhamal",
+  "country": "india",
+  "no_of_student": "100",
+  "year_founded": "2013",
+  "courses": "Bsc,Msc"
+},{
+  "_id": {
+    "$oid": "5f997ca27af74027cc79df62"
+  },
+  "name": "Yuvodaya College of Advance Technology (Id: C-23091)",
+  "type_of_college": "Affiliated College",
+  "state": "Odisha",
+  "city": "Balangir",
+  "country": "india",
+  "no_of_student": "100",
+  "year_founded": "2014",
+  "courses": "CE,IT"
+},{
+  "_id": {
+    "$oid": "5f997ca27af74027cc79df63"
+  },
+  "name": "Vinayaka Mission's Medical College and Hospital (Id: C-10215)",
+  "type_of_college": "Constituent / University College",
+  "state": "Puducherry",
+  "city": "Karaikal",
+  "country": "india",
+  "no_of_student": "100",
+  "year_founded": "2016",
+  "courses": "BE,mechanical,electronics"
+},{
+  "_id": {
+    "$oid": "5f997ca27af74027cc79df64"
+  },
+  "name": "Adesh Institute of Dental Sciences & Research, Baranala Road, Bathinda (Id: C-29246)",
+  "type_of_college": "Constituent / University College",
+  "state": "Punjab",
+  "city": "Bathinda",
+  "country": "india",
+  "no_of_student": "100",
+  "year_founded": "2012",
+  "courses": "aeronautical,automobile"
+},{
+  "_id": {
+    "$oid": "5f997ca27af74027cc79df65"
+  },
+  "name": "Adesh Institute of Medical Sciences & Research, Barnala Road (Id: C-29187)",
+  "type_of_college": "Constituent / University College",
+  "state": "Punjab",
+  "city": "Bathinda",
+  "country": "india",
+  "no_of_student": "100",
+  "year_founded": "2008",
+  "courses": "pharmeasy,medical"
+},{
+  "_id": {
+    "$oid": "5f997ca27af74027cc79df66"
+  },
+  "name": "Adesh Institute of Pharmacy & Biomedical Sciences, Bathinda (Id: C-10496)",
+  "type_of_college": "Constituent / University College",
+  "state": "Punjab",
+  "city": "Bathinda",
+  "country": "india",
+  "no_of_student": "100",
+  "year_founded": "2009",
+  "courses": "computer,arts,chemical"
+},{
+  "_id": {
+    "$oid": "5f997ca27af74027cc79df67"
+  },
+  "name": "BIT Extension Center, Jaipur (Id: C-8343)",
+  "type_of_college": "PG Center / Off-Campus Center",
+  "state": "Rajasthan",
+  "city": "Jaipur",
+  "country": "india",
+  "no_of_student": "100",
+  "year_founded": "2010",
+  "courses": "diploma"
+},{
+  "_id": {
+    "$oid": "5f997ca27af74027cc79df68"
+  },
+  "name": "Gyan Vihar Shcool of Pharmacy (Id: C-44867)",
+  "type_of_college": "Constituent / University College",
+  "state": "Rajasthan",
+  "city": "Jaipur",
+  "country": "india",
+  "no_of_student": "100",
+  "year_founded": "2013",
+  "courses": "network,machine-lerning"
+},{
+  "_id": {
+    "$oid": "5f997ca27af74027cc79df69"
+  },
+  "name": "College of Agricultural Engineering and Post Harvest Technology, Ranipool, Gangtok (Id: C-26829)",
+  "type_of_college": "Constituent / University College",
+  "state": "Sikkim",
+  "city": "East District",
+  "country": "india",
+  "no_of_student": "100",
+  "year_founded": "2014",
+  "courses": "webdevlopment"
+},{
+  "_id": {
+    "$oid": "5f997ca27af74027cc79df6a"
+  },
+  "name": "Alagappa Government Arts College, Karaikudi (Id: C-28526)",
+  "type_of_college": "Affiliated College",
+  "state": "Tamil Nadu",
+  "city": "Sivaganga",
+  "country": "india",
+  "no_of_student": "100",
+  "year_founded": "2016",
+  "courses": "Bsc,Msc"
+},{
+  "_id": {
+    "$oid": "5f997ca27af74027cc79df6b"
+  },
+  "name": "ALAGAPPA UNIVERSITY CONSTITUENT COLLEGE (Id: C-47507)",
+  "type_of_college": "Constituent / University College",
+  "state": "Tamil Nadu",
+  "city": "Ramanathapuram",
+  "country": "india",
+  "no_of_student": "100",
+  "year_founded": "2012",
+  "courses": "CE,IT"
+},{
+  "_id": {
+    "$oid": "5f997ca27af74027cc79df6c"
+  },
+  "name": "Vinayaka Mission's Sankarachariyar Dental College (Id: C-10221)",
+  "type_of_college": "Constituent / University College",
+  "state": "Tamil Nadu",
+  "city": "Salem",
+  "country": "india",
+  "no_of_student": "100",
+  "year_founded": "2008",
+  "courses": "BE,mechanical,electronics"
+},{
+  "_id": {
+    "$oid": "5f997ca27af74027cc79df6d"
+  },
+  "name": "Agricultural College, Aswaraopet (Id: C-26380)",
+  "type_of_college": "Constituent / University College",
+  "state": "Telangana",
+  "city": "Khammam",
+  "country": "india",
+  "no_of_student": "100",
+  "year_founded": "2009",
+  "courses": "aeronautical,automobile"
+},{
+  "_id": {
+    "$oid": "5f997ca27af74027cc79df6e"
+  },
+  "name": "Agricultural College, Jagtial (Id: C-26376)",
+  "type_of_college": "Constituent / University College",
+  "state": "Telangana",
+  "city": "Karimnagar",
+  "country": "india",
+  "no_of_student": "100",
+  "year_founded": "2010",
+  "courses": "pharmeasy,medical"
+},{
+  "_id": {
+    "$oid": "5f997ca27af74027cc79df6f"
+  },
+  "name": "Shantha Biotechnics (Id: C-12991)",
+  "type_of_college": "Recognized Center",
+  "state": "Telangana",
+  "city": "Hyderabad",
+  "country": "india",
+  "no_of_student": "100",
+  "year_founded": "2013",
+  "courses": "computer,arts,chemical"
+},{
+  "_id": {
+    "$oid": "5f997ca27af74027cc79df70"
+  },
+  "name": "College of Fisheries, Lembucherrra (Id: C-26834)",
+  "type_of_college": "Constituent / University College",
+  "state": "Tripura",
+  "city": "West Tripura",
+  "country": "india",
+  "no_of_student": "100",
+  "year_founded": "2014",
+  "courses": "diploma"
+},{
+  "_id": {
+    "$oid": "5f997ca27af74027cc79df71"
+  },
+  "name": "Women's Polytechnic College (Id: C-9593)",
+  "type_of_college": "Affiliated College",
+  "state": "Tripura",
+  "city": "West Tripura",
+  "country": "india",
+  "no_of_student": "100",
+  "year_founded": "2016",
+  "courses": "network,machine-lerning"
+},{
+  "_id": {
+    "$oid": "5f997ca27af74027cc79df72"
+  },
+  "name": "WOMEN' S COLLEGE (Id: C-22860)",
+  "type_of_college": "Constituent / University College",
+  "state": "Uttar Pradesh",
+  "city": "Aligarh",
+  "country": "india",
+  "no_of_student": "100",
+  "year_founded": "2012",
+  "courses": "webdevlopment"
+},{
+  "_id": {
+    "$oid": "5f997ca27af74027cc79df73"
+  },
+  "name": "Arya Mahila Post Graduate College, Chetganj (Id: C-21247)",
+  "type_of_college": "Affiliated College",
+  "state": "Uttar Pradesh",
+  "city": "Varanasi",
+  "country": "india",
+  "no_of_student": "100",
+  "year_founded": "2008",
+  "courses": "Bsc,Msc"
+},{
+  "_id": {
+    "$oid": "5f997ca27af74027cc79df74"
+  },
+  "name": "Verma Shyam Dulari Mahavidyalaya,A.D.Nainijor., Azamgarh (Id: C-15803)",
+  "type_of_college": "Affiliated College",
+  "state": "Uttar Pradesh",
+  "city": "Azamgarh",
+  "country": "india",
+  "no_of_student": "100",
+  "year_founded": "2009",
+  "courses": "CE,IT"
+},{
+  "_id": {
+    "$oid": "5f997ca27af74027cc79df75"
+  },
+  "name": "Vimala Yadav Mahavidyalaya , Akavaspatti, Bhitari, Ghazipur (Id: C-15875)",
+  "type_of_college": "Affiliated College",
+  "state": "Uttar Pradesh",
+  "city": "Ghazipur",
+  "country": "india",
+  "no_of_student": "100",
+  "year_founded": "2010",
+  "courses": "BE,mechanical,electronics"
+},{
+  "_id": {
+    "$oid": "5f997ca27af74027cc79df76"
+  },
+  "name": "Vimla Ramashankar Mahavidyalaya, Yusuphpur, Shahpur, Ghazipur (Id: C-15855)",
+  "type_of_college": "Affiliated College",
+  "state": "Uttar Pradesh",
+  "city": "Ghazipur",
+  "country": "india",
+  "no_of_student": "100",
+  "year_founded": "2013",
+  "courses": "aeronautical,automobile"
+},{
+  "_id": {
+    "$oid": "5f997ca27af74027cc79df77"
+  },
+  "name": "Walther Degree College, Rampur Jaunpur (Id: C-16122)",
+  "type_of_college": "Affiliated College",
+  "state": "Uttar Pradesh",
+  "city": "Jaunpur",
+  "country": "india",
+  "no_of_student": "100",
+  "year_founded": "2014",
+  "courses": "pharmeasy,medical"
+},{
+  "_id": {
+    "$oid": "5f997ca27af74027cc79df78"
+  },
+  "name": "Yogendra Mahavidyalaya,Kamhriya,Kharihani, Azamgarh (Id: C-15904)",
+  "type_of_college": "Affiliated College",
+  "state": "Uttar Pradesh",
+  "city": "Azamgarh",
+  "country": "india",
+  "no_of_student": "100",
+  "year_founded": "2016",
+  "courses": "computer,arts,chemical"
+},{
+  "_id": {
+    "$oid": "5f997ca27af74027cc79df79"
+  },
+  "name": "Yshoda Mahavidyalaya, Patrahi , Jaunpur (Id: C-15927)",
+  "type_of_college": "Affiliated College",
+  "state": "Uttar Pradesh",
+  "city": "Jaunpur",
+  "country": "india",
+  "no_of_student": "100",
+  "year_founded": "2012",
+  "courses": "diploma"
+},{
+  "_id": {
+    "$oid": "5f997ca27af74027cc79df7a"
+  },
+  "name": "Forest Survey of India (Id: C-44369)",
+  "type_of_college": "Recognized Center",
+  "state": "Uttrakhand",
+  "city": "Dehradun",
+  "country": "india",
+  "no_of_student": "100",
+  "year_founded": "2008",
+  "courses": "network,machine-lerning"
+},{
+  "_id": {
+    "$oid": "5f997ca27af74027cc79df7b"
+  },
+  "name": "G.B. Pant Institute of Himalayan Environment & Development (Id: C-44358)",
+  "type_of_college": "Recognized Center",
+  "state": "Uttrakhand",
+  "city": "Almora",
+  "country": "india",
+  "no_of_student": "100",
+  "year_founded": "2009",
+  "courses": "webdevlopment"
+},{
+  "_id": {
+    "$oid": "5f997ca27af74027cc79df7c"
+  },
+  "name": "WOMEN INSTITUTE OF TECHNOLOGY (Id: C-47540)",
+  "type_of_college": "Constituent / University College",
+  "state": "Uttrakhand",
+  "city": "Dehradun",
+  "country": "india",
+  "no_of_student": "100",
+  "year_founded": "2010",
+  "courses": "Bsc,Msc"
+},{
+  "_id": {
+    "$oid": "5f997ca27af74027cc79df7d"
+  },
+  "name": "Batna J.M.O. Senior Madrasah (Id: C-11253)",
+  "type_of_college": "Recognized Center",
+  "state": "West Bengal",
+  "city": "Maldah",
+  "country": "india",
+  "no_of_student": "100",
+  "year_founded": "2013",
+  "courses": "CE,IT"
+},{
+  "_id": {
+    "$oid": "5f997ca27af74027cc79df7e"
+  },
+  "name": "Beldanga D.H. Senior Madrasah (Id: C-11252)",
+  "type_of_college": "Recognized Center",
+  "state": "West Bengal",
+  "city": "Murshidabad",
+  "country": "india",
+  "no_of_student": "100",
+  "year_founded": "2014",
+  "courses": "BE,mechanical,electronics"
+},{
+  "_id": {
+    "$oid": "5f997ca27af74027cc79df7f"
+  },
+  "name": "Vidyasagar Institute of Education Technology and Research 245 (Id: C-6309)",
+  "type_of_college": "Affiliated College",
+  "state": "West Bengal",
+  "city": "Hugli",
+  "country": "india",
+  "no_of_student": "100",
+  "year_founded": "2016",
+  "courses": "aeronautical,automobile"
+},{
+  "_id": {
+    "$oid": "5f997ca27af74027cc79df80"
+  },
+  "name": "West Bengal State Council for Science and Technology 243 (Id: C-6252)",
+  "type_of_college": "Affiliated College",
+  "state": "West Bengal",
+  "city": "Barddhaman",
+  "country": "india",
+  "no_of_student": "100",
+  "year_founded": "2012",
+  "courses": "pharmeasy,medical"
+}]
