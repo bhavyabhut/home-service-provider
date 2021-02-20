@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Button, Input, Form, Switch, Divider, notification } from "antd";
 import { Link, useHistory, useLocation, useParams } from "react-router-dom";
 import {
@@ -9,42 +9,70 @@ import {
 import Logo from "../../Layout/Logo";
 import API from "../../api";
 import axios from "axios";
+import { getauth, setauth } from "../../utils/auth";
 
 // import Spinner from "../Spinner";
 
 const SignIn = () => {
   const [form] = Form.useForm();
-  const [loader, setLoader] = useState(false);
-  const [error, setError] = useState(false);
+  // const [loader, setLoader] = useState(false);
+  // const [error, setError] = useState(false);
+  const [state, setState] = useState({ loader: false, error: false });
   const history = useHistory();
 
+  useEffect(() => {
+    const token = getauth();
+    if (token) {
+      const fetch = async () => {
+        try {
+          const { data } = await axios.get(API.auth, {
+            headers: { "auth-token": token },
+          });
+          if (data.success === true) {
+            console.log("yaa hu thav chu");
+            history.push("/home-services");
+          } else {
+            // ErrorDispathcer(data.msg);
+          }
+        } catch (e) {
+          // ErrorDispathcer(e.response.statusText);
+        }
+      };
+      fetch();
+    }
+  }, []);
+
   const login = () => {
-    setLoader(true);
+    setState({ ...state, loader: true });
     const data = form.getFieldsValue();
     console.log("sfdfd", form.getFieldsValue());
     axios
       .post(API.login, data)
       .then((res) => {
         if (res.status) {
+          if (res.headers.auth) {
+            setauth(res.headers.auth);
+          }
           history.push("/home-services");
-          setLoader(false);
+          setState({ ...state, loader: false });
         } else {
-          setError(true);
-          setLoader(false);
+          setState({ error: true, loader: false });
         }
       })
       .catch((e) => {
-        setError(true);
-        setLoader(false);
+        setState({ error: true, loader: false });
       });
   };
-  if (error) {
-    notification.open({
-      message: "Wrong Credentials",
-      type: "error",
-    });
-    setError(false);
-  }
+  useEffect(() => {
+    if (state.error) {
+      notification.open({
+        message: "Wrong Credentials",
+        type: "error",
+      });
+      setState({ ...state, error: false });
+    }
+  }, [state.error]);
+
   return (
     <>
       {/* {loader && <Spinner />} */}
@@ -120,7 +148,7 @@ const SignIn = () => {
                     backgroundColor: "rgb(0, 132, 137)",
                     borderColor: "rgb(0, 132, 137)",
                   }}
-                  loading={loader}
+                  loading={state.loader}
                   onClick={login}
                 >
                   Login

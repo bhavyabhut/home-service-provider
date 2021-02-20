@@ -4,6 +4,12 @@ const jwt = require("jsonwebtoken");
 // const client = require("twilio")(process.env.accountSid, process.env.authToken);
 
 exports.singin = async (req, res, next) => {
+  if (!req.body.email || !req.body.password) {
+    return res.status(400).json({
+      success: false,
+      msg: "email or password not empty",
+    });
+  }
   if (req.body.email.trim() === "" || req.body.password.trim() === "") {
     return res.status(400).json({
       success: false,
@@ -113,12 +119,12 @@ exports.auth = async (req, res, next) => {
       const verify = jwt.verify(token, process.env.SECREATE);
       if (verify.id) {
         const user = await User.findById(verify.id);
-        if (user)
+        if (user) {
           res.status(200).json({
             success: true,
             data: user,
           });
-        else {
+        } else {
           return res.status(200).json({
             success: false,
             msg: "User not Found",

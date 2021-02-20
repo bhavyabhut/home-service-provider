@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Button, Input, Form, Switch, Divider, notification } from "antd";
 import { Link, useHistory, useLocation, useParams } from "react-router-dom";
 import {
@@ -13,37 +13,49 @@ import axios from "axios";
 
 const SignUp = () => {
   const [form] = Form.useForm();
-  const [loader, setLoader] = useState(false);
-  const [error, setError] = useState(false);
+  // const [loader, setLoader] = useState(false);
+  // const [error, setError] = useState(false);
+  const [state, setState] = useState({
+    loader: false,
+    error: false,
+    message: "Please provide valid details",
+    type: "error",
+  });
   const history = useHistory();
 
   const registration = () => {
-    setLoader(true);
+    setState({ ...state, loader: true });
     const data = form.getFieldsValue();
-    console.log("sfdfd", form.getFieldsValue());
     axios
       .post(API.registration, data)
       .then((res) => {
         if (res.status) {
-          history.push("/home-services");
-          setLoader(false);
+          history.push("/signin");
+          setState({
+            ...state,
+            loader: false,
+            message: "Registration Success",
+            type: "success",
+            error: true,
+          });
         } else {
-          setError(true);
-          setLoader(false);
+          setState({ ...state, error: true, loader: false });
         }
       })
       .catch((e) => {
-        setError(true);
-        setLoader(false);
+        setState({ ...state, error: true, loader: false });
       });
   };
-  if (error) {
-    notification.open({
-      message: "Please provide valid details",
-      type: "error",
-    });
-    setError(false);
-  }
+
+  useEffect(() => {
+    if (state.error) {
+      notification.open({
+        message: state.message,
+        type: state.type,
+      });
+      setState({ ...state, error: false });
+    }
+  }, [state.error, state.message, state.type]);
   return (
     <div className="signin">
       <div className="signin-form">
@@ -131,7 +143,7 @@ const SignUp = () => {
                   backgroundColor: "rgb(0, 132, 137)",
                   borderColor: "rgb(0, 132, 137)",
                 }}
-                loading={loader}
+                loading={state.loader}
                 onClick={registration}
               >
                 Registration

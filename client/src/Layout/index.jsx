@@ -14,6 +14,7 @@ import {
 import { Link } from "react-router-dom";
 import Logo from "./Logo";
 import Avatar from "antd/lib/avatar/avatar";
+import { clearToken } from "../utils/auth";
 const { Option } = Select;
 
 const { Header, Content, Footer, Sider } = Layout;
@@ -88,7 +89,7 @@ class Index extends Component {
                 <Select
                   className="locationState"
                   defaultValue="Gujarat"
-                  style={{ color: "white" }}
+                  // style={{ color: "white" }}
                 >
                   <Option value="Gujarat">Gujarat</Option>
                   <Option value="Maharastra">Maharastra</Option>
@@ -102,11 +103,11 @@ class Index extends Component {
                     ></i>
                   }
                   style={{
-                    width: "10%",
+                    width: "13%",
                     color: "white",
                   }}
                   className="locationCity"
-                  defaultValue="Rajkot"
+                  // defaultValue="Rajkot"
                   placeholder="Enter your location"
                 />
                 <Input
@@ -143,7 +144,11 @@ class Index extends Component {
                 <Menu.Item key="102" icon={<SettingOutlined />}>
                   <Link to="/home-services/setting">Setting</Link>
                 </Menu.Item>
-                <Menu.Item key="103" icon={<LogoutOutlined />}>
+                <Menu.Item
+                  onClick={() => clearToken()}
+                  key="103"
+                  icon={<LogoutOutlined />}
+                >
                   <Link to="/signin">LogOut</Link>
                 </Menu.Item>
               </SubMenu>
@@ -154,10 +159,7 @@ class Index extends Component {
             {/*  <Breadcrumb.Item>User</Breadcrumb.Item>*/}
             {/*  <Breadcrumb.Item>Bill</Breadcrumb.Item>*/}
             {/*</Breadcrumb>*/}
-            <div
-              className="site-layout-background"
-              style={{ padding: 24, minHeight: 360 }}
-            >
+            <div className="site-layout-background" style={{ padding: 24 }}>
               {this.props.children}
             </div>
           </Content>

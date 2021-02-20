@@ -8,6 +8,7 @@ import {
 // import { ConnectedRouter } from "react-router-redux";
 import Spinner from "./Components/Spinner";
 import Routers from "./router";
+import { getauth } from "./utils/auth";
 
 const RestrictedRoute = ({ component: Component, isLoggedIn, ...rest }) => (
   <Route
@@ -26,7 +27,10 @@ const RestrictedRoute = ({ component: Component, isLoggedIn, ...rest }) => (
     }
   />
 );
-const PublicRoutes = ({ history, isLoggedIn = true }) => {
+const PublicRoutes = ({ history }) => {
+  const token = getauth();
+  let isLoggedIn = false;
+  if (token) isLoggedIn = true;
   return (
     // <ConnectedRouter history={history}>
     <Router>

@@ -10,5 +10,6 @@ const API = {
   collegeCourseChart: "/v1/college/chart/pie/course",
   login: "/v1/login",
   registration: "/v1/login/registration",
+  auth: "/v1/login/auth",
 };
 export default API;
