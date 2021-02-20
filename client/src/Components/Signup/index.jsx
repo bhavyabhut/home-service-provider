@@ -1,15 +1,49 @@
 import React, { useState } from "react";
-import { Button, Input, Form, Switch, Divider } from "antd";
-import { Link } from "react-router-dom";
+import { Button, Input, Form, Switch, Divider, notification } from "antd";
+import { Link, useHistory, useLocation, useParams } from "react-router-dom";
 import {
   EyeInvisibleOutlined,
   EyeTwoTone,
   UnlockOutlined,
 } from "@ant-design/icons";
 import Logo from "../../Layout/Logo";
+import API from "../../api";
+import axios from "axios";
+// import Spinner from "../Spinner";
 
 const SignUp = () => {
   const [form] = Form.useForm();
+  const [loader, setLoader] = useState(false);
+  const [error, setError] = useState(false);
+  const history = useHistory();
+
+  const registration = () => {
+    setLoader(true);
+    const data = form.getFieldsValue();
+    console.log("sfdfd", form.getFieldsValue());
+    axios
+      .post(API.registration, data)
+      .then((res) => {
+        if (res.status) {
+          history.push("/home-services");
+          setLoader(false);
+        } else {
+          setError(true);
+          setLoader(false);
+        }
+      })
+      .catch((e) => {
+        setError(true);
+        setLoader(false);
+      });
+  };
+  if (error) {
+    notification.open({
+      message: "Please provide valid details",
+      type: "error",
+    });
+    setError(false);
+  }
   return (
     <div className="signin">
       <div className="signin-form">
@@ -29,6 +63,7 @@ const SignUp = () => {
           <Form form={form} layout="vertical">
             <Form.Item
               label="Username"
+              name="name"
               //   required
               //   tooltip="This is a required field"
             >
@@ -36,6 +71,7 @@ const SignUp = () => {
             </Form.Item>
             <Form.Item
               label="Email"
+              name="email"
               //   required
               //   tooltip="This is a required field"
             >
@@ -43,6 +79,7 @@ const SignUp = () => {
             </Form.Item>
             <Form.Item
               label="Password"
+              name="password"
               //   tooltip={{
               //     title: "Password",
               //     icon: <InfoCircleOutlined />,
@@ -94,7 +131,8 @@ const SignUp = () => {
                   backgroundColor: "rgb(0, 132, 137)",
                   borderColor: "rgb(0, 132, 137)",
                 }}
-                // loading={true}
+                loading={loader}
+                onClick={registration}
               >
                 Registration
               </Button>

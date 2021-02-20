@@ -34,6 +34,11 @@ const PublicRoutes = ({ history, isLoggedIn = true }) => {
         <Switch>
           <div>
             <Route
+              path="/"
+              exact={true}
+              component={lazy(() => import("./Components/Signin"))}
+            />
+            <Route
               path="/signin"
               exact={true}
               component={lazy(() => import("./Components/Signin"))}

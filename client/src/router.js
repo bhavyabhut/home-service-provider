@@ -14,11 +14,11 @@ const routes = [
   //   exact: true,
   //   Component: lazy(() => import("./Components/Signin")),
   // },
-  // {
-  //   path: "/signup",
-  //   exact: true,
-  //   Component: lazy(() => import("./Components/Signup")),
-  // },
+  {
+    path: "/",
+    exact: true,
+    Component: lazy(() => import("./Components/College")),
+  },
   {
     path: "allColleges",
     exact: true,

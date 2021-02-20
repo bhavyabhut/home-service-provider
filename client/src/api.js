@@ -8,5 +8,7 @@ const API = {
   collegeByLocation: "/v1/college/location/:locationId",
   collegeChart: "/v1/college/chart/pie",
   collegeCourseChart: "/v1/college/chart/pie/course",
+  login: "/v1/login",
+  registration: "/v1/login/registration",
 };
 export default API;
