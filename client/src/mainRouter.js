@@ -1,4 +1,4 @@
-import React, { lazy, Suspense } from "react";
+import React, { lazy, Suspense, useEffect, useState, useContext } from "react";
 import {
   Route,
   Redirect,
@@ -8,6 +8,9 @@ import {
 // import { ConnectedRouter } from "react-router-redux";
 import Spinner from "./Components/Spinner";
 import Routers from "./router";
+import API from "./api";
+import axios from "axios";
+import { GlobalContext } from "./Context/GlobalContext";
 import { getauth } from "./utils/auth";
 
 const RestrictedRoute = ({ component: Component, isLoggedIn, ...rest }) => (
@@ -28,9 +31,40 @@ const RestrictedRoute = ({ component: Component, isLoggedIn, ...rest }) => (
   />
 );
 const PublicRoutes = ({ history }) => {
-  const token = getauth();
-  let isLoggedIn = false;
-  if (token) isLoggedIn = true;
+  // const [isLoggedIn, setIsLoggedIn] = useState(false);
+  // useEffect(() => {
+  //   if (isLoggedIn) {
+  //     const token = getauth();
+  //     setIsLoggedIn(true);
+  //   }
+  //   console.log("use effect tokenni");
+  // });
+  // useEffect(() => {
+  //   const token = getauth();
+  //   const fetch = async () => {
+  //     try {
+  //       const { data } = await axios.get(API.auth, {
+  //         headers: { "auth-token": token },
+  //       });
+  //       console.log("useEffect auth ni");
+  //       if (data.success === true) {
+  //         // console.log("yaa hu thav chu");
+  //         // history.push("/home-services");
+  //         setIsLoggedIn(true);
+  //       } else {
+  //         // ErrorDispathcer(data.msg);
+  //       }
+  //     } catch (e) {
+  //       // ErrorDispathcer(e.response.statusText);
+  //     }
+  //   };
+  //   fetch();
+  // }, []);
+  const { data, dispatch } = useContext(GlobalContext);
+
+  // const token = getauth();
+  let isLoggedIn = data.isLoggedIn;
+  // if (token) isLoggedIn = true;
   return (
     // <ConnectedRouter history={history}>
     <Router>

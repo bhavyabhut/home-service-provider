@@ -30,7 +30,6 @@ const SignUp = () => {
       .post(API.registration, data)
       .then((res) => {
         if (res.status) {
-          history.push("/signin");
           setState({
             ...state,
             loader: false,
@@ -38,6 +37,7 @@ const SignUp = () => {
             type: "success",
             error: true,
           });
+          history.push("/signin");
         } else {
           setState({ ...state, error: true, loader: false });
         }

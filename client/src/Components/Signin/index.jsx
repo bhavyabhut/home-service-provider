@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Button, Input, Form, Switch, Divider, notification } from "antd";
 import { Link, useHistory, useLocation, useParams } from "react-router-dom";
 import {
@@ -10,36 +10,33 @@ import Logo from "../../Layout/Logo";
 import API from "../../api";
 import axios from "axios";
 import { getauth, setauth } from "../../utils/auth";
-
-// import Spinner from "../Spinner";
+import { GlobalContext } from "../../Context/GlobalContext";
 
 const SignIn = () => {
   const [form] = Form.useForm();
-  // const [loader, setLoader] = useState(false);
-  // const [error, setError] = useState(false);
+  const { data, dispatch } = useContext(GlobalContext);
   const [state, setState] = useState({ loader: false, error: false });
   const history = useHistory();
 
   useEffect(() => {
     const token = getauth();
-    if (token) {
-      const fetch = async () => {
-        try {
-          const { data } = await axios.get(API.auth, {
-            headers: { "auth-token": token },
-          });
-          if (data.success === true) {
-            console.log("yaa hu thav chu");
-            history.push("/home-services");
-          } else {
-            // ErrorDispathcer(data.msg);
-          }
-        } catch (e) {
-          // ErrorDispathcer(e.response.statusText);
+    const fetch = async () => {
+      try {
+        const { data } = await axios.get(API.auth, {
+          headers: { "auth-token": token },
+        });
+        if (data.success === true) {
+          dispatch({ type: "LOGIN_SUCCESS" });
+          console.log("yaa hu thav chu");
+          history.push("/home-services");
+        } else {
+          // ErrorDispathcer(data.msg);
         }
-      };
-      fetch();
-    }
+      } catch (e) {
+        // ErrorDispathcer(e.response.statusText);
+      }
+    };
+    fetch();
   }, []);
 
   const login = () => {
@@ -50,11 +47,12 @@ const SignIn = () => {
       .post(API.login, data)
       .then((res) => {
         if (res.status) {
+          dispatch({ type: "LOGIN_SUCCESS" });
           if (res.headers.auth) {
             setauth(res.headers.auth);
           }
-          history.push("/home-services");
           setState({ ...state, loader: false });
+          history.push("/home-services");
         } else {
           setState({ error: true, loader: false });
         }
