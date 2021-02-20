@@ -1,17 +1,17 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
-.logo-svg{
+.logo-svg {
   max-width: 100px;
 }
 #components-layout-demo-side .logo {
@@ -23,15 +23,15 @@ code {
 .site-layout .site-layout-background {
   background: #fff;
 }
-.site-layout-background{
+.site-layout-background {
   height: 100%;
 }
-.text-dark{
+.text-dark {
   color: black;
   font-weight: bold;
   margin-right: 1.5rem;
 }
-.ant-card{
+.ant-card {
   border-radius: 5px !important;
   background-color: white;
   margin: 0.5rem 0.1rem !important;
@@ -39,18 +39,107 @@ code {
   overflow: hidden;
   word-break: break-word;
 }
-.customRow{
+.customRow {
   margin: 1rem 0;
 }
-.comingsoon{
+.comingsoon {
   height: 100%;
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 52px;
-  background: -webkit-linear-gradient(#1890ff, #661a73, rgb(239, 31, 38), #a2a275);
+  background: -webkit-linear-gradient(
+    #1890ff,
+    #661a73,
+    rgb(239, 31, 38),
+    #a2a275
+  );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+.signin {
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
 
+.signin-form {
+  width: 40%;
+  padding: 2.5rem 5.5rem 0rem 5.5rem;
+  /* padding-top: 4rem; */
+}
+.signin-image-div {
+  background: url("images/login-page.jpg");
+  background-position: center center;
+  height: 100vh;
+  background-size: cover;
+  width: 60%;
+  position: fixed;
+  top: 0;
+  right: 0;
+}
+
+.title {
+  /* color: #ffd200; */
+  /* font-size: large; */
+  margin-bottom: 0 !important;
+  background: linear-gradient(to right, #ffd200, #06e07f, #e3073c, #1f84ef);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-transform: capitalize;
+  font-size: 35px;
+  font-weight: 700;
+  font-family: Lato, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-shadow: rgb(0 0 0 / 0%) 1px 1px 1px;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.welcomeBack {
+  color: rgb(44, 44, 44);
+  font-size: 45px;
+  line-height: 54px;
+  font-weight: 700;
+  margin-bottom: 0px;
+  margin-top: 18px;
+  font-size: 28px;
+  line-height: 32px;
+  font-family: Lato, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-shadow: rgb(0 0 0 / 0%) 1px 1px 1px;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.loginIntoAccount {
+  font-size: 18px;
+  line-height: 30px;
+  margin-bottom: 25px;
+  margin-top: 10px;
+  font-family: Lato, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-shadow: rgb(0 0 0 / 0%) 1px 1px 1px;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.singInLabel {
+  display: block;
+  color: rgb(44, 44, 44);
+  font-size: 15px;
+  line-height: 18px;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+.remeberMe {
+  font-size: 15px;
+  line-height: 1;
+  font-weight: 700;
+  color: rgb(44, 44, 44);
+  padding: 0px 8px;
+  font-family: Lato, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-shadow: rgb(0 0 0 / 0%) 1px 1px 1px;
+  -webkit-tap-highlight-color: transparent;
 }
