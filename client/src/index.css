@@ -143,3 +143,41 @@ code {
   text-shadow: rgb(0 0 0 / 0%) 1px 1px 1px;
   -webkit-tap-highlight-color: transparent;
 }
+
+.locationState {
+  background-color: rgb(0, 21, 41) !important;
+  color: white;
+}
+
+.locationCity {
+  background-color: rgb(0, 21, 41) !important;
+  color: white;
+}
+
+.locationState div:first-child span:first-child input:first-child {
+  background-color: rgb(0, 21, 41) !important;
+  color: white;
+}
+
+.locationState div:first-child {
+  background-color: rgb(0, 21, 41) !important;
+  color: white;
+}
+
+.locationState span:nth-child(1) {
+  /* background-color: rgb(0, 21, 41) !important; */
+  color: white;
+}
+
+.locationCity input {
+  background-color: rgb(0, 21, 41) !important;
+  color: white;
+}
+.mainSearchButton {
+  /* background-color: #1f84ef; */
+  box-shadow: 1px 1px 1px 1px white;
+  /* color: white; */
+}
+.mainSearchButton:hover {
+  transform: scale(1.1);
+}
