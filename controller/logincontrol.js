@@ -61,8 +61,13 @@ exports.singup = async (req, res, next) => {
   // 		to: `+91${req.body.number}`,
   // 	})
   // 	.then((messages) => console.log(messages));
-
-  if (req.body.password.trim().length < 9) {
+  if (!req.body.email || !req.body.password) {
+    return res.status(400).json({
+      success: false,
+      msg: "email or password not empty",
+    });
+  }
+  if (req.body.password.trim().length < 6) {
     return res.status(400).send({
       success: false,
       msg: "Password not strong",

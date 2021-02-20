@@ -1,4 +1,4 @@
-# university-student-analyzer
+# Final Year Project
 
 ## [Live](https://univercity-student-analyzer.herokuapp.com/) demo
 

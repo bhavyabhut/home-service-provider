@@ -158,6 +158,11 @@ code {
   background-color: rgb(0, 21, 41) !important;
   color: white;
 }
+.locationState span:first-child,
+.locationState div {
+  background-color: rgb(0, 21, 41) !important;
+  color: white;
+}
 
 .locationState div:first-child {
   background-color: rgb(0, 21, 41) !important;
@@ -175,7 +180,7 @@ code {
 }
 .mainSearchButton {
   /* background-color: #1f84ef; */
-  box-shadow: 1px 1px 1px 1px white;
+  /* box-shadow: 1px 1px 1px 1px white; */
   /* color: white; */
 }
 .mainSearchButton:hover {

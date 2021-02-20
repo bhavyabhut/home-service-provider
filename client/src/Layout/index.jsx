@@ -75,7 +75,6 @@ const Index = (props) => {
         >
           <Menu
             style={{
-              // padding: "1rem",
               display: "flex",
               justifyContent: "space-between",
               alignItems: "center",
@@ -86,9 +85,26 @@ const Index = (props) => {
             <Input.Group>
               <Select
                 className="locationState"
-                defaultValue="Gujarat"
-                // style={{ color: "white" }}
+                style={{
+                  width: "15%",
+                  color: "white",
+                }}
+                defaultValue="all"
               >
+                <Option value="all">Category (All)</Option>
+                <Option value="carpentair">Carpentair</Option>
+                <Option value="ele">Electrical</Option>
+              </Select>
+              <Select
+                className="locationState"
+                defaultValue="all"
+                style={{
+                  width: "15%",
+                  color: "white",
+                }}
+              >
+                <Option value="all">State (All)</Option>
+
                 <Option value="Gujarat">Gujarat</Option>
                 <Option value="Maharastra">Maharastra</Option>
               </Select>
@@ -101,21 +117,22 @@ const Index = (props) => {
                   ></i>
                 }
                 style={{
-                  width: "13%",
+                  width: "15%",
                   color: "white",
                 }}
                 className="locationCity"
-                // defaultValue="Rajkot"
                 placeholder="Enter your location"
               />
+
               <Input
                 style={{
-                  width: "20%",
+                  width: "15%",
                   color: "white",
                 }}
                 className="locationCity"
-                placeholder={'Search "plumber"'}
+                placeholder={'ex "shree ram"'}
               />
+
               <Button
                 icon={<SearchOutlined />}
                 style={{
