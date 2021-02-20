@@ -50,13 +50,11 @@ const PublicRoutes = ({ history, isLoggedIn = true }) => {
               import("./containers/Page/reset_password/resetPassword")
             )}
           /> */}
-            {/* <Route
-            exact={true}
-            path={"/forgot-password"}
-            component={asyncComponent(() =>
-              import("./containers/Page/forgot_password/forgotPassword")
-            )}
-          /> */}
+            <Route
+              exact={true}
+              path={"/forgot-password"}
+              component={lazy(() => import("./Components/ForgotPassword"))}
+            />
             <RestrictedRoute
               path="/home-services"
               component={Routers}
