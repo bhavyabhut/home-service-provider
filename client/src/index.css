@@ -178,11 +178,14 @@ code {
   background-color: rgb(0, 21, 41) !important;
   color: white;
 }
-.mainSearchButton {
-  /* background-color: #1f84ef; */
-  /* box-shadow: 1px 1px 1px 1px white; */
-  /* color: white; */
-}
+
 .mainSearchButton:hover {
   transform: scale(1.1);
+}
+.CustomCARD {
+  height: 185px !important;
+  width: 100% !important;
+  background-repeat: no-repeat !important;
+  background-size: cover !important;
+  background-position: center center !important;
 }

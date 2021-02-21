@@ -25,6 +25,26 @@ const routes = [
     Component: lazy(() => import("./Components/College")),
   },
   {
+    path: "allCategories",
+    exact: true,
+    Component: lazy(() => import("./Components/Category")),
+  },
+  {
+    path: "allServices",
+    exact: true,
+    Component: lazy(() => import("./Components/Services")),
+  },
+  {
+    path: "charts/services",
+    exact: true,
+    Component: lazy(() => import("./Components/Charts/Services")),
+  },
+  {
+    path: "charts/categories",
+    exact: true,
+    Component: lazy(() => import("./Components/Charts/Categories")),
+  },
+  {
     path: "addCollege",
     exact: true,
     Component: lazy(() => import("./Components/ComingSoon")),
@@ -77,7 +97,7 @@ class Routers extends React.Component {
             <Switch render={({ children }) => ({ children })}>
               <Route exact path="/" render={() => <Redirect to="/signin" />} />
               {routes.map(({ path, Component, exact }) => {
-                console.log(this.props, `${this.props.match.url}${path}`);
+                // console.log(this.props, `${this.props.match.url}${path}`);
                 return (
                   <Route
                     path={`${this.props.match.url}/${path}`}

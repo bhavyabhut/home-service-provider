@@ -25,6 +25,16 @@ const Index = (props) => {
   const [collapsed, setCollapsed] = useState(false);
   const { data, dispatch } = useContext(GlobalContext);
 
+  const [search, setSearch] = useState({
+    name: "",
+    state: "all",
+    city: "",
+    category: "all",
+  });
+
+  const fieldOnChange = (key, value) => {
+    setSearch({ ...search, [key]: value });
+  };
   const onCollapse = (collapsed) => {
     setCollapsed(collapsed);
   };
@@ -37,34 +47,60 @@ const Index = (props) => {
         </div>
         <Menu
           theme="dark"
-          defaultOpenKeys={["13", "colleges"]}
+          defaultOpenKeys={["13", "category", "Services"]}
           defaultSelectedKeys={["13"]}
           mode="inline"
         >
-          <SubMenu key="colleges" icon={<UserOutlined />} title="Colleges">
+          <SubMenu key="category" icon={<UserOutlined />} title="Categories">
+            <Menu.Item key="66">
+              <Link to="/home-services/allCategories">All Categories</Link>
+            </Menu.Item>
+            <Menu.Item key="67">
+              <Link to="/home-services/addCategory">Add Category</Link>
+            </Menu.Item>
+          </SubMenu>
+          {/* <SubMenu key="colleges" icon={<UserOutlined />} title="Colleges">
             <Menu.Item key="3">
               <Link to="/home-services/allColleges">All colleges</Link>
             </Menu.Item>
             <Menu.Item key="4">
               <Link to="/home-services/addCollege">Add college</Link>
             </Menu.Item>
+          </SubMenu> */}
+          <SubMenu key="Services" icon={<TeamOutlined />} title="Services">
+            <Menu.Item key="6">
+              <Link to="/home-services/allServices">All Services</Link>
+            </Menu.Item>
+            <Menu.Item key="8">
+              <Link to="/home-services/addService">Add Service</Link>
+            </Menu.Item>
           </SubMenu>
-          <SubMenu key="students" icon={<TeamOutlined />} title="Students">
+          {/* <SubMenu key="students" icon={<TeamOutlined />} title="Students">
             <Menu.Item key="6">
               <Link to="/home-services/allStudents">All students</Link>
             </Menu.Item>
             <Menu.Item key="8">
               <Link to="/home-services/addStudent">Add student</Link>
             </Menu.Item>
-          </SubMenu>
+          </SubMenu> */}
           <SubMenu key="13" icon={<PieChartOutlined />} title="Charts">
+            <Menu.Item key="1" icon={<RadarChartOutlined />}>
+              <Link to="/home-services/charts/categories">
+                Categories charts
+              </Link>
+            </Menu.Item>
+            <Menu.Item key="10" icon={<DotChartOutlined />}>
+              <Link to="/home-services/charts/services">Services charts</Link>
+            </Menu.Item>
+          </SubMenu>
+          {/* <SubMenu key="13" icon={<PieChartOutlined />} title="Charts">
             <Menu.Item key="1" icon={<RadarChartOutlined />}>
               <Link to="/home-services/charts/state">State charts</Link>
             </Menu.Item>
             <Menu.Item key="10" icon={<DotChartOutlined />}>
               <Link to="/home-services/charts/course">course charts</Link>
             </Menu.Item>
-          </SubMenu>
+          </SubMenu> */}
         </Menu>
       </Sider>
       <Layout className="site-layout">
@@ -89,7 +125,12 @@ const Index = (props) => {
                   width: "15%",
                   color: "white",
                 }}
-                defaultValue="all"
+                value={search.category}
+                onChange={(value) => {
+                  console.log(value);
+                  fieldOnChange("category", value);
+                }}
+                // defaultValue="all"
               >
                 <Option value="all">Category (All)</Option>
                 <Option value="carpentair">Carpentair</Option>
@@ -97,11 +138,13 @@ const Index = (props) => {
               </Select>
               <Select
                 className="locationState"
-                defaultValue="all"
+                // defaultValue="all"
                 style={{
                   width: "15%",
                   color: "white",
                 }}
+                value={search.state}
+                onChange={(value) => fieldOnChange("state", value)}
               >
                 <Option value="all">State (All)</Option>
 
@@ -120,6 +163,8 @@ const Index = (props) => {
                   width: "15%",
                   color: "white",
                 }}
+                value={search.city}
+                onChange={(value) => fieldOnChange("city", value.target.value)}
                 className="locationCity"
                 placeholder="Enter your location"
               />
@@ -131,6 +176,10 @@ const Index = (props) => {
                 }}
                 className="locationCity"
                 placeholder={'ex "shree ram"'}
+                value={search.name}
+                onChange={(value) => {
+                  fieldOnChange("name", value.target.value);
+                }}
               />
 
               <Button
@@ -142,6 +191,10 @@ const Index = (props) => {
                 }}
                 type="primary"
                 className="mainSearchButton"
+                onClick={() => {
+                  console.log(search);
+                  dispatch({ type: "SET_SEARCH_PARAMS", payload: search });
+                }}
               >
                 Search
               </Button>

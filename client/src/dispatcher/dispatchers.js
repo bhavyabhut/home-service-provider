@@ -11,6 +11,11 @@ export const LogoutDispathcer = () => {
   dispatch({ type: "LOGOUT" });
 };
 
+export const SetSearchParameters = (payload) => {
+  const { dispatch } = useContext(GlobalContext);
+  dispatch({ type: "SET_SEARCH_PARAMS", payload });
+};
+
 export const ErrorDispathcer = (payload) => {
   const { dispatch } = useContext(GlobalContext);
   dispatch({ type: "ERROR", payload });

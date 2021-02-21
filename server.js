@@ -9,19 +9,22 @@ const college = require("./router/college");
 const student = require("./router/student");
 const login = require("./router/login");
 
-const app = express();
-app.use(express.json());
-app.use(cors());
-if (process.env.NODE_ENV === "development") {
-  app.use(morgan("tiny"));
-}
 const apiVersion = process.env.API_VERSION || "/v1";
 const port = process.env.PORT || 5000;
-
+const app = express();
+app.use(express.json());
+const corsOptions = {
+  exposedHeaders: "auth",
+};
+app.use(cors(corsOptions));
 // router
 app.use(`${apiVersion}/college`, college);
 app.use(`${apiVersion}/student`, student);
 app.use(`${apiVersion}/login`, login);
+
+if (process.env.NODE_ENV === "development") {
+  app.use(morgan("tiny"));
+}
 
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));

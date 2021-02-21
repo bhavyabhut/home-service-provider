@@ -17,6 +17,13 @@ const initial = {
     msg: "",
   },
   user: {},
+
+  search: {
+    name: "",
+    state: "",
+    city: "",
+    category: "",
+  },
 };
 export const GlobalContext = createContext(initial);
 const reducer = (state, action) => {
@@ -34,6 +41,11 @@ const reducer = (state, action) => {
         page: { login: true, registration: false, item: false },
         user: {},
         isLoggedIn: false,
+      };
+    case "SET_SEARCH_PARAMS":
+      return {
+        ...state,
+        search: action.payload,
       };
     case "SET_USER":
       return {
