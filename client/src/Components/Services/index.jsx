@@ -3,25 +3,28 @@ import { PageHeader, Table } from "antd";
 import columns from "./columns";
 import API from "../../api";
 import { GlobalContext } from "../../Context/GlobalContext";
-
+import axios from "axios";
 const College = () => {
   const [datas, setData] = useState([]);
   const [loading, setLoading] = useState(false);
   const { data, dispatch } = useContext(GlobalContext);
 
-  // useEffect(() => {
-  //   setLoading(true);
-  //   fetch(API.colleges).then((data) => {
-  //     data.json().then((data) => {
-  //       setData(data.data);
-  //       setLoading(false);
-  //     });
-  //   });
-  // }, []);
-  console.log(data.search, "hu service na data chu bhai");
+  useEffect(() => {
+    setLoading(true);
+    axios
+      .get(API.services)
+      .then((res) => {
+        // console.log(res);
+        if (res.data.success) {
+          console.log(res.data.data);
+          setData(res.data.data);
+          setLoading(false);
+        }
+      })
+      .catch((e) => console.log(e));
+  }, []);
   return (
     <>
-      {console.log(data.search, "hu service na data chu bhai")}
       <PageHeader title="Services" />
       <Table
         loading={loading}

@@ -1,4 +1,4 @@
-import React, { Component, useState, useContext } from "react";
+import React, { Component, useState, useContext, useEffect } from "react";
 import { Layout, Menu, Breadcrumb, Input, Select, Button } from "antd";
 import {
   DotChartOutlined,
@@ -16,6 +16,8 @@ import Logo from "./Logo";
 import Avatar from "antd/lib/avatar/avatar";
 import { clearToken } from "../utils/auth";
 import { GlobalContext } from "../Context/GlobalContext";
+import axios from "axios";
+import API from "../api";
 const { Option } = Select;
 
 const { Header, Content, Footer, Sider } = Layout;
@@ -38,6 +40,26 @@ const Index = (props) => {
   const onCollapse = (collapsed) => {
     setCollapsed(collapsed);
   };
+
+  useEffect(() => {
+    axios
+      .get(API.categories)
+      .then((res) => {
+        if (res.data.success) {
+          dispatch({ type: "SET_CATEGORIES", payload: res.data.data });
+        }
+      })
+      .catch((e) => console.log(e));
+    axios
+      .get(API.states)
+      .then((res) => {
+        if (res.data.success) {
+          // console.log("ha moj ", res);
+          dispatch({ type: "SET_STATES", payload: res.data.data });
+        }
+      })
+      .catch((e) => console.log(e));
+  }, []);
 
   return (
     <Layout style={{ minHeight: "100vh" }}>
@@ -133,8 +155,11 @@ const Index = (props) => {
                 // defaultValue="all"
               >
                 <Option value="all">Category (All)</Option>
-                <Option value="carpentair">Carpentair</Option>
-                <Option value="ele">Electrical</Option>
+                {data.categories.length > 0
+                  ? data.categories.map((category) => (
+                      <Option value={category.id}>{category.name}</Option>
+                    ))
+                  : null}
               </Select>
               <Select
                 className="locationState"
@@ -147,9 +172,11 @@ const Index = (props) => {
                 onChange={(value) => fieldOnChange("state", value)}
               >
                 <Option value="all">State (All)</Option>
-
-                <Option value="Gujarat">Gujarat</Option>
-                <Option value="Maharastra">Maharastra</Option>
+                {data.states.length > 0
+                  ? data.states.map((state) => (
+                      <Option value={state.id}>{state.state}</Option>
+                    ))
+                  : null}
               </Select>
               <Input
                 prefix={

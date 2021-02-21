@@ -6,9 +6,16 @@ const columns = [
   {
     title: "Name",
     dataIndex: "name",
-    render: (text, row) => (
-      <Link to={`college/${row._id}`}>{text.slice(0, text.length - 13)}</Link>
-    ),
+    // render: (text, row) => (
+    //   <Link to={`college/${row._id}`}>{text.slice(0, text.length - 13)}</Link>
+    // ),
+  },
+  {
+    title: "Category",
+    dataIndex: ["typeObj", "name"],
+    // render: (text, row) => (
+    //   <Link to={`college/${row._id}`}>{text.slice(0, text.length - 13)}</Link>
+    // ),
   },
   {
     title: "State",
@@ -21,15 +28,15 @@ const columns = [
   {
     title: "Courses",
     dataIndex: "courses",
-    render: (text) =>
-      text.split(",").map((prop) => {
-        const num = prop.charCodeAt(0) + prop.charCodeAt(prop.length - 1);
-        return (
-          <Tag style={{ color: "black" }} color={tagColor[num % 11]}>
-            {prop}
-          </Tag>
-        );
-      }),
+    // render: (text) =>
+    //   text.split(",").map((prop) => {
+    //     const num = prop.charCodeAt(0) + prop.charCodeAt(prop.length - 1);
+    //     return (
+    //       <Tag style={{ color: "black" }} color={tagColor[num % 11]}>
+    //         {prop}
+    //       </Tag>
+    //     );
+    //   }),
   },
   {
     title: "City",

@@ -16,6 +16,16 @@ export const SetSearchParameters = (payload) => {
   dispatch({ type: "SET_SEARCH_PARAMS", payload });
 };
 
+export const SetCategories = (payload) => {
+  const { dispatch } = useContext(GlobalContext);
+  dispatch({ type: "SET_CATEGORIES", payload });
+};
+
+export const SetStates = (payload) => {
+  const { dispatch } = useContext(GlobalContext);
+  dispatch({ type: "SET_STATES", payload });
+};
+
 export const ErrorDispathcer = (payload) => {
   const { dispatch } = useContext(GlobalContext);
   dispatch({ type: "ERROR", payload });

@@ -17,7 +17,8 @@ const initial = {
     msg: "",
   },
   user: {},
-
+  categories: [],
+  states: [],
   search: {
     name: "",
     state: "",
@@ -46,6 +47,16 @@ const reducer = (state, action) => {
       return {
         ...state,
         search: action.payload,
+      };
+    case "SET_CATEGORIES":
+      return {
+        ...state,
+        categories: action.payload,
+      };
+    case "SET_STATES":
+      return {
+        ...state,
+        states: action.payload,
       };
     case "SET_USER":
       return {
