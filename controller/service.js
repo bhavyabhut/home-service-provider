@@ -14,6 +14,7 @@ const { success } = require("../helper/successHandler");
 const Addresses = require("../schemas/Address");
 
 exports.getServices = async (req, res) => {
+  console.log(req.body);
   try {
     const newSer = await NewServices.find();
     success(res, newSer);

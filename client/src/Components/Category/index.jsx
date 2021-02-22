@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Card, Avatar } from "antd";
+import { useHistory } from "react-router-dom";
 import {
   EditOutlined,
   EllipsisOutlined,
@@ -7,50 +8,65 @@ import {
 } from "@ant-design/icons";
 import axios from "axios";
 import API from "../../api.js";
+import Spinner from "../Spinner/index.jsx";
 const { Meta } = Card;
 const Cards = () => {
   const [cards, setCards] = useState([]);
+  const history = useHistory();
+  const [loading, setLoading] = useState(false);
   useEffect(() => {
+    setLoading(true);
     axios
       .get(API.categoryDashboard)
       .then((res) => {
-        // console.log(res);
+        console.log(res);
         if (res.data.success) {
           setCards(res.data.data);
+          setLoading(false);
         }
       })
-      .catch((e) => console.log(e));
+      .catch((e) => {
+        console.log(e);
+        setLoading(false);
+      });
   }, []);
   return (
-    <div
-      style={{
-        display: "flex",
-        flexWrap: "wrap",
-        justifyContent: "space-between",
-      }}
-    >
-      {cards.map((card) => (
-        <Card
-          hoverable
-          style={{ width: 300 }}
-          cover={
-            <div
-              className="CustomCARD"
-              style={{
-                background: `url("/images/Card/${card.name}.jpg")`,
-              }}
-              alt="example"
-            ></div>
-          }
+    <>
+      {!loading ? (
+        <div
+          style={{
+            display: "flex",
+            flexWrap: "wrap",
+            justifyContent: "space-between",
+          }}
         >
-          <Meta
-            title={card.name}
-            description={`Total Services: ${card.count} `}
-          />
-        </Card>
-      ))}
+          {cards.map((card) => (
+            <Card
+              onClick={() => {
+                history.push(
+                  `/home-services/allServices?category=${card.id}&state=all&city=&name=`
+                );
+              }}
+              hoverable
+              style={{ width: 300 }}
+              cover={
+                <div
+                  className="CustomCARD"
+                  style={{
+                    background: `url("/images/Card/${card.name}.jpg")`,
+                  }}
+                  alt="example"
+                ></div>
+              }
+            >
+              <Meta
+                title={card.name}
+                description={`Total Services: ${card.count} `}
+              />
+            </Card>
+          ))}
 
-      {/* <Card
+          {/* <Card
         hoverable
         style={{ width: 300 }}
         cover={
@@ -66,7 +82,11 @@ const Cards = () => {
       >
         <Meta title="Plumber" description="Total Services: 6" />
       </Card> */}
-    </div>
+        </div>
+      ) : (
+        <Spinner />
+      )}
+    </>
   );
 };
 

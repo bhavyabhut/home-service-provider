@@ -52,7 +52,9 @@ const SignIn = () => {
             setauth(res.headers.auth);
           }
           setState({ ...state, loader: false });
-          history.push("/home-services");
+          history.push(
+            "/home-services/allCategories?category=all&state=all&city=&name="
+          );
         } else {
           setState({ error: true, loader: false });
         }

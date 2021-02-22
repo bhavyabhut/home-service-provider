@@ -17,7 +17,9 @@ import Avatar from "antd/lib/avatar/avatar";
 import { clearToken } from "../utils/auth";
 import { GlobalContext } from "../Context/GlobalContext";
 import axios from "axios";
+import { useHistory, useLocation } from "react-router-dom";
 import API from "../api";
+import { getArrayParams, setUrlString } from "../utils/paramsConvert";
 const { Option } = Select;
 
 const { Header, Content, Footer, Sider } = Layout;
@@ -26,6 +28,8 @@ const { SubMenu } = Menu;
 const Index = (props) => {
   const [collapsed, setCollapsed] = useState(false);
   const { data, dispatch } = useContext(GlobalContext);
+  const history = useHistory();
+  const { search: urlSearch } = useLocation();
 
   const [search, setSearch] = useState({
     name: "",
@@ -40,7 +44,10 @@ const Index = (props) => {
   const onCollapse = (collapsed) => {
     setCollapsed(collapsed);
   };
-
+  useEffect(() => {
+    setSearch(getArrayParams(urlSearch));
+    // console.log(urlSearch, search);
+  }, [urlSearch]);
   useEffect(() => {
     axios
       .get(API.categories)
@@ -75,7 +82,9 @@ const Index = (props) => {
         >
           <SubMenu key="category" icon={<UserOutlined />} title="Categories">
             <Menu.Item key="66">
-              <Link to="/home-services/allCategories">All Categories</Link>
+              <Link to="/home-services/allCategories?category=all&state=all&city=&name=">
+                All Categories
+              </Link>
             </Menu.Item>
             <Menu.Item key="67">
               <Link to="/home-services/addCategory">Add Category</Link>
@@ -91,7 +100,9 @@ const Index = (props) => {
           </SubMenu> */}
           <SubMenu key="Services" icon={<TeamOutlined />} title="Services">
             <Menu.Item key="6">
-              <Link to="/home-services/allServices">All Services</Link>
+              <Link to="/home-services/allServices?category=all&state=all&city=&name=">
+                All Services
+              </Link>
             </Menu.Item>
             <Menu.Item key="8">
               <Link to="/home-services/addService">Add Service</Link>
@@ -220,6 +231,9 @@ const Index = (props) => {
                 className="mainSearchButton"
                 onClick={() => {
                   console.log(search);
+                  history.push(
+                    "/home-services/allServices" + setUrlString(search)
+                  );
                   dispatch({ type: "SET_SEARCH_PARAMS", payload: search });
                 }}
               >
