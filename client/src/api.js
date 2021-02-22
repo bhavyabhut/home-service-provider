@@ -29,8 +29,8 @@ const API = {
   login: "v1/login",
   registration: "v1/login/registration",
   auth: "v1/login/auth",
-  categories: "v1/categories",
-  states: "v1/states",
+  categories: "/v1/categories",
+  states: "/v1/states",
   categoryDashboard: "/v1/categories/dashboard",
   services: "/v1/services",
 };

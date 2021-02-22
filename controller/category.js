@@ -35,7 +35,7 @@ exports.categoriesDashboard = async (req, res) => {
         count: countCategories[category.id],
       };
     });
-    console.log(finalCategories);
+    // console.log(finalCategories);
     success(res, finalCategories);
   } catch (error) {
     serverError(res, error);

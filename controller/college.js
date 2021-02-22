@@ -17,7 +17,7 @@ exports.getColleges = async (req, res) => {
 
 exports.getCollegeById = async (req, res) => {
   const { collegeId } = req.params;
-  console.log(collegeId);
+  // console.log(collegeId);
   if (!collegeId) resourceError(res, "Please enter college");
   try {
     const college = await College.findById(collegeId);

@@ -29,7 +29,7 @@ exports.getServices = async (req, res) => {
     }
     if (req.body.state && req.body.state !== "all") {
       newSer = newSer.filter((ser) => ser.addressObj.state === req.body.state);
-      console.log(newSer, "ha moj");
+      // console.log(newSer, "ha moj");
     }
     if (req.body.city) {
       newSer = newSer.filter(
