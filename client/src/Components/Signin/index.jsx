@@ -12,23 +12,52 @@ import axios from "axios";
 import { getauth, setauth } from "../../utils/auth";
 import { GlobalContext } from "../../Context/GlobalContext";
 
-const SignIn = () => {
+const SignIn = (props) => {
   const [form] = Form.useForm();
   const { data, dispatch } = useContext(GlobalContext);
   const [state, setState] = useState({ loader: false, error: false });
   const history = useHistory();
 
   useEffect(() => {
+    console.log(data, "authData");
     const token = getauth();
+    console.log(history, props, "hu auth");
     const fetch = async () => {
       try {
-        const { data } = await axios.get(API.auth, {
+        const { data: datas } = await axios.get(API.auth, {
           headers: { "auth-token": token },
         });
-        if (data.success === true) {
+        if (datas.success === true) {
           dispatch({ type: "LOGIN_SUCCESS" });
-          console.log("yaa hu thav chu");
-          history.push("/home-services");
+          console.log(data.categories.length);
+
+          if (data.categories.length === 0)
+            axios
+              .get(API.categories)
+              .then((res) => {
+                console.log("auth ni category no res", res);
+                if (res.data.success) {
+                  dispatch({ type: "SET_CATEGORIES", payload: res.data.data });
+                }
+              })
+              .catch((e) => console.log(e));
+          if (data.states.length === 0)
+            axios
+              .get(API.states)
+              .then((res) => {
+                console.log("auth ni state no res", res);
+
+                if (res.data.success) {
+                  // console.log("ha moj ", res);
+                  dispatch({ type: "SET_STATES", payload: res.data.data });
+                }
+              })
+              .catch((e) => console.log(e));
+          // console.log("yaa hu thav chu");
+          history.push(
+            props.location.state.data.pathname +
+              props.location.state.data.search
+          );
         } else {
           // ErrorDispathcer(data.msg);
         }
@@ -40,14 +69,39 @@ const SignIn = () => {
   }, []);
 
   const login = () => {
+    console.log(data, "loginData");
     setState({ ...state, loader: true });
-    const data = form.getFieldsValue();
+    const datas = form.getFieldsValue();
     console.log("sfdfd", form.getFieldsValue());
     axios
-      .post(API.login, data)
+      .post(API.login, datas)
       .then((res) => {
         if (res.status) {
           dispatch({ type: "LOGIN_SUCCESS" });
+          console.log(data.categories.length, res);
+
+          if (data.categories.length === 0)
+            axios
+              .get(API.categories)
+              .then((res) => {
+                console.log("Login ni category no res", res);
+                if (res.data.success) {
+                  dispatch({ type: "SET_CATEGORIES", payload: res.data.data });
+                }
+              })
+              .catch((e) => console.log(e));
+          if (data.states.length === 0)
+            axios
+              .get(API.states)
+              .then((res) => {
+                console.log("Login ni state no res", res);
+
+                if (res.data.success) {
+                  // console.log("ha moj ", res);
+                  dispatch({ type: "SET_STATES", payload: res.data.data });
+                }
+              })
+              .catch((e) => console.log(e));
           if (res.headers.auth) {
             setauth(res.headers.auth);
           }

@@ -16,18 +16,19 @@ import { getauth } from "./utils/auth";
 const RestrictedRoute = ({ component: Component, isLoggedIn, ...rest }) => (
   <Route
     {...rest}
-    render={(props) =>
-      isLoggedIn ? (
+    render={(props) => {
+      console.log(props, "hu props chu re bhai");
+      return isLoggedIn ? (
         <Component {...props} />
       ) : (
         <Redirect
           to={{
             pathname: "/signin",
-            state: { from: props.location },
+            state: { data: props.location },
           }}
         />
-      )
-    }
+      );
+    }}
   />
 );
 const PublicRoutes = ({ history }) => {

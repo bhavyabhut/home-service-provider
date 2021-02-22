@@ -67,6 +67,27 @@ const Index = (props) => {
       })
       .catch((e) => console.log(e));
   }, []);
+  // useEffect(() => {
+  //   if (data.categories.length === 0)
+  //     axios
+  //       .get(API.categories)
+  //       .then((res) => {
+  //         if (res.data.success) {
+  //           dispatch({ type: "SET_CATEGORIES", payload: res.data.data });
+  //         }
+  //       })
+  //       .catch((e) => console.log(e));
+  //   if (data.states.length === 0)
+  //     axios
+  //       .get(API.states)
+  //       .then((res) => {
+  //         if (res.data.success) {
+  //           // console.log("ha moj ", res);
+  //           dispatch({ type: "SET_STATES", payload: res.data.data });
+  //         }
+  //       })
+  //       .catch((e) => console.log(e));
+  // });
 
   return (
     <Layout style={{ minHeight: "100vh" }}>
