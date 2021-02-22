@@ -14,12 +14,36 @@ const { success } = require("../helper/successHandler");
 const Addresses = require("../schemas/Address");
 
 exports.getServices = async (req, res) => {
-  console.log(req.body);
+  let newSer = [];
   try {
-    const newSer = await NewServices.find();
-    success(res, newSer);
+    newSer = await NewServices.find();
+    // success(res, newSer);
   } catch (error) {
     serverError(res, error);
+  }
+  if (req.body) {
+    console.log(req.body);
+    "s".toLocaleLowerCase;
+    if (req.body.category && req.body.category !== "all") {
+      newSer = newSer.filter((ser) => ser.type === req.body.category);
+    }
+    if (req.body.state && req.body.state !== "all") {
+      newSer = newSer.filter((ser) => ser.addressObj.state === req.body.state);
+      console.log(newSer, "ha moj");
+    }
+    if (req.body.city) {
+      newSer = newSer.filter(
+        (ser) =>
+          ser.addressObj.newCity.city.toLocaleLowerCase() ===
+          req.body.city.toLocaleLowerCase()
+      );
+    }
+    if (req.body.name) {
+      newSer = newSer.filter((ser) => ser.name.includes(req.body.name));
+    }
+    success(res, newSer);
+  } else {
+    success(res, newSer);
   }
   // try {
   //   const services = await Services.find();
