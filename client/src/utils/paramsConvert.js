@@ -10,5 +10,21 @@ export const getArrayParams = (urlString) => {
 };
 
 export const setUrlString = (obj) => {
-  return `?category=${obj.category}&state=${obj.state}&city=${obj.city}&name=${obj.name}`;
+  let category = "all";
+  let city = "";
+  let state = "all";
+  let name = "";
+  if (obj.category !== undefined) {
+    category = obj.category;
+  }
+  if (obj.state !== undefined) {
+    state = obj.state;
+  }
+  if (obj.city !== undefined) {
+    city = obj.city;
+  }
+  if (obj.name !== undefined) {
+    name = obj.name;
+  }
+  return `?category=${category}&state=${state}&city=${city}&name=${name}`;
 };

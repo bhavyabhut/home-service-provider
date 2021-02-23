@@ -19,53 +19,19 @@ const SignIn = (props) => {
   const history = useHistory();
 
   useEffect(() => {
-    console.log(data, "authData");
     const token = getauth();
-    console.log(history, props, "hu auth");
-    const fetch = async () => {
-      try {
-        const { data: datas } = await axios.get(API.auth, {
-          headers: { "auth-token": token },
-        });
-        if (datas.success === true) {
-          dispatch({ type: "LOGIN_SUCCESS" });
-          console.log(data.categories.length);
-
-          if (data.categories.length === 0)
-            axios
-              .get(API.categories)
-              .then((res) => {
-                console.log("auth ni category no res", res);
-                if (res.data.success) {
-                  dispatch({ type: "SET_CATEGORIES", payload: res.data.data });
-                }
-              })
-              .catch((e) => console.log(e));
-          if (data.states.length === 0)
-            axios
-              .get(API.states)
-              .then((res) => {
-                console.log("auth ni state no res", res);
-
-                if (res.data.success) {
-                  // console.log("ha moj ", res);
-                  dispatch({ type: "SET_STATES", payload: res.data.data });
-                }
-              })
-              .catch((e) => console.log(e));
-          // console.log("yaa hu thav chu");
-          history.push(
+    axios.get(API.auth, { headers: { "auth-token": token } }).then((res) => {
+      if (res.data.success === true) {
+        dispatch({ type: "LOGIN_SUCCESS" });
+        let path =
+          "/home-services/allCategories?category=all&state=all&city=&name=";
+        if (props.location && props.location.state && props.location.state.data)
+          path =
             props.location.state.data.pathname +
-              props.location.state.data.search
-          );
-        } else {
-          // ErrorDispathcer(data.msg);
-        }
-      } catch (e) {
-        // ErrorDispathcer(e.response.statusText);
+            props.location.state.data.search;
+        history.push(path);
       }
-    };
-    fetch();
+    });
   }, []);
 
   const login = () => {
