@@ -20,9 +20,9 @@ const columns = [
   {
     title: "Name",
     dataIndex: "name",
-    // render: (text, row) => (
-    //   <Link to={`college/${row._id}`}>{text.slice(0, text.length - 13)}</Link>
-    // ),
+    render: (text, row) => (
+      <Link to={`allServices/${row.service_id}`}>{text}</Link>
+    ),
   },
   {
     title: "Category",

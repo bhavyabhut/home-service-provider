@@ -1,49 +1,37 @@
-import React, { useState, useEffect } from "react";
-import { Table, Empty } from "antd";
-import columns from "../columns";
-import API from "../../../api";
+import React from "react";
+import { Card, Row, Tag } from "antd";
+import tagColor from "../../../config/consts";
 
-const nestedColumns = [
-  {
-    title: "Name",
-    dataIndex: "name",
-  },
-];
-const [first, ...newColumns] = [...columns];
-const SimilarCollege = ({ location, id }) => {
-  const [data, setData] = useState([]);
-  const [loading, setLoading] = useState(false);
-  useEffect(() => {
-    setLoading(true);
-    fetch(API.collegeByLocation.replace(":locationId", location)).then(
-      (data) => {
-        data.json().then((data) => {
-          setData(data.data.filter((college) => college._id !== id));
-          setLoading(false);
-        });
-      }
-    );
-  }, []);
+const SimilarCollege = ({ data }) => {
   return (
-    <>
-      <Table
-        loading={loading}
-        columns={[...nestedColumns, ...newColumns]}
-        bordered
-        rowKey={(render) => render._id}
-        dataSource={data}
-        pagination
-        scroll={{ x: 1300 }}
-        locale={{
-          emptyText: (
-            <Empty
-              image={Empty.PRESENTED_IMAGE_SIMPLE}
-              description="No Similar College Found"
-            />
-          ),
-        }}
-      />
-    </>
+    <Card>
+      <Row className="customRow">
+        <span className="text-dark">Name:</span>
+        <span>{data?.ownerObj?.name}</span>
+      </Row>
+      <Row className="customRow">
+        <span className="text-dark">Email:</span>
+        <span>{data?.ownerObj?.email}</span>
+      </Row>
+      <Row className="customRow">
+        <span className="text-dark">Phone:</span>
+        <span>{data?.ownerObj?.phone}</span>
+      </Row>
+      <Row className="customRow">
+        <span className="text-dark">Gender:</span>
+        <span>{data?.ownerObj?.gender}</span>
+      </Row>
+      <Row className="customRow">
+        <span className="text-dark">Address:</span>
+        <span>
+          {data?.ownerObj?.addressObj?.street1},{" "}
+          {data?.ownerObj?.addressObj?.street2},{" "}
+          {data?.ownerObj?.addressObj?.newCity?.city},{" "}
+          {data?.ownerObj?.addressObj?.newState?.state},{" "}
+          {data?.ownerObj?.addressObj?.newCountry?.country}
+        </span>
+      </Row>
+    </Card>
   );
 };
 

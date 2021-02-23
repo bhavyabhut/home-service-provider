@@ -35,6 +35,11 @@ const routes = [
     Component: lazy(() => import("./Components/Services")),
   },
   {
+    path: "allServices/:serviceId",
+    exact: true,
+    Component: lazy(() => import("./Components/Services/Profile")),
+  },
+  {
     path: "charts/services",
     exact: true,
     Component: lazy(() => import("./Components/Charts/Services")),

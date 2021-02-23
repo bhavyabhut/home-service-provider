@@ -1,30 +1,40 @@
 import React from "react";
-import columns from "../../Student/columns";
-import { Table } from "antd";
-const nestedColumns = [
-  {
-    title: "Name",
-    dataIndex: "first_name",
-    render: (text, row) => `${text} ${row.last_name}`,
-  },
-  {
-    title: "Email",
-    dataIndex: "email",
-  },
-];
-const [first, second, ...newColumns] = [...columns];
+import { Card, Row, Tag } from "antd";
+import tagColor from "../../../config/consts";
 
-const CollegeStudent = ({ data, loading }) => {
+const CollegeStudent = ({ data }) => {
   return (
-    <Table
-      loading={loading}
-      columns={[...nestedColumns, ...newColumns]}
-      bordered
-      rowKey={(render) => render._id}
-      dataSource={data}
-      pagination
-      scroll={{ x: 1300 }}
-    />
+    <Card>
+      <Row className="customRow">
+        <span className="text-dark">Experience:</span>
+        <span>{data?.experiance}</span>
+      </Row>
+      <Row className="customRow">
+        <span className="text-dark">Total Customer Served:</span>
+        <span>{data?.customers_served}</span>
+      </Row>
+      <Row className="customRow">
+        <span className="text-dark">Rating:</span>
+        <span>⭐️ ⭐️ ⭐️ ⭐️</span>
+      </Row>
+      {/* <Row className="customRow">
+        <span className="text-dark">Tags:</span>
+        <span>
+          {data?.tag?.map((prop) => {
+            const num = prop.charCodeAt(0) + prop.charCodeAt(prop.length - 1);
+            return (
+              <Tag style={{ color: "black" }} color={tagColor[num % 11]}>
+                {prop}
+              </Tag>
+            );
+          })}
+        </span>
+      </Row> */}
+      <Row className="customRow">
+        <span className="text-dark">Feedback:</span>
+        <span>Best in area</span>
+      </Row>
+    </Card>
   );
 };
 

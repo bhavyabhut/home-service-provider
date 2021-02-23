@@ -99,6 +99,51 @@ exports.getServices = async (req, res) => {
   // }
 };
 
+exports.getServiceById = async (req, res) => {
+  const { id } = req.params;
+  console.log(id);
+  try {
+    const newSer = await NewServices.find();
+    // console.log(newSer);
+    const ser = newSer.filter((service) => service.service_id === id);
+    console.log(ser);
+    success(res, ser);
+  } catch (error) {
+    serverError(res, error);
+  }
+};
+
+exports.getServicesChart = async (req, res) => {
+  const { id } = req.params;
+  console.log(id);
+  let countCategories = {};
+  let finalCategories = [];
+  try {
+    const newSer = await NewServices.find();
+    const city = await Cities.find();
+    newSer.map((service) => {
+      if (countCategories[service.addressObj.newCity.city]) {
+        countCategories[service.addressObj.newCity.city] =
+          countCategories[service.addressObj.newCity.city] + 1;
+      } else {
+        countCategories[service.addressObj.newCity.city] = 1;
+      }
+    });
+    // console.log(categories, services, countCategories);
+    finalCategories = city.map((category) => {
+      return {
+        id: category.id,
+        name: category.city,
+        count: countCategories[category.city],
+      };
+    });
+    console.log(finalCategories);
+    success(res, finalCategories);
+  } catch (error) {
+    serverError(res, error);
+  }
+};
+
 // exports.categoriesDashboard = async (req, res) => {
 //   try {
 //     const categories = await Categories.find();

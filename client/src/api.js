@@ -15,6 +15,8 @@
 //   states: "http://localhost:5000/v1/states",
 //   categoryDashboard: "http://localhost:5000/v1/categories/dashboard",
 //   services: "http://localhost:5000/v1/services",
+//   getServiceById: "http://localhost:5000/v1/services/:serviceId",
+//   servicesChart: "http://localhost:5000/v1/services/chart",
 // };
 const API = {
   students: "v1/student/",
@@ -33,5 +35,7 @@ const API = {
   states: "/v1/states",
   categoryDashboard: "/v1/categories/dashboard",
   services: "/v1/services",
+  getServiceById: "/v1/services/:serviceId",
+  servicesChart: "/v1/services/chart",
 };
 export default API;

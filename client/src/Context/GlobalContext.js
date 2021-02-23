@@ -35,8 +35,8 @@ const reducer = (state, action) => {
         isLoggedIn: true,
       };
     case "LOGOUT":
-      localStorage.setItem("auth-token", "");
-      localStorage.setItem("user_id", "");
+      localStorage.setItem("auth-token", null);
+      localStorage.setItem("user_id", null);
       return {
         ...state,
         page: { login: true, registration: false, item: false },

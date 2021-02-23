@@ -8,32 +8,31 @@ import Address from "./Address";
 import Spinner from "../../Spinner";
 import API from "../../../api";
 import SimilarCollege from "./SimilarColleges";
+import axios from "axios";
 
 const { TabPane } = Tabs;
 
 const CollegeProfile = () => {
   const [collegeData, setCollegeData] = useState([]);
-  const [studentData, setStudentData] = useState([]);
   const [collegeLoading, setCollegeLoading] = useState(false);
-  const [studentLoading, setStudentLoading] = useState(false);
 
-  const { collegeId } = useParams();
+  const { serviceId } = useParams();
   useEffect(() => {
     setCollegeLoading(true);
-    setStudentLoading(true);
-    fetch(API.college.replace(":collegeId", collegeId)).then((data) =>
-      data.json().then((data) => {
-        setCollegeData(data.data);
+    axios
+      .get(API.getServiceById.replace(":serviceId", serviceId))
+      .then((data) => {
+        console.log(data);
+        if (data.data.success) {
+          setCollegeData(data.data.data[0]);
+          setCollegeLoading(false);
+        }
+      })
+      .catch((e) => {
+        console.log(e);
         setCollegeLoading(false);
-      })
-    );
-    fetch(API.collegeStudent.replace(":collegeId", collegeId)).then((data) =>
-      data.json().then((data) => {
-        setStudentData(data.data);
-        setStudentLoading(false);
-      })
-    );
-  }, [collegeId]);
+      });
+  }, [serviceId]);
   return (
     <>
       {collegeLoading ? (
@@ -46,23 +45,12 @@ const CollegeProfile = () => {
               tab={
                 <span>
                   <AppleOutlined />
-                  College Info
+                  Service Info
                 </span>
               }
               key="1"
             >
               <MainDetails data={collegeData} />
-            </TabPane>
-            <TabPane
-              tab={
-                <span>
-                  <AndroidOutlined />
-                  Students
-                </span>
-              }
-              key="2"
-            >
-              <CollegeStudent data={studentData} loading={studentLoading} />
             </TabPane>
             <TabPane
               tab={
@@ -75,19 +63,28 @@ const CollegeProfile = () => {
             >
               <Address data={collegeData} />
             </TabPane>
+
             <TabPane
               tab={
                 <span>
                   <AndroidOutlined />
-                  Similar colleges
+                  Other Information
+                </span>
+              }
+              key="2"
+            >
+              <CollegeStudent data={collegeData} loading={collegeLoading} />
+            </TabPane>
+            <TabPane
+              tab={
+                <span>
+                  <AndroidOutlined />
+                  Owner Information
                 </span>
               }
               key="5"
             >
-              <SimilarCollege
-                id={collegeData?._id}
-                location={collegeData?.city}
-              />
+              <SimilarCollege data={collegeData} />
             </TabPane>
           </Tabs>
         </>
