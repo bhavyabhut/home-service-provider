@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Button, Input, Form, Switch, Divider, notification } from "antd";
-import { Link, useHistory } from "react-router-dom";
+import { Link, useHistory, useLocation, useParams } from "react-router-dom";
 import { SendOutlined } from "@ant-design/icons";
 import Logo from "../../Layout/Logo";
 import API from "../../api";
@@ -9,12 +9,17 @@ import axios from "axios";
 const SignIn = () => {
   const [loading, setLoading] = useState(false);
   const history = useHistory();
+  const params = useParams();
+  console.log(params);
 
   const [form] = Form.useForm();
   const sendOtp = () => {
     setLoading(true);
     axios
-      .post(API.sendOtp, form.getFieldsValue())
+      .post(API.changePassword, {
+        email: params.email,
+        ...form.getFieldsValue(),
+      })
       .then((res) => {
         console.log(res);
         if (res.data.success) {
@@ -25,7 +30,7 @@ const SignIn = () => {
           });
 
           setLoading(false);
-          history.push("/verifyOtp");
+          history.push(`/`);
         } else {
           notification.open({
             message: res.data.message,
@@ -58,21 +63,30 @@ const SignIn = () => {
           <Logo /> <h1 className="title">HomeServices</h1>
         </div>
         <h2 className="welcomeBack">Welcome back</h2>
-        <p class="loginIntoAccount">Enter your email to recover your account</p>
+        <p class="loginIntoAccount">Enter new password for </p>
         <div>
           <Form form={form} layout="vertical">
             <Form.Item
-              label="Email"
-              //   required
-              //   tooltip="This is a required field"
-              name="email"
+              label="Password"
+              name="password"
+              //   tooltip={{
+              //     title: "Password",
+              //     icon: <InfoCircleOutlined />,
+              //   }}
             >
-              <Input placeholder="johndoe@gmail.com" />
+              <Input placeholder="Password" />
+            </Form.Item>
+            <Form.Item
+            //   tooltip={{
+            //     title: "Password",
+            //     icon: <InfoCircleOutlined />,
+            //   }}
+            >
+              <Input.Password placeholder="Confirm Password" />
             </Form.Item>
 
             <Form.Item style={{ width: "100%" }}>
               <Button
-                onClick={sendOtp}
                 type="primary"
                 shape="round"
                 icon={<SendOutlined />}
@@ -83,8 +97,9 @@ const SignIn = () => {
                   borderColor: "rgb(0, 132, 137)",
                 }}
                 loading={loading}
+                onClick={sendOtp}
               >
-                Send Email
+                Change Password
               </Button>
             </Form.Item>
           </Form>

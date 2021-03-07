@@ -69,6 +69,16 @@ const PublicRoutes = ({ history }) => {
           /> */}
             <Route
               exact={true}
+              path={"/verifyOtp"}
+              component={lazy(() => import("./Components/VerifyOtp"))}
+            />
+            <Route
+              exact={true}
+              path={"/changePassword/:email"}
+              component={lazy(() => import("./Components/ChangePassword"))}
+            />
+            <Route
+              exact={true}
               path={"/forgot-password"}
               component={lazy(() => import("./Components/ForgotPassword"))}
             />

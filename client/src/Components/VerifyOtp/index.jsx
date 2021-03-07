@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Button, Input, Form, Switch, Divider, notification } from "antd";
 import { Link, useHistory } from "react-router-dom";
-import { SendOutlined } from "@ant-design/icons";
+import { UnlockOutlined } from "@ant-design/icons";
 import Logo from "../../Layout/Logo";
 import API from "../../api";
 import axios from "axios";
@@ -9,12 +9,13 @@ import axios from "axios";
 const SignIn = () => {
   const [loading, setLoading] = useState(false);
   const history = useHistory();
+  const [counter, setCounter] = React.useState(60);
 
   const [form] = Form.useForm();
   const sendOtp = () => {
     setLoading(true);
     axios
-      .post(API.sendOtp, form.getFieldsValue())
+      .post(API.verifyOtp, form.getFieldsValue())
       .then((res) => {
         console.log(res);
         if (res.data.success) {
@@ -25,7 +26,7 @@ const SignIn = () => {
           });
 
           setLoading(false);
-          history.push("/verifyOtp");
+          history.push(`/changePassword/${res.data.data.email}`);
         } else {
           notification.open({
             message: res.data.message,
@@ -44,6 +45,9 @@ const SignIn = () => {
         console.log(e.response);
       });
   };
+  React.useEffect(() => {
+    counter > 0 && setTimeout(() => setCounter(counter - 1), 1000);
+  }, [counter]);
   return (
     <div className="signin">
       <div className="signin-form">
@@ -58,34 +62,40 @@ const SignIn = () => {
           <Logo /> <h1 className="title">HomeServices</h1>
         </div>
         <h2 className="welcomeBack">Welcome back</h2>
-        <p class="loginIntoAccount">Enter your email to recover your account</p>
+        <p class="loginIntoAccount">Enter your otp to change your password</p>
         <div>
           <Form form={form} layout="vertical">
             <Form.Item
-              label="Email"
+              label="One Time Password"
               //   required
+              name="otp"
               //   tooltip="This is a required field"
-              name="email"
             >
-              <Input placeholder="johndoe@gmail.com" />
+              <Input placeholder="Enter one time password" />
             </Form.Item>
 
             <Form.Item style={{ width: "100%" }}>
               <Button
-                onClick={sendOtp}
                 type="primary"
                 shape="round"
-                icon={<SendOutlined />}
+                icon={<UnlockOutlined />}
                 style={{
                   width: "100%",
                   height: "2.5rem",
                   backgroundColor: "rgb(0, 132, 137)",
                   borderColor: "rgb(0, 132, 137)",
+                  marginBottom: "1rem",
                 }}
                 loading={loading}
+                onClick={sendOtp}
               >
-                Send Email
+                Verify Otp
               </Button>
+              {counter < 2 ? (
+                <Link to="/forgot-password">Don't get otp? Resend It</Link>
+              ) : (
+                `Resend after ${counter} second`
+              )}
             </Form.Item>
           </Form>
         </div>

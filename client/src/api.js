@@ -17,6 +17,9 @@
 //   services: "http://localhost:5000/v1/services",
 //   getServiceById: "http://localhost:5000/v1/services/:serviceId",
 //   servicesChart: "http://localhost:5000/v1/services/chart",
+//   sendOtp: "http://localhost:5000/v1/login/otp",
+//   verifyOtp: "http://localhost:5000/v1/login/verifyOtp",
+//   changePassword: "http://localhost:5000/v1/login/changePassword",
 // };
 const API = {
   students: "v1/student/",
@@ -37,5 +40,8 @@ const API = {
   services: "/v1/services",
   getServiceById: "/v1/services/:serviceId",
   servicesChart: "/v1/services/chart",
+  sendOtp: "/v1/login/otp",
+  verifyOtp: "/v1/login/verifyOtp",
+  changePassword: "/v1/login/changePassword",
 };
 export default API;
