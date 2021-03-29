@@ -17,6 +17,7 @@ function getBase64(file) {
   else new Promise((resolve, reject) => reject());
 }
 export default function AddCategory() {
+  const [loader, setLoader] = useState(false);
   const [fieldData, setFieldData] = useState({ name: "", description: "" });
   const [file, setFile] = useState();
   const [url, setUrl] = useState();
@@ -54,6 +55,7 @@ export default function AddCategory() {
       });
       return;
     }
+    setLoader(true);
     const formData = new FormData();
     formData.append("name", fieldData.name);
     formData.append("image", file);
@@ -66,6 +68,7 @@ export default function AddCategory() {
             "/home-services/allCategories?category=all&state=all&city=&name="
           );
         }
+        setLoader(false);
       })
       .catch((e) => {
         if (e.response) {
@@ -73,6 +76,7 @@ export default function AddCategory() {
         } else {
           setState({ error: true, message: "Server Error" });
         }
+        setLoader(false);
       });
   };
   useEffect(() => {
@@ -149,7 +153,7 @@ export default function AddCategory() {
       >
         Cancel
       </Button>
-      <Button type="primary" onClick={sendData}>
+      <Button loading={loader} type="primary" onClick={sendData}>
         Submit
       </Button>
     </>
