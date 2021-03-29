@@ -97,6 +97,7 @@ exports.singup = async (req, res, next) => {
       email: req.body.email,
       password: hash,
       number: req.body.number,
+      isMerchant: req.body.isMerchant,
     });
     const data = await user.save();
     const mailOptions = {

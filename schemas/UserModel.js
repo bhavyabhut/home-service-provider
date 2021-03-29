@@ -38,6 +38,7 @@ const UserSchema = Schema({
   fullname: String,
   country: String,
   bdate: Date,
+  isMerchant: Boolean,
 });
 
 module.exports = mongoose.model("User", UserSchema);

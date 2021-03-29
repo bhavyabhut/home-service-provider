@@ -15,6 +15,7 @@ const SignUp = () => {
   const [form] = Form.useForm();
   // const [loader, setLoader] = useState(false);
   // const [error, setError] = useState(false);
+  const [isMerchant, setIsMerchant] = useState(false);
   const [state, setState] = useState({
     loader: false,
     error: false,
@@ -26,6 +27,7 @@ const SignUp = () => {
   const registration = () => {
     setState({ ...state, loader: true });
     const data = form.getFieldsValue();
+    data.isMerchant = isMerchant;
     axios
       .post(API.registration, data)
       .then((res) => {
@@ -128,8 +130,12 @@ const SignUp = () => {
               }}
             >
               <div>
-                <Switch></Switch>
-                <span className="remeberMe">Remember me</span>
+                <Switch
+                  onChange={(e) => {
+                    setIsMerchant(e);
+                  }}
+                ></Switch>
+                <span className="remeberMe">Merchant/Owner/Worker</span>
               </div>
             </div>
             <Form.Item style={{ width: "100%" }}>

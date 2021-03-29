@@ -2,6 +2,7 @@ import React, { createContext, useReducer } from "react";
 const initial = {
   loading: true,
   isLoggedIn: false,
+  isMerchant: false,
   page: {
     login: true,
     registration: false,
@@ -34,6 +35,12 @@ const reducer = (state, action) => {
         ...state,
         isLoggedIn: true,
       };
+    case "SET_MERCHANT":
+      // console.log(action, "merchant");
+      return {
+        ...state,
+        isMerchant: action.isMerchant,
+      };
     case "LOGOUT":
       localStorage.setItem("auth-token", null);
       localStorage.setItem("user_id", null);
@@ -42,6 +49,7 @@ const reducer = (state, action) => {
         page: { login: true, registration: false, item: false },
         user: {},
         isLoggedIn: false,
+        isMerchant: false,
       };
     case "SET_SEARCH_PARAMS":
       return {

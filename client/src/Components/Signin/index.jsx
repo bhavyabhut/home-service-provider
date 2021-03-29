@@ -23,6 +23,10 @@ const SignIn = (props) => {
     axios.get(API.auth, { headers: { "auth-token": token } }).then((res) => {
       if (res.data.success === true) {
         dispatch({ type: "LOGIN_SUCCESS" });
+        let isMerchant = res.data.data.isMerchant;
+        if (!isMerchant) isMerchant = false;
+
+        dispatch({ type: "SET_MERCHANT", isMerchant });
         let path =
           "/home-services/allCategories?category=all&state=all&city=&name=";
         if (props.location && props.location.state && props.location.state.data)
@@ -44,6 +48,10 @@ const SignIn = (props) => {
       .then((res) => {
         if (res.status) {
           dispatch({ type: "LOGIN_SUCCESS" });
+          let isMerchant = res.data.data.isMerchant;
+          if (!isMerchant) isMerchant = false;
+
+          dispatch({ type: "SET_MERCHANT", isMerchant });
           console.log(data.categories.length, res);
 
           if (data.categories.length === 0)

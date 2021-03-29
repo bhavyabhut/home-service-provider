@@ -101,6 +101,7 @@ const Index = (props) => {
 
   return (
     <Layout style={{ minHeight: "100vh" }}>
+      {/* {console.log(data, "hu data chu")} */}
       <Sider collapsible collapsed={collapsed} onCollapse={onCollapse}>
         <div className="logo" style={{ overflow: "hidden" }}>
           <Logo />
@@ -117,9 +118,11 @@ const Index = (props) => {
                 All Categories
               </Link>
             </Menu.Item>
-            <Menu.Item key="67">
-              <Link to="/home-services/addCategory">Add Category</Link>
-            </Menu.Item>
+            {data.isMerchant && (
+              <Menu.Item key="67">
+                <Link to="/home-services/addCategory">Add Category</Link>
+              </Menu.Item>
+            )}
           </SubMenu>
           {/* <SubMenu key="colleges" icon={<UserOutlined />} title="Colleges">
             <Menu.Item key="3">
@@ -135,9 +138,11 @@ const Index = (props) => {
                 All Services
               </Link>
             </Menu.Item>
-            <Menu.Item key="8">
-              <Link to="/home-services/addService">Add Service</Link>
-            </Menu.Item>
+            {data.isMerchant && (
+              <Menu.Item key="8">
+                <Link to="/home-services/addService">Add Service</Link>
+              </Menu.Item>
+            )}
           </SubMenu>
           {/* <SubMenu key="students" icon={<TeamOutlined />} title="Students">
             <Menu.Item key="6">
