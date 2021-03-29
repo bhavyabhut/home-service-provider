@@ -30,6 +30,7 @@ const Index = (props) => {
   const { data, dispatch } = useContext(GlobalContext);
   const history = useHistory();
   const { search: urlSearch } = useLocation();
+  const [isHide, setIsHide] = useState(false);
 
   const [search, setSearch] = useState({
     name: "",
@@ -44,6 +45,15 @@ const Index = (props) => {
   const onCollapse = (collapsed) => {
     setCollapsed(collapsed);
   };
+
+  useEffect(() => {
+    if (
+      history.location.pathname.split("/")[2] == "addCategory" ||
+      history.location.pathname.split("/")[2] == "addService"
+    )
+      setIsHide(true);
+    else setIsHide(false);
+  }, [history.location.pathname.split("/")[2]]);
   useEffect(() => {
     setSearch(getArrayParams(urlSearch));
     // console.log(urlSearch, search);
@@ -166,101 +176,107 @@ const Index = (props) => {
           <Menu
             style={{
               display: "flex",
-              justifyContent: "space-between",
+              justifyContent: !isHide ? "space-between" : "flex-end",
               alignItems: "center",
             }}
             theme="dark"
             mode="horizontal"
           >
-            <Input.Group>
-              <Select
-                className="locationState"
-                style={{
-                  width: "15%",
-                  color: "white",
-                }}
-                value={search.category}
-                onChange={(value) => {
-                  console.log(value);
-                  fieldOnChange("category", value);
-                }}
-                // defaultValue="all"
-              >
-                <Option value="all">Category (All)</Option>
-                {data.categories.length > 0
-                  ? data.categories.map((category) => (
-                      <Option value={category.id}>{category.name}</Option>
-                    ))
-                  : null}
-              </Select>
-              <Select
-                className="locationState"
-                // defaultValue="all"
-                style={{
-                  width: "15%",
-                  color: "white",
-                }}
-                value={search.state}
-                onChange={(value) => fieldOnChange("state", value)}
-              >
-                <Option value="all">State (All)</Option>
-                {data.states.length > 0
-                  ? data.states.map((state) => (
-                      <Option value={state.id}>{state.state}</Option>
-                    ))
-                  : null}
-              </Select>
-              <Input
-                prefix={
-                  <i
-                    style={{ marginRight: "0.75rem" }}
-                    className="fa fa-map-marker"
-                    aria-hidden="true"
-                  ></i>
-                }
-                style={{
-                  width: "15%",
-                  color: "white",
-                }}
-                value={search.city}
-                onChange={(value) => fieldOnChange("city", value.target.value)}
-                className="locationCity"
-                placeholder="Enter your location"
-              />
+            {!isHide ? (
+              <>
+                <Input.Group>
+                  <Select
+                    className="locationState"
+                    style={{
+                      width: "15%",
+                      color: "white",
+                    }}
+                    value={search.category}
+                    onChange={(value) => {
+                      console.log(value);
+                      fieldOnChange("category", value);
+                    }}
+                    // defaultValue="all"
+                  >
+                    <Option value="all">Category (All)</Option>
+                    {data.categories.length > 0
+                      ? data.categories.map((category) => (
+                          <Option value={category.id}>{category.name}</Option>
+                        ))
+                      : null}
+                  </Select>
+                  <Select
+                    className="locationState"
+                    // defaultValue="all"
+                    style={{
+                      width: "15%",
+                      color: "white",
+                    }}
+                    value={search.state}
+                    onChange={(value) => fieldOnChange("state", value)}
+                  >
+                    <Option value="all">State (All)</Option>
+                    {data.states.length > 0
+                      ? data.states.map((state) => (
+                          <Option value={state.id}>{state.state}</Option>
+                        ))
+                      : null}
+                  </Select>
+                  <Input
+                    prefix={
+                      <i
+                        style={{ marginRight: "0.75rem" }}
+                        className="fa fa-map-marker"
+                        aria-hidden="true"
+                      ></i>
+                    }
+                    style={{
+                      width: "15%",
+                      color: "white",
+                    }}
+                    value={search.city}
+                    onChange={(value) =>
+                      fieldOnChange("city", value.target.value)
+                    }
+                    className="locationCity"
+                    placeholder="Enter your location"
+                  />
 
-              <Input
-                style={{
-                  width: "15%",
-                  color: "white",
-                }}
-                className="locationCity"
-                placeholder={'ex "shree ram"'}
-                value={search.name}
-                onChange={(value) => {
-                  fieldOnChange("name", value.target.value);
-                }}
-              />
+                  <Input
+                    style={{
+                      width: "15%",
+                      color: "white",
+                    }}
+                    className="locationCity"
+                    placeholder={'ex "shree ram"'}
+                    value={search.name}
+                    onChange={(value) => {
+                      fieldOnChange("name", value.target.value);
+                    }}
+                  />
 
-              <Button
-                icon={<SearchOutlined />}
-                style={{
-                  marginLeft: "1rem",
-                  boxShadow:
-                    "0 4px 10px 0 #6c757d6e, 0 0 10px 0 #f8f8f9 !important",
-                }}
-                type="primary"
-                className="mainSearchButton"
-                onClick={() => {
-                  console.log(search);
-                  history.push(
-                    "/home-services/allServices" + setUrlString(search)
-                  );
-                  dispatch({ type: "SET_SEARCH_PARAMS", payload: search });
-                }}
-              >
-                Search
-              </Button>
-            </Input.Group>
+                  <Button
+                    icon={<SearchOutlined />}
+                    style={{
+                      marginLeft: "1rem",
+                      boxShadow:
+                        "0 4px 10px 0 #6c757d6e, 0 0 10px 0 #f8f8f9 !important",
+                    }}
+                    type="primary"
+                    className="mainSearchButton"
+                    onClick={() => {
+                      console.log(search);
+                      history.push(
+                        "/home-services/allServices" + setUrlString(search)
+                      );
+                      dispatch({ type: "SET_SEARCH_PARAMS", payload: search });
+                    }}
+                  >
+                    Search
+                  </Button>
+                </Input.Group>
+              </>
+            ) : null}
 
             <SubMenu
               key="100"

@@ -53,7 +53,10 @@ const Cards = () => {
                 <div
                   className="CustomCARD"
                   style={{
-                    background: `url("/images/Card/${card.name}.jpg")`,
+                    background: `url("${API.categoryImage.replace(
+                      ":id",
+                      card.name
+                    )}")`,
                   }}
                   alt="example"
                 ></div>

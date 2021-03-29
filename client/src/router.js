@@ -30,6 +30,11 @@ const routes = [
     Component: lazy(() => import("./Components/Category")),
   },
   {
+    path: "addCategory",
+    exact: true,
+    Component: lazy(() => import("./Components/Category/addCategory")),
+  },
+  {
     path: "allServices",
     exact: true,
     Component: lazy(() => import("./Components/Services")),

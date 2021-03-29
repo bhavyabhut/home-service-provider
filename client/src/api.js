@@ -20,6 +20,8 @@
 //   sendOtp: "http://localhost:5000/v1/login/otp",
 //   verifyOtp: "http://localhost:5000/v1/login/verifyOtp",
 //   changePassword: "http://localhost:5000/v1/login/changePassword",
+//   addCategory: "http://localhost:5000/v1/categories/addCategory",
+//   categoryImage: "http://localhost:5000/v1/categoryImages/:id",
 // };
 const API = {
   students: "v1/student/",
@@ -43,5 +45,7 @@ const API = {
   sendOtp: "/v1/login/otp",
   verifyOtp: "/v1/login/verifyOtp",
   changePassword: "/v1/login/changePassword",
+  addCategory: "/v1/categories/addCategory",
+  categoryImage: "/v1/categoryImages/:id",
 };
 export default API;

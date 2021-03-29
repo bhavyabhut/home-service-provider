@@ -22,8 +22,8 @@ exports.getServices = async (req, res) => {
     serverError(res, error);
   }
   if (req.body) {
-    console.log(req.body);
-    "s".toLocaleLowerCase;
+    // console.log(req.body);
+
     if (req.body.category && req.body.category !== "all") {
       newSer = newSer.filter((ser) => ser.type === req.body.category);
     }

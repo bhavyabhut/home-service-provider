@@ -1,4 +1,5 @@
 const path = require("path");
+const fs = require("fs");
 const express = require("express");
 const mongoose = require("mongoose");
 require("dotenv").config();
@@ -28,6 +29,9 @@ const corsOptions = {
 };
 app.use(cors(corsOptions));
 // router
+app.use(`${apiVersion}/categoryImages/:id`, (req, res) => {
+  res.sendFile(path.join(__dirname, `categoryImages/${req.params.id}.png`));
+});
 app.use(`${apiVersion}/college`, college);
 app.use(`${apiVersion}/student`, student);
 app.use(`${apiVersion}/login`, login);
