@@ -8,7 +8,7 @@ const NewServicesSchema = new mongoose.Schema(
     experiance: String,
     image: String,
     tag: [String],
-    customer_served: String,
+    customers_served: String,
     address: String,
     owner: String,
     typeObj: {},

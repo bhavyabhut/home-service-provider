@@ -22,6 +22,8 @@
 //   changePassword: "http://localhost:5000/v1/login/changePassword",
 //   addCategory: "http://localhost:5000/v1/categories/addCategory",
 //   categoryImage: "http://localhost:5000/v1/categoryImages/:id",
+//   addService: "http://localhost:5000/v1/services/addService",
+//   getAllCity: "http://localhost:5000/v1/city",
 // };
 const API = {
   students: "v1/student/",
@@ -47,5 +49,7 @@ const API = {
   changePassword: "/v1/login/changePassword",
   addCategory: "/v1/categories/addCategory",
   categoryImage: "/v1/categoryImages/:id",
+  addService: "/v1/services/addService",
+  getAllCity: "/v1/city",
 };
 export default API;

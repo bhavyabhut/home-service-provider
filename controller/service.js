@@ -32,14 +32,16 @@ exports.getServices = async (req, res) => {
       // console.log(newSer, "ha moj");
     }
     if (req.body.city) {
-      newSer = newSer.filter(
-        (ser) =>
-          ser.addressObj.newCity.city.toLocaleLowerCase() ===
-          req.body.city.toLocaleLowerCase()
+      newSer = newSer.filter((ser) =>
+        ser.addressObj.newCity.city
+          .toLocaleLowerCase()
+          .includes(req.body.city.toLocaleLowerCase())
       );
     }
     if (req.body.name) {
-      newSer = newSer.filter((ser) => ser.name.includes(req.body.name));
+      newSer = newSer.filter((ser) =>
+        ser.name.toLocaleLowerCase().includes(req.body.name.toLocaleLowerCase())
+      );
     }
     success(res, newSer);
   } else {
@@ -171,3 +173,13 @@ exports.getServicesChart = async (req, res) => {
 //     serverError(res, error);
 //   }
 // };
+
+exports.addService = async (req, res) => {
+  try {
+    const service = new NewServices(req.body);
+    const s = await service.save();
+    success(res, s);
+  } catch (e) {
+    resourceError(res, e);
+  }
+};

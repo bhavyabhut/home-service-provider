@@ -1,6 +1,6 @@
 # Final Year Project
 
-## [Live](https://univercity-student-analyzer.herokuapp.com/) demo
+## [Live](https://home-services-bhavya.herokuapp.com/) demo
 
 #### Technology stack
 - Mongodb

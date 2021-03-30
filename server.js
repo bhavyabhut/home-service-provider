@@ -19,6 +19,7 @@ const login = require("./router/login");
 const categories = require("./router/category");
 const states = require("./router/state");
 const services = require("./router/service");
+const city = require("./router/city.js");
 
 const apiVersion = process.env.API_VERSION || "/v1";
 const port = process.env.PORT || 5000;
@@ -38,6 +39,7 @@ app.use(`${apiVersion}/login`, login);
 app.use(`${apiVersion}/categories`, categories);
 app.use(`${apiVersion}/states`, states);
 app.use(`${apiVersion}/services`, services);
+app.use(`${apiVersion}/city`, city);
 
 // app.use(`${apiVersion}/testing`, async () => {
 //   const address = await Addresses.find();

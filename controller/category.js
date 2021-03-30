@@ -1,5 +1,6 @@
 const Categories = require("../schemas/Category");
 const Services = require("../schemas/Services");
+
 const fs = require("fs");
 let multer = require("multer");
 var storage = multer.diskStorage({
@@ -16,6 +17,7 @@ var upload = multer({ storage: storage }).single("image");
 const { resourceError, serverError } = require("../helper/errorHandler");
 const { success } = require("../helper/successHandler");
 const category = require("../router/category");
+const NewServices = require("../schemas/NewServices");
 
 exports.getCategories = async (req, res) => {
   try {
@@ -59,7 +61,7 @@ exports.addCategory = async (req, res) => {
 exports.categoriesDashboard = async (req, res) => {
   try {
     const categories = await Categories.find();
-    const services = await Services.find();
+    const services = await NewServices.find();
     let countCategories = {};
     let finalCategories = [];
     services.map((service) => {
