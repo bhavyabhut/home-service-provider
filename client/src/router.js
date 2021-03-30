@@ -40,6 +40,11 @@ const routes = [
     Component: lazy(() => import("./Components/Services")),
   },
   {
+    path: "addService",
+    exact: true,
+    Component: lazy(() => import("./Components/Services/addService")),
+  },
+  {
     path: "allServices/:serviceId",
     exact: true,
     Component: lazy(() => import("./Components/Services/Profile")),
