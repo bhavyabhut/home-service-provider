@@ -1,6 +1,6 @@
 # Final Year Project
 
-## Overview
+## Project Overview
 Users can create an account and log in. They can  find the best services nearby users or across the worldwide and different types of categories provided by our app with a chart visualization
 
 ## [Live](https://home-services-bhavya.herokuapp.com/) demo
