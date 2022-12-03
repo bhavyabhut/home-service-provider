@@ -58,9 +58,6 @@ try {
       console.log("database connect....");
     });
 
-    app.listen(PORT, () => {
-      console.log(`Server is running in PORT ${PORT}`);
-    });
   } else {
     console.log('Please Provide Valid DB STRING');
   }
@@ -69,3 +66,6 @@ try {
 }
 
 
+app.listen(PORT, () => {
+  console.log(`Server is running in PORT ${PORT}`);
+});
