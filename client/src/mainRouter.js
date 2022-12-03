@@ -34,6 +34,7 @@ const RestrictedRoute = ({ component: Component, isLoggedIn, ...rest }) => (
 const PublicRoutes = ({ history }) => {
   const { data, dispatch } = useContext(GlobalContext);
 
+  console.log(process.env.NODE_ENV);
   // const token = getauth();
   let isLoggedIn = data.isLoggedIn;
   // let isLoggedIn = true;
