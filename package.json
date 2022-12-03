@@ -25,5 +25,8 @@
     "nodemailer": "^6.5.0",
     "nodemon": "^2.0.6",
     "react-ga": "^3.3.0"
+  },
+  "engines": {
+    "node": "16.15.0"
   }
 }
