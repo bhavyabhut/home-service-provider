@@ -106,7 +106,7 @@ const routes = [
 class Routers extends React.Component {
   render() {
     return (
-      <Router>
+      <Router basename="/">
         <Layout>
           <Suspense fallback={<Spinner />}>
             <Switch render={({ children }) => ({ children })}>
