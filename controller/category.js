@@ -1,5 +1,4 @@
 const Categories = require("../schemas/Category");
-const Services = require("../schemas/Services");
 
 const fs = require("fs");
 let multer = require("multer");
@@ -8,7 +7,6 @@ var storage = multer.diskStorage({
     cb(null, `\categoryImages`);
   },
   filename: function (req, file, cb) {
-    // console.log(req.body.name, "hahaha");
     cb(null, req.body.name + ".png");
   },
 });
@@ -16,7 +14,6 @@ var upload = multer({ storage: storage }).single("image");
 
 const { resourceError, serverError } = require("../helper/errorHandler");
 const { success } = require("../helper/successHandler");
-const category = require("../router/category");
 const NewServices = require("../schemas/NewServices");
 
 exports.getCategories = async (req, res) => {
@@ -71,7 +68,6 @@ exports.categoriesDashboard = async (req, res) => {
         countCategories[service.type] = 1;
       }
     });
-    // console.log(categories, services, countCategories);
     finalCategories = categories.map((category) => {
       return {
         id: category.id,
@@ -79,7 +75,6 @@ exports.categoriesDashboard = async (req, res) => {
         count: countCategories[category.id] || 0,
       };
     });
-    // console.log(finalCategories);
     success(res, finalCategories);
   } catch (error) {
     serverError(res, error);

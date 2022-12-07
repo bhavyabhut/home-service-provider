@@ -2,12 +2,11 @@ const User = require("../schemas/UserModel");
 const bcrypt = require("bcryptjs");
 const nodemailer = require("nodemailer");
 const jwt = require("jsonwebtoken");
-// const client = require("twilio")(process.env.accountSid, process.env.authToken);
 
 const transporter = nodemailer.createTransport({
   service: "gmail",
   auth: {
-    user: "greatmastu@gmail.com",
+    user: process.env.GMAIL,
     pass: process.env.GMAIL_PASSWORD,
   },
 });
@@ -58,18 +57,7 @@ exports.singin = async (req, res, next) => {
 };
 
 exports.singup = async (req, res, next) => {
-  // client.messages
-  // 	.create({
-  // 		body: `
-  // 			Congratulation successfull register with BHAVYA's app...
-  // 			Email :${req.body.email}
-  // 			Password :${req.body.password}
-  // 			please dont share this msg with anybody...
-  // 			..THANK U FOR JOIN US..`,
-  // 		from: "+12029331491",
-  // 		to: `+91${req.body.number}`,
-  // 	})
-  // 	.then((messages) => console.log(messages));
+
   if (!req.body.email || !req.body.password) {
     return res.status(400).json({
       success: false,
