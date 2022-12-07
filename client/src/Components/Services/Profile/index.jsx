@@ -2,17 +2,17 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { PageHeader, Tabs } from 'antd';
 import { AppleOutlined, AndroidOutlined } from '@ant-design/icons';
+import axios from 'axios';
 import MainDetails from './MainDetails';
 import CollegeStudent from './CollegeStudent';
 import Address from './Address';
 import Spinner from '../../Spinner';
 import API from '../../../api';
 import SimilarCollege from './SimilarColleges';
-import axios from 'axios';
 
 const { TabPane } = Tabs;
 
-const CollegeProfile = () => {
+function CollegeProfile() {
   const [collegeData, setCollegeData] = useState([]);
   const [collegeLoading, setCollegeLoading] = useState(false);
 
@@ -91,6 +91,6 @@ const CollegeProfile = () => {
       )}
     </>
   );
-};
+}
 
 export default CollegeProfile;

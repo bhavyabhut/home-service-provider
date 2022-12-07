@@ -85,11 +85,11 @@ export default function AddServices() {
       tag,
       zipcode,
     } = field;
-    const cityObj = cityOption.filter((c) => c.id == city)[0];
-    const categoryObj = categoryOption.filter((c) => c.id == type)[0];
-    const stateObj = stateOption.filter((c) => c.id == state)[0];
+    const cityObj = cityOption.filter((c) => c.id === city)[0];
+    const categoryObj = categoryOption.filter((c) => c.id === type)[0];
+    const stateObj = stateOption.filter((c) => c.id === state)[0];
 
-    let data = {};
+    const data = {};
     data.name = name;
     data.tag = tag.split(',');
     data.experiance = experiance;
@@ -178,7 +178,7 @@ export default function AddServices() {
   }, []);
   return (
     <div>
-      <Collapse bordered={false} defaultActiveKey={'1'}>
+      <Collapse bordered={false} defaultActiveKey='1'>
         <Panel
           style={{ fontWeight: 'bold' }}
           header='Service/Shop information'
@@ -194,7 +194,7 @@ export default function AddServices() {
                   value={field.name}
                   onChange={(e) => setFieldFn('name', e.target.value)}
                   placeholder='Service/Shop Name'
-                ></Input>
+                />
               </div>
             </Col>
             <Col span='10' offset='1'>
@@ -228,7 +228,7 @@ export default function AddServices() {
                   value={field.experiance}
                   onChange={(e) => setFieldFn('experiance', e.target.value)}
                   placeholder='1 year 6 months'
-                ></Input>
+                />
               </div>
             </Col>
             <Col span='10' offset='1'>
@@ -240,7 +240,7 @@ export default function AddServices() {
                   value={field.tag}
                   onChange={(e) => setFieldFn('tag', e.target.value)}
                   placeholder='Cheap,Awesome'
-                ></Input>
+                />
               </div>
             </Col>
           </Row>
@@ -271,7 +271,7 @@ export default function AddServices() {
                   value={field.street1}
                   onChange={(e) => setFieldFn('street1', e.target.value)}
                   placeholder='Address Line 1'
-                ></Input>
+                />
               </div>
             </Col>
             <Col span='10' offset='1'>
@@ -283,7 +283,7 @@ export default function AddServices() {
                   value={field.street2}
                   onChange={(e) => setFieldFn('street2', e.target.value)}
                   placeholder='Address Line 2'
-                ></Input>
+                />
               </div>
             </Col>
           </Row>
@@ -337,7 +337,7 @@ export default function AddServices() {
                 >
                   {field.state &&
                     cityOption
-                      .filter((c) => c.state == field.state)
+                      .filter((c) => c.state === field.state)
                       .map((c) => <Option key={c.id}>{c.city}</Option>)}
                 </Select>
               </div>
@@ -351,7 +351,7 @@ export default function AddServices() {
                   value={field.zipcode}
                   onChange={(e) => setFieldFn('zipcode', e.target.value)}
                   placeholder='Zip code'
-                ></Input>
+                />
               </div>
             </Col>
           </Row>

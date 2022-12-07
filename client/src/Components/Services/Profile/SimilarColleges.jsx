@@ -1,7 +1,7 @@
 import React from 'react';
 import { Card, Row } from 'antd';
 
-const SimilarCollege = ({ data }) => {
+function SimilarCollege({ data }) {
   return (
     <Card>
       <Row className='customRow'>
@@ -32,6 +32,6 @@ const SimilarCollege = ({ data }) => {
       </Row>
     </Card>
   );
-};
+}
 
 export default SimilarCollege;

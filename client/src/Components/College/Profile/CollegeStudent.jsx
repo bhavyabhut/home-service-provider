@@ -1,6 +1,7 @@
 import React from 'react';
-import columns from '../../Student/columns';
 import { Table } from 'antd';
+import columns from '../../Student/columns';
+
 const nestedColumns = [
   {
     title: 'Name',
@@ -14,7 +15,7 @@ const nestedColumns = [
 ];
 const [first, second, ...newColumns] = [...columns];
 
-const CollegeStudent = ({ data, loading }) => {
+function CollegeStudent({ data, loading }) {
   return (
     <Table
       loading={loading}
@@ -26,6 +27,6 @@ const CollegeStudent = ({ data, loading }) => {
       scroll={{ x: 1300 }}
     />
   );
-};
+}
 
 export default CollegeStudent;

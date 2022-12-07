@@ -1,7 +1,8 @@
 import React from 'react';
 import { Tag } from 'antd';
-import tagColor from '../../config/consts';
 import { Link } from 'react-router-dom';
+import tagColor from '../../config/consts';
+
 const columns = [
   {
     title: 'Name',
@@ -22,7 +23,7 @@ const columns = [
       text.split(',').map((prop) => {
         const num = prop.charCodeAt(0) + prop.charCodeAt(prop.length - 1);
         return (
-          <Tag style={{ color: 'black' }} color={tagColor[num % 11]}>
+          <Tag key={num} style={{ color: 'black' }} color={tagColor[num % 11]}>
             {prop}
           </Tag>
         );

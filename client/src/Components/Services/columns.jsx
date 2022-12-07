@@ -2,6 +2,7 @@ import React from 'react';
 import { Tag } from 'antd';
 // import tagColor from "../../config/consts";
 import { Link } from 'react-router-dom';
+
 const tagColor = [
   '#ffa39e',
   '#ffbb96',
@@ -52,12 +53,12 @@ const columns = [
   {
     title: 'Owner name',
     dataIndex: ['ownerObj', 'name'],
-    render: (data) => (data ? data : 'Not Specified'),
+    render: (data) => data || 'Not Specified',
   },
   {
     title: 'Owner number',
     dataIndex: ['ownerObj', 'phone'],
-    render: (data) => (data ? data : 'Not Specified'),
+    render: (data) => data || 'Not Specified',
   },
 
   {

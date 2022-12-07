@@ -6,11 +6,11 @@ import {
   EyeTwoTone,
   UnlockOutlined,
 } from '@ant-design/icons';
+import axios from 'axios';
 import Logo from '../../Layout/Logo';
 import API from '../../api';
-import axios from 'axios';
 
-const SignUp = () => {
+function SignUp() {
   const [form] = Form.useForm();
 
   const [isMerchant, setIsMerchant] = useState(false);
@@ -70,7 +70,7 @@ const SignUp = () => {
           <Logo /> <h1 className='title'>HomeServices</h1>
         </div>
         <h2 className='welcomeBack'>Welcome to HomeServices</h2>
-        <p class='loginIntoAccount'>Please register your account</p>
+        <p className='loginIntoAccount'>Please register your account</p>
         <div>
           <Form form={form} layout='vertical'>
             <Form.Item label='Username' name='name'>
@@ -109,7 +109,7 @@ const SignUp = () => {
                   onChange={(e) => {
                     setIsMerchant(e);
                   }}
-                ></Switch>
+                />
                 <span className='remeberMe'>Merchant/Owner/Worker</span>
               </div>
             </div>
@@ -172,6 +172,6 @@ const SignUp = () => {
       <div className='signin-image-div' />
     </div>
   );
-};
+}
 
 export default SignUp;

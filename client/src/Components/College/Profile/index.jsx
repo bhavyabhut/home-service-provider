@@ -11,7 +11,7 @@ import SimilarCollege from './SimilarColleges';
 
 const { TabPane } = Tabs;
 
-const CollegeProfile = () => {
+function CollegeProfile() {
   const [collegeData, setCollegeData] = useState([]);
   const [studentData, setStudentData] = useState([]);
   const [collegeLoading, setCollegeLoading] = useState(false);
@@ -94,6 +94,6 @@ const CollegeProfile = () => {
       )}
     </>
   );
-};
+}
 
 export default CollegeProfile;

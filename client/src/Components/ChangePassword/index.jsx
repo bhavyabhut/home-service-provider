@@ -2,11 +2,11 @@ import React, { useState } from 'react';
 import { Button, Input, Form, Switch, Divider, notification } from 'antd';
 import { Link, useHistory, useLocation, useParams } from 'react-router-dom';
 import { SendOutlined } from '@ant-design/icons';
+import axios from 'axios';
 import Logo from '../../Layout/Logo';
 import API from '../../api';
-import axios from 'axios';
 
-const SignIn = () => {
+function SignIn() {
   const [loading, setLoading] = useState(false);
   const history = useHistory();
   const params = useParams();
@@ -63,7 +63,7 @@ const SignIn = () => {
           <Logo /> <h1 className='title'>HomeServices</h1>
         </div>
         <h2 className='welcomeBack'>Welcome back</h2>
-        <p class='loginIntoAccount'>Enter new password for </p>
+        <p className='loginIntoAccount'>Enter new password for </p>
         <div>
           <Form form={form} layout='vertical'>
             <Form.Item label='Password' name='password'>
@@ -74,6 +74,7 @@ const SignIn = () => {
             </Form.Item>
 
             <Form.Item style={{ width: '100%' }}>
+              {console.log('hi')}
               <Button
                 type='primary'
                 shape='round'
@@ -96,6 +97,6 @@ const SignIn = () => {
       <div className='signin-image-div' />
     </div>
   );
-};
+}
 
 export default SignIn;

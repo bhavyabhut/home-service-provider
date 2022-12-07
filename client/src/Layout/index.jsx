@@ -147,7 +147,6 @@ function Index({ children }) {
                   }}
                   value={search.category}
                   onChange={(value) => {
-                    console.log(value);
                     fieldOnChange('category', value);
                   }}
                 >
@@ -221,7 +220,6 @@ function Index({ children }) {
                   type='primary'
                   className='mainSearchButton'
                   onClick={() => {
-                    console.log(search);
                     history.push(
                       `/home-services/allServices${setUrlString(search)}`,
                     );

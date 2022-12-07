@@ -2,11 +2,11 @@ import React, { useState } from 'react';
 import { Button, Input, Form, Switch, Divider, notification } from 'antd';
 import { Link, useHistory } from 'react-router-dom';
 import { SendOutlined } from '@ant-design/icons';
+import axios from 'axios';
 import Logo from '../../Layout/Logo';
 import API from '../../api';
-import axios from 'axios';
 
-const SignIn = () => {
+function SignIn() {
   const [loading, setLoading] = useState(false);
   const history = useHistory();
 
@@ -58,7 +58,9 @@ const SignIn = () => {
           <Logo /> <h1 className='title'>HomeServices</h1>
         </div>
         <h2 className='welcomeBack'>Welcome back</h2>
-        <p class='loginIntoAccount'>Enter your email to recover your account</p>
+        <p className='loginIntoAccount'>
+          Enter your email to recover your account
+        </p>
         <div>
           <Form form={form} layout='vertical'>
             <Form.Item label='Email' name='email'>
@@ -88,6 +90,6 @@ const SignIn = () => {
       <div className='signin-image-div' />
     </div>
   );
-};
+}
 
 export default SignIn;

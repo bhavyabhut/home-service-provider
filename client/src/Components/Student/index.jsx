@@ -3,14 +3,14 @@ import { PageHeader, Table } from 'antd';
 import columns from './columns';
 import API from '../../api';
 
-const Student = () => {
+function Student() {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
   useEffect(() => {
     setLoading(true);
-    fetch(API.students).then((data) => {
-      data.json().then((data) => {
-        setData(data.data);
+    fetch(API.students).then((res) => {
+      res.json().then((resJson) => {
+        setData(resJson.data);
         setLoading(false);
       });
     });
@@ -29,6 +29,6 @@ const Student = () => {
       />
     </>
   );
-};
+}
 
 export default Student;

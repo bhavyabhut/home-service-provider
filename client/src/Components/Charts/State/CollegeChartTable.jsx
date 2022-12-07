@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { PageHeader, Table } from 'antd';
-import columns from '../../College/columns';
 import { useParams } from 'react-router-dom';
+import columns from '../../College/columns';
 import API from '../../../api';
 
 const nestedColumns = [
@@ -11,7 +11,7 @@ const nestedColumns = [
   },
 ];
 const [first, ...newColumns] = [...columns];
-const CollegeChartTable = () => {
+function CollegeChartTable() {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
   const { stateId } = useParams();
@@ -26,7 +26,7 @@ const CollegeChartTable = () => {
   }, []);
   return (
     <>
-      <PageHeader title={stateId + ' colleges'} />
+      <PageHeader title={`${stateId} colleges`} />
       <Table
         loading={loading}
         columns={[...nestedColumns, ...newColumns]}
@@ -38,6 +38,6 @@ const CollegeChartTable = () => {
       />
     </>
   );
-};
+}
 
 export default CollegeChartTable;

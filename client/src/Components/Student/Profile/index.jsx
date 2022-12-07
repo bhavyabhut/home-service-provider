@@ -9,7 +9,7 @@ import API from '../../../api';
 
 const { TabPane } = Tabs;
 
-const StudentProfile = () => {
+function StudentProfile() {
   const [studentData, setStudentData] = useState([]);
   const [studentLoading, setStudentLoading] = useState(false);
 
@@ -58,6 +58,6 @@ const StudentProfile = () => {
       )}
     </>
   );
-};
+}
 
 export default StudentProfile;

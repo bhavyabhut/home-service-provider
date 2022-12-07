@@ -9,29 +9,30 @@ import Spinner from './Components/Spinner';
 import Routers from './router';
 import { GlobalContext } from './Context/GlobalContext';
 
-const RestrictedRoute = ({ component: Component, isLoggedIn, ...rest }) => (
-  <Route
-    {...rest}
-    render={(props) => {
-      console.log(props, 'hu props chu re bhai');
-      return isLoggedIn ? (
-        <Component {...props} />
-      ) : (
-        <Redirect
-          to={{
-            pathname: '/signin',
-            state: { data: props.location },
-          }}
-        />
-      );
-    }}
-  />
-);
-const PublicRoutes = ({ history }) => {
-  const { data, dispatch } = useContext(GlobalContext);
+function RestrictedRoute({ component: Component, isLoggedIn, ...rest }) {
+  return (
+    <Route
+      {...rest}
+      render={(props) => {
+        return isLoggedIn ? (
+          <Component {...props} />
+        ) : (
+          <Redirect
+            to={{
+              pathname: '/signin',
+              state: { data: props.location },
+            }}
+          />
+        );
+      }}
+    />
+  );
+}
+function PublicRoutes() {
+  const { data } = useContext(GlobalContext);
 
   console.log(process.env.NODE_ENV);
-  let isLoggedIn = data.isLoggedIn;
+  const { isLoggedIn } = data;
 
   return (
     <Router>
@@ -40,33 +41,33 @@ const PublicRoutes = ({ history }) => {
           <div>
             <Route
               path='/'
-              exact={true}
+              exact
               component={lazy(() => import('./Components/Signin'))}
             />
             <Route
               path='/signin'
-              exact={true}
+              exact
               component={lazy(() => import('./Components/Signin'))}
             />
             <Route
-              path={'/signup'}
-              exact={true}
+              path='/signup'
+              exact
               component={lazy(() => import('./Components/Signup'))}
             />
 
             <Route
-              exact={true}
-              path={'/verifyOtp'}
+              exact
+              path='/verifyOtp'
               component={lazy(() => import('./Components/VerifyOtp'))}
             />
             <Route
-              exact={true}
-              path={'/changePassword/:email'}
+              exact
+              path='/changePassword/:email'
               component={lazy(() => import('./Components/ChangePassword'))}
             />
             <Route
-              exact={true}
-              path={'/forgot-password'}
+              exact
+              path='/forgot-password'
               component={lazy(() => import('./Components/ForgotPassword'))}
             />
             <RestrictedRoute
@@ -79,6 +80,6 @@ const PublicRoutes = ({ history }) => {
       </Suspense>
     </Router>
   );
-};
+}
 
 export default PublicRoutes;

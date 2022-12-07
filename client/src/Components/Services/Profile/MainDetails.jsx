@@ -2,7 +2,7 @@ import React from 'react';
 import { Card, Row, Tag } from 'antd';
 import tagColor from '../../../config/consts';
 
-const MainDetails = ({ data }) => {
+function MainDetails({ data }) {
   return (
     <>
       {data ? (
@@ -41,6 +41,6 @@ const MainDetails = ({ data }) => {
       ) : null}
     </>
   );
-};
+}
 
 export default MainDetails;

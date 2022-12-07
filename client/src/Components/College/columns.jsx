@@ -1,7 +1,8 @@
 import React from 'react';
 import { Tag } from 'antd';
-import tagColor from '../../config/consts';
 import { Link } from 'react-router-dom';
+import tagColor from '../../config/consts';
+
 const columns = [
   {
     title: 'Name',

@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { Card, Avatar } from 'antd';
+import { Card } from 'antd';
 import { useHistory } from 'react-router-dom';
 import axios from 'axios';
-import API from '../../api.js';
-import Spinner from '../Spinner/index.jsx';
+import API from '../../api';
+import Spinner from '../Spinner';
+
 const { Meta } = Card;
-const Cards = () => {
+function Cards() {
   const [cards, setCards] = useState([]);
   const history = useHistory();
   const [loading, setLoading] = useState(false);
@@ -54,7 +55,7 @@ const Cards = () => {
                     )}")`,
                   }}
                   alt='example'
-                ></div>
+                />
               }
             >
               <Meta
@@ -69,6 +70,6 @@ const Cards = () => {
       )}
     </>
   );
-};
+}
 
 export default Cards;

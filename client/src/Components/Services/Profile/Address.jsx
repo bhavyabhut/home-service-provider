@@ -1,7 +1,7 @@
 import React from 'react';
 import { Card, Row } from 'antd';
 
-const Address = ({ data }) => {
+function Address({ data }) {
   return (
     <Card>
       <Row className='customRow'>
@@ -30,6 +30,6 @@ const Address = ({ data }) => {
       </Row>
     </Card>
   );
-};
+}
 
 export default Address;

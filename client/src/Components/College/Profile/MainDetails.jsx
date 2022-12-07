@@ -2,7 +2,7 @@ import React from 'react';
 import { Card, Row, Tag } from 'antd';
 import tagColor from '../../../config/consts';
 
-const MainDetails = ({ data }) => {
+function MainDetails({ data }) {
   return (
     <Card>
       <Row className='customRow'>
@@ -36,6 +36,6 @@ const MainDetails = ({ data }) => {
       </Row>
     </Card>
   );
-};
+}
 
 export default MainDetails;

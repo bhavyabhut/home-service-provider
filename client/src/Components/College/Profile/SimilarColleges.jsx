@@ -10,7 +10,7 @@ const nestedColumns = [
   },
 ];
 const [first, ...newColumns] = [...columns];
-const SimilarCollege = ({ location, id }) => {
+function SimilarCollege({ location, id }) {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
   useEffect(() => {
@@ -25,26 +25,24 @@ const SimilarCollege = ({ location, id }) => {
     );
   }, []);
   return (
-    <>
-      <Table
-        loading={loading}
-        columns={[...nestedColumns, ...newColumns]}
-        bordered
-        rowKey={(render) => render._id}
-        dataSource={data}
-        pagination
-        scroll={{ x: 1300 }}
-        locale={{
-          emptyText: (
-            <Empty
-              image={Empty.PRESENTED_IMAGE_SIMPLE}
-              description='No Similar College Found'
-            />
-          ),
-        }}
-      />
-    </>
+    <Table
+      loading={loading}
+      columns={[...nestedColumns, ...newColumns]}
+      bordered
+      rowKey={(render) => render._id}
+      dataSource={data}
+      pagination
+      scroll={{ x: 1300 }}
+      locale={{
+        emptyText: (
+          <Empty
+            image={Empty.PRESENTED_IMAGE_SIMPLE}
+            description='No Similar College Found'
+          />
+        ),
+      }}
+    />
   );
-};
+}
 
 export default SimilarCollege;

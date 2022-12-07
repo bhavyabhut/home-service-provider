@@ -3,7 +3,7 @@ import { PageHeader, Table } from 'antd';
 import columns from './columns';
 import API from '../../api';
 
-const College = () => {
+function College() {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
   useEffect(() => {
@@ -30,6 +30,6 @@ const College = () => {
       />
     </>
   );
-};
+}
 
 export default College;

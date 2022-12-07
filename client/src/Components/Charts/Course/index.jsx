@@ -33,7 +33,7 @@ const renderCustomizedLabel = ({
   );
 };
 
-const Course = () => {
+function Course() {
   const [courseData, setCourseData] = useState([]);
   const [loading, setLoading] = useState(false);
   useEffect(() => {
@@ -84,6 +84,6 @@ const Course = () => {
       )}
     </>
   );
-};
+}
 
 export default Course;

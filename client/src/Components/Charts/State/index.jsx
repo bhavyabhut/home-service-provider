@@ -9,7 +9,7 @@ import API from '../../../api';
 
 const renderCustomizedLabel = ({ percent }) => `${(percent * 100).toFixed(0)}%`;
 
-const ChartState = () => {
+function ChartState() {
   const [collegeData, setCollegeData] = useState([]);
   const [loading, setLoading] = useState(false);
   const history = useHistory();
@@ -62,6 +62,6 @@ const ChartState = () => {
       )}
     </>
   );
-};
+}
 
 export default ChartState;

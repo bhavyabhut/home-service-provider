@@ -98,8 +98,11 @@ const routes = [
   },
 ];
 
-class Routers extends React.Component {
+class Routers extends React.PureComponent {
   render() {
+    const {
+      match: { url },
+    } = this.props;
     return (
       <Router>
         <Layout>
@@ -108,11 +111,7 @@ class Routers extends React.Component {
               <Route exact path='/' render={() => <Redirect to='/signin' />} />
               {routes.map(({ path, Component, exact }) => {
                 return (
-                  <Route
-                    path={`${this.props.match.url}/${path}`}
-                    key={path}
-                    exact={exact}
-                  >
+                  <Route path={`${url}/${path}`} key={path} exact={exact}>
                     <Component />
                   </Route>
                 );

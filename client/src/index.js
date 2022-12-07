@@ -1,11 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import ReactGA from 'react-ga';
+
 import PublicRoutes from './mainRouter';
 import { Provider } from './Context/GlobalContext';
 
 import './index.css';
 import 'antd/dist/antd.min.css';
-import ReactGA from 'react-ga';
+
 ReactGA.initialize('G-73LXHGW8XW');
 ReactGA.pageview(window.location.pathname + window.location.search);
 

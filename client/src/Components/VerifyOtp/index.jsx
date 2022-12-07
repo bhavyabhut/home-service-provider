@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import { Button, Input, Form, Switch, Divider, notification } from 'antd';
+import { Button, Input, Form, notification } from 'antd';
 import { Link, useHistory } from 'react-router-dom';
 import { UnlockOutlined } from '@ant-design/icons';
+import axios from 'axios';
 import Logo from '../../Layout/Logo';
 import API from '../../api';
-import axios from 'axios';
 
-const SignIn = () => {
+function SignIn() {
   const [loading, setLoading] = useState(false);
   const history = useHistory();
   const [counter, setCounter] = React.useState(60);
@@ -46,7 +46,9 @@ const SignIn = () => {
       });
   };
   React.useEffect(() => {
-    counter > 0 && setTimeout(() => setCounter(counter - 1), 1000);
+    if (counter > 0) {
+      setTimeout(() => setCounter(counter - 1), 1000);
+    }
   }, [counter]);
   return (
     <div className='signin'>
@@ -62,7 +64,9 @@ const SignIn = () => {
           <Logo /> <h1 className='title'>HomeServices</h1>
         </div>
         <h2 className='welcomeBack'>Welcome back</h2>
-        <p class='loginIntoAccount'>Enter your otp to change your password</p>
+        <p className='loginIntoAccount'>
+          Enter your otp to change your password
+        </p>
         <div>
           <Form form={form} layout='vertical'>
             <Form.Item
@@ -103,6 +107,6 @@ const SignIn = () => {
       <div className='signin-image-div' />
     </div>
   );
-};
+}
 
 export default SignIn;

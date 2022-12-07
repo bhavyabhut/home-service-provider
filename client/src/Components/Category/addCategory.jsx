@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Upload, Button, Input, notification } from 'antd';
-import { LoadingOutlined, PlusOutlined } from '@ant-design/icons';
+import { PlusOutlined } from '@ant-design/icons';
 import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 import API from '../../api';
@@ -13,7 +13,9 @@ function getBase64(file) {
       reader.onload = () => resolve(reader.result);
       reader.onerror = (error) => reject(error);
     });
-  else new Promise((resolve, reject) => reject());
+  return new Promise((resolve, reject) => {
+    reject();
+  });
 }
 export default function AddCategory() {
   const [loader, setLoader] = useState(false);
@@ -26,7 +28,7 @@ export default function AddCategory() {
     error: false,
     message: '',
   });
-  const dummyRequest = ({ file, onSuccess }) => {
+  const dummyRequest = ({ onSuccess }) => {
     setTimeout(() => {
       onSuccess('ok');
     }, 0);
@@ -99,9 +101,9 @@ export default function AddCategory() {
           showUploadList={false}
           customRequest={dummyRequest}
           listType='picture-card'
-          onChange={(e, b) => {
-            setFile(e.file.originFileObj);
-            getBase64(e.file.originFileObj)
+          onChange={(event) => {
+            setFile(event.file.originFileObj);
+            getBase64(event.file.originFileObj)
               .then((data) => setUrl(data))
               .catch((e) => console.log(e));
           }}
