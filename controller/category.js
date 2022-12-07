@@ -1,20 +1,20 @@
-const Categories = require("../schemas/Category");
+const Categories = require('../schemas/Category');
 
-const fs = require("fs");
-let multer = require("multer");
+const fs = require('fs');
+let multer = require('multer');
 var storage = multer.diskStorage({
   destination: function (req, file, cb) {
     cb(null, `\categoryImages`);
   },
   filename: function (req, file, cb) {
-    cb(null, req.body.name + ".png");
+    cb(null, req.body.name + '.png');
   },
 });
-var upload = multer({ storage: storage }).single("image");
+var upload = multer({ storage: storage }).single('image');
 
-const { resourceError, serverError } = require("../helper/errorHandler");
-const { success } = require("../helper/successHandler");
-const NewServices = require("../schemas/NewServices");
+const { resourceError, serverError } = require('../helper/errorHandler');
+const { success } = require('../helper/successHandler');
+const NewServices = require('../schemas/NewServices');
 
 exports.getCategories = async (req, res) => {
   try {
@@ -30,16 +30,16 @@ exports.addCategory = async (req, res) => {
     console.log(categories, req.body);
     if (
       categories.filter(
-        (c) => c.name.toLowerCase() == req.body.name.toLowerCase()
+        (c) => c.name.toLowerCase() == req.body.name.toLowerCase(),
       ).length > 0
     ) {
-      resourceError(res, "Category Already Exits.");
+      resourceError(res, 'Category Already Exits.');
     } else {
       try {
         fs.writeFileSync(
           `./categoryImages/${req.body.name}.png`,
           req.file.buffer,
-          "base64"
+          'base64',
         );
         const Category = new Categories();
         Category.name = req.body.name;

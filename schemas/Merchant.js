@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 const MerchantSchema = new mongoose.Schema(
   {
     id: String,
@@ -11,9 +11,9 @@ const MerchantSchema = new mongoose.Schema(
     addressObj: {},
   },
   { timestamp: true },
-  { collection: "merchant" }
+  { collection: 'merchant' },
 );
 
-const Merchants = mongoose.model("merchant", MerchantSchema);
+const Merchants = mongoose.model('merchant', MerchantSchema);
 
 module.exports = Merchants;

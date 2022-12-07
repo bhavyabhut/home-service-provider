@@ -1,10 +1,10 @@
-const College = require("../schemas/College");
-const { resourceError, serverError } = require("../helper/errorHandler");
-const { success } = require("../helper/successHandler");
+const College = require('../schemas/College');
+const { resourceError, serverError } = require('../helper/errorHandler');
+const { success } = require('../helper/successHandler');
 const {
   errorMessage: { NO_RESOURCE },
   course,
-} = require("../consts");
+} = require('../consts');
 
 exports.getColleges = async (req, res) => {
   try {
@@ -17,7 +17,7 @@ exports.getColleges = async (req, res) => {
 
 exports.getCollegeById = async (req, res) => {
   const { collegeId } = req.params;
-  if (!collegeId) resourceError(res, "Please enter college");
+  if (!collegeId) resourceError(res, 'Please enter college');
   try {
     const college = await College.findById(collegeId);
     if (college) success(res, college);
@@ -29,9 +29,9 @@ exports.getCollegeById = async (req, res) => {
 
 exports.getCollegesByState = async (req, res) => {
   const { stateId } = req.params;
-  if (!stateId) resourceError(res, "Please enter state");
+  if (!stateId) resourceError(res, 'Please enter state');
   try {
-    const regex = new RegExp(stateId, "i");
+    const regex = new RegExp(stateId, 'i');
     const colleges = await College.find({ state: { $regex: regex } });
     if (colleges) success(res, colleges);
     else resourceError(res, NO_RESOURCE);
@@ -42,9 +42,9 @@ exports.getCollegesByState = async (req, res) => {
 
 exports.getCollegesByLocation = async (req, res) => {
   const { locationId } = req.params;
-  if (!locationId) resourceError(res, "Please enter city or location");
+  if (!locationId) resourceError(res, 'Please enter city or location');
   try {
-    const regex = new RegExp(locationId, "i");
+    const regex = new RegExp(locationId, 'i');
     const colleges = await College.find({ city: { $regex: regex } });
     if (colleges) success(res, colleges);
     else resourceError(res, NO_RESOURCE);
@@ -78,7 +78,7 @@ exports.getCollegesCourseChart = async (req, res) => {
       colleges.forEach((college) => {
         if (college.courses.includes(course[key]))
           counts[course[key]] = 1 + (counts[course[key]] || 0);
-      })
+      }),
     );
     const dataKey = Object.keys(counts);
     const dataValue = Object.values(counts);

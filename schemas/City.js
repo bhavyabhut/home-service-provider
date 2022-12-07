@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 
 const CitySchema = new mongoose.Schema(
   {
@@ -9,8 +9,8 @@ const CitySchema = new mongoose.Schema(
   },
   { timestamp: true },
   {
-    collection: "city",
-  }
+    collection: 'city',
+  },
 );
-const Cities = mongoose.model("city", CitySchema);
+const Cities = mongoose.model('city', CitySchema);
 module.exports = Cities;

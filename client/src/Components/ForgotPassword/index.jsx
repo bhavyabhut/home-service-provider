@@ -1,12 +1,12 @@
-import React, { useState } from "react";
-import { Button, Input, Form, Switch, Divider, notification } from "antd";
-import { Link, useHistory } from "react-router-dom";
-import { SendOutlined } from "@ant-design/icons";
-import Logo from "../../Layout/Logo";
-import API from "../../api";
-import axios from "axios";
+import React, { useState } from 'react';
+import { Button, Input, Form, Switch, Divider, notification } from 'antd';
+import { Link, useHistory } from 'react-router-dom';
+import { SendOutlined } from '@ant-design/icons';
+import axios from 'axios';
+import Logo from '../../Layout/Logo';
+import API from '../../api';
 
-const SignIn = () => {
+function SignIn() {
   const [loading, setLoading] = useState(false);
   const history = useHistory();
 
@@ -21,15 +21,15 @@ const SignIn = () => {
           console.log(res.data.data);
           notification.open({
             message: res.data.message,
-            type: "success",
+            type: 'success',
           });
 
           setLoading(false);
-          history.push("/verifyOtp");
+          history.push('/verifyOtp');
         } else {
           notification.open({
             message: res.data.message,
-            type: "error",
+            type: 'error',
           });
         }
       })
@@ -37,7 +37,7 @@ const SignIn = () => {
         if (e.response) {
           notification.open({
             message: e.response.data.msg,
-            type: "error",
+            type: 'error',
           });
         }
         setLoading(false);
@@ -45,41 +45,39 @@ const SignIn = () => {
       });
   };
   return (
-    <div className="signin">
-      <div className="signin-form">
+    <div className='signin'>
+      <div className='signin-form'>
         <div
           style={{
-            display: "flex",
-            alignItems: "center",
-            position: "relative",
-            right: "1rem",
+            display: 'flex',
+            alignItems: 'center',
+            position: 'relative',
+            right: '1rem',
           }}
         >
-          <Logo /> <h1 className="title">HomeServices</h1>
+          <Logo /> <h1 className='title'>HomeServices</h1>
         </div>
-        <h2 className="welcomeBack">Welcome back</h2>
-        <p class="loginIntoAccount">Enter your email to recover your account</p>
+        <h2 className='welcomeBack'>Welcome back</h2>
+        <p className='loginIntoAccount'>
+          Enter your email to recover your account
+        </p>
         <div>
-          <Form form={form} layout="vertical">
-            <Form.Item
-              label="Email"
-             
-              name="email"
-            >
-              <Input placeholder="johndoe@gmail.com" />
+          <Form form={form} layout='vertical'>
+            <Form.Item label='Email' name='email'>
+              <Input placeholder='johndoe@gmail.com' />
             </Form.Item>
 
-            <Form.Item style={{ width: "100%" }}>
+            <Form.Item style={{ width: '100%' }}>
               <Button
                 onClick={sendOtp}
-                type="primary"
-                shape="round"
+                type='primary'
+                shape='round'
                 icon={<SendOutlined />}
                 style={{
-                  width: "100%",
-                  height: "2.5rem",
-                  backgroundColor: "rgb(0, 132, 137)",
-                  borderColor: "rgb(0, 132, 137)",
+                  width: '100%',
+                  height: '2.5rem',
+                  backgroundColor: 'rgb(0, 132, 137)',
+                  borderColor: 'rgb(0, 132, 137)',
                 }}
                 loading={loading}
               >
@@ -89,9 +87,9 @@ const SignIn = () => {
           </Form>
         </div>
       </div>
-      <div className="signin-image-div" />
+      <div className='signin-image-div' />
     </div>
   );
-};
+}
 
 export default SignIn;

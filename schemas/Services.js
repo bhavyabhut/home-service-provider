@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 const ServiceSchema = new mongoose.Schema(
   {
     service_id: String,
@@ -16,9 +16,9 @@ const ServiceSchema = new mongoose.Schema(
     ownerObj: {},
   },
   { timestamps: true },
-  { collection: "service" }
+  { collection: 'service' },
 );
 
-const Services = mongoose.model("service", ServiceSchema);
+const Services = mongoose.model('service', ServiceSchema);
 
 module.exports = Services;

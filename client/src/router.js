@@ -1,118 +1,117 @@
-import React, { lazy, Suspense } from "react";
+import React, { lazy, Suspense } from 'react';
 import {
   Route,
   Switch,
   BrowserRouter as Router,
   Redirect,
-} from "react-router-dom";
-import Layout from "./Layout";
-import Spinner from "./Components/Spinner";
+} from 'react-router-dom';
+import Layout from './Layout';
+import Spinner from './Components/Spinner';
 
 const routes = [
   {
-    path: "/",
+    path: '/',
     exact: true,
-    Component: lazy(() => import("./Components/College")),
+    Component: lazy(() => import('./Components/College')),
   },
   {
-    path: "allColleges",
+    path: 'allColleges',
     exact: true,
-    Component: lazy(() => import("./Components/College")),
+    Component: lazy(() => import('./Components/College')),
   },
   {
-    path: "allCategories",
+    path: 'allCategories',
     exact: true,
-    Component: lazy(() => import("./Components/Category")),
+    Component: lazy(() => import('./Components/Category')),
   },
   {
-    path: "addCategory",
+    path: 'addCategory',
     exact: true,
-    Component: lazy(() => import("./Components/Category/addCategory")),
+    Component: lazy(() => import('./Components/Category/addCategory')),
   },
   {
-    path: "allServices",
+    path: 'allServices',
     exact: true,
-    Component: lazy(() => import("./Components/Services")),
+    Component: lazy(() => import('./Components/Services')),
   },
   {
-    path: "addService",
+    path: 'addService',
     exact: true,
-    Component: lazy(() => import("./Components/Services/addService")),
+    Component: lazy(() => import('./Components/Services/addService')),
   },
   {
-    path: "allServices/:serviceId",
+    path: 'allServices/:serviceId',
     exact: true,
-    Component: lazy(() => import("./Components/Services/Profile")),
+    Component: lazy(() => import('./Components/Services/Profile')),
   },
   {
-    path: "charts/services",
+    path: 'charts/services',
     exact: true,
-    Component: lazy(() => import("./Components/Charts/Services")),
+    Component: lazy(() => import('./Components/Charts/Services')),
   },
   {
-    path: "charts/categories",
+    path: 'charts/categories',
     exact: true,
-    Component: lazy(() => import("./Components/Charts/Categories")),
+    Component: lazy(() => import('./Components/Charts/Categories')),
   },
   {
-    path: "addCollege",
+    path: 'addCollege',
     exact: true,
-    Component: lazy(() => import("./Components/ComingSoon")),
+    Component: lazy(() => import('./Components/ComingSoon')),
   },
   {
-    path: "allStudents",
+    path: 'allStudents',
     exact: true,
-    Component: lazy(() => import("./Components/Student")),
+    Component: lazy(() => import('./Components/Student')),
   },
   {
-    path: "addStudent",
+    path: 'addStudent',
     exact: true,
-    Component: lazy(() => import("./Components/ComingSoon")),
+    Component: lazy(() => import('./Components/ComingSoon')),
   },
   {
-    path: "charts/state",
+    path: 'charts/state',
     exact: true,
-    Component: lazy(() => import("./Components/Charts/State")),
+    Component: lazy(() => import('./Components/Charts/State')),
   },
   {
-    path: "charts/state/:stateId",
+    path: 'charts/state/:stateId',
     exact: true,
     Component: lazy(() =>
-      import("./Components/Charts/State/CollegeChartTable")
+      import('./Components/Charts/State/CollegeChartTable'),
     ),
   },
   {
-    path: "charts/course",
+    path: 'charts/course',
     exact: true,
-    Component: lazy(() => import("./Components/Charts/Course")),
+    Component: lazy(() => import('./Components/Charts/Course')),
   },
   {
-    path: "student/:studentId",
+    path: 'student/:studentId',
     exact: true,
-    Component: lazy(() => import("./Components/Student/Profile")),
+    Component: lazy(() => import('./Components/Student/Profile')),
   },
   {
-    path: "college/:collegeId",
+    path: 'college/:collegeId',
     exact: true,
-    Component: lazy(() => import("./Components/College/Profile")),
+    Component: lazy(() => import('./Components/College/Profile')),
   },
 ];
 
-class Routers extends React.Component {
+class Routers extends React.PureComponent {
   render() {
+    const {
+      match: { url },
+    } = this.props;
     return (
       <Router>
         <Layout>
           <Suspense fallback={<Spinner />}>
             <Switch render={({ children }) => ({ children })}>
-              <Route exact path="/" render={() => <Redirect to="/signin" />} />
+              <Route exact path='/' render={() => <Redirect to='/signin' />} />
               {routes.map(({ path, Component, exact }) => {
                 return (
-                  <Route
-                    path={`${this.props.match.url}/${path}`}
-                    key={path}
-                    exact={exact}
-                  >
+                  <Route path={`${url}/${path}`} key={path} exact={exact}>
                     <Component />
                   </Route>
                 );

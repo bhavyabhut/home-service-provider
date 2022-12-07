@@ -1,8 +1,8 @@
-import React from "react";
+import React from 'react';
 
-import styles from "./spinner.module.css";
+import styles from './spinner.module.css';
 
-const Spinner = () => {
+function Spinner() {
   return (
     <div className={styles.spinner}>
       <div className={styles.lds_roller}>
@@ -17,6 +17,6 @@ const Spinner = () => {
       </div>
     </div>
   );
-};
+}
 
 export default Spinner;

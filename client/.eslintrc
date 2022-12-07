@@ -1,0 +1,44 @@
+{
+  "env": {
+    "browser": true
+  },
+  "extends": [
+    "airbnb",
+    "airbnb/hooks",
+    "plugin:react/recommended",
+    "plugin:prettier/recommended"
+  ],
+
+  "rules": {
+    "react/jsx-filename-extension": [
+      "warn",
+      {
+        "extensions": [".jsx", ".tsx"]
+      }
+    ],
+    "react/prop-types": "off",
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn",
+    "react/jsx-props-no-spreading":"warn",
+    "no-underscore-dangle":"warn",
+    "react/jsx-key":"warn",
+    "no-shadow":"warn",
+    "no-unused-vars":"warn",
+    "react/destructuring-assignment":"warn",
+    "react/jsx-no-useless-fragment":"warn",
+    "react/no-unstable-nested-components":"warn",
+    "react/no-unescaped-entities":"warn",
+    "react/no-array-index-key":"warn"
+
+  },
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  },
+  "parserOptions": {
+    "parser": "@babel/eslint-parser",
+    "ecmaVersion": 2022,
+    "sourceType": "module"
+},
+}

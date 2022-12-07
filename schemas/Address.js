@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 const AddressSchema = new mongoose.Schema(
   {
     id: String,
@@ -13,9 +13,9 @@ const AddressSchema = new mongoose.Schema(
     newCountry: {},
   },
   { timestamp: true },
-  { collection: "addresses" }
+  { collection: 'addresses' },
 );
 
-const Addresses = mongoose.model("addresses", AddressSchema);
+const Addresses = mongoose.model('addresses', AddressSchema);
 
 module.exports = Addresses;

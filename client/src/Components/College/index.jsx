@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from "react";
-import { PageHeader, Table } from "antd";
-import columns from "./columns";
-import API from "../../api";
+import React, { useState, useEffect } from 'react';
+import { PageHeader, Table } from 'antd';
+import columns from './columns';
+import API from '../../api';
 
-const College = () => {
+function College() {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
   useEffect(() => {
@@ -17,7 +17,8 @@ const College = () => {
   }, []);
   return (
     <>
-      <PageHeader title="Colleges" />
+      {console.log('hi')}
+      <PageHeader title='Colleges' />
       <Table
         loading={loading}
         columns={columns}
@@ -29,6 +30,6 @@ const College = () => {
       />
     </>
   );
-};
+}
 
 export default College;

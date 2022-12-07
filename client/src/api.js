@@ -1,4 +1,4 @@
-import config from "./config";
+import config from './config';
 
 const API = {
   students: `${config.API_END_POINT}${config.VERSION}/student/`,

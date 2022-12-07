@@ -1,15 +1,14 @@
-import React, { useState, useEffect } from "react";
-import { PageHeader, Table } from "antd";
-import {
-  useLocation,
-} from "react-router-dom";
-import columns from "./columns";
-import API from "../../api";
-import Spinner from "../Spinner";
+import React, { useState, useEffect } from 'react';
+import { PageHeader, Table } from 'antd';
+import { useLocation } from 'react-router-dom';
+import axios from 'axios';
+import columns from './columns';
+import API from '../../api';
+import Spinner from '../Spinner';
 
-import {  getArrayParams } from "../../utils/paramsConvert";
-import axios from "axios";
-const Services = () => {
+import { getArrayParams } from '../../utils/paramsConvert';
+
+function Services() {
   const [datas, setData] = useState([]);
   const [loading, setLoading] = useState(false);
   const location = useLocation();
@@ -37,7 +36,7 @@ const Services = () => {
     <>
       {!loading ? (
         <>
-          <PageHeader title="Services" />
+          <PageHeader title='Services' />
           <Table
             loading={loading}
             columns={columns}
@@ -53,6 +52,6 @@ const Services = () => {
       )}
     </>
   );
-};
+}
 
 export default Services;
