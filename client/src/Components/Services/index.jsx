@@ -1,26 +1,18 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect } from "react";
 import { PageHeader, Table } from "antd";
 import {
-  useHistory,
-  useParams,
   useLocation,
-  useRouteMatch,
 } from "react-router-dom";
 import columns from "./columns";
 import API from "../../api";
 import Spinner from "../Spinner";
 
-import { GlobalContext } from "../../Context/GlobalContext";
-import { setUrlString, getArrayParams } from "../../utils/paramsConvert";
+import {  getArrayParams } from "../../utils/paramsConvert";
 import axios from "axios";
 const Services = () => {
   const [datas, setData] = useState([]);
   const [loading, setLoading] = useState(false);
-  const { data, dispatch } = useContext(GlobalContext);
-  const history = useHistory();
   const location = useLocation();
-  const params = useParams();
-  const router = useRouteMatch();
   const { search } = location;
 
   useEffect(() => {

@@ -30,18 +30,12 @@ export const ErrorDispathcer = (payload) => {
   const { dispatch } = useContext(GlobalContext);
   dispatch({ type: "ERROR", payload });
 };
-// export const LoginpageDispathcer = () => {
-// 	const { dispatch } = useContext(GlobalContext);
-// 	dispatch({ type: "LOGINPAGE" });
-// };
+
 export const RegistrationpageDispathcer = () => {
   const { dispatch } = useContext(GlobalContext);
   dispatch({ type: "REGISTRACTIONPAGE" });
 };
-// export const LogoutDispathcer = () => {
-//   const { dispatch } = useContext(GlobalContext);
-//   dispatch({ type: "LOGOUT" });
-// };
+
 export const AddhobbiDispathcer = (payload) => {
   const { dispatch } = useContext(GlobalContext);
   dispatch({ type: "ADD_HOBBI", payload });

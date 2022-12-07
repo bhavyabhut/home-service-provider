@@ -1,5 +1,5 @@
-import React, { Component, useState, useContext, useEffect } from "react";
-import { Layout, Menu, Breadcrumb, Input, Select, Button } from "antd";
+import React, { useState, useContext, useEffect } from "react";
+import { Layout, Menu, Input, Select, Button } from "antd";
 import {
   DotChartOutlined,
   PieChartOutlined,
@@ -14,7 +14,6 @@ import {
 import { Link } from "react-router-dom";
 import Logo from "./Logo";
 import Avatar from "antd/lib/avatar/avatar";
-import { clearToken } from "../utils/auth";
 import { GlobalContext } from "../Context/GlobalContext";
 import axios from "axios";
 import { useHistory, useLocation } from "react-router-dom";
@@ -77,31 +76,10 @@ const Index = (props) => {
       })
       .catch((e) => console.log(e));
   }, []);
-  // useEffect(() => {
-  //   if (data.categories.length === 0)
-  //     axios
-  //       .get(API.categories)
-  //       .then((res) => {
-  //         if (res.data.success) {
-  //           dispatch({ type: "SET_CATEGORIES", payload: res.data.data });
-  //         }
-  //       })
-  //       .catch((e) => console.log(e));
-  //   if (data.states.length === 0)
-  //     axios
-  //       .get(API.states)
-  //       .then((res) => {
-  //         if (res.data.success) {
-  //           // console.log("ha moj ", res);
-  //           dispatch({ type: "SET_STATES", payload: res.data.data });
-  //         }
-  //       })
-  //       .catch((e) => console.log(e));
-  // });
+ 
 
   return (
     <Layout style={{ minHeight: "100vh" }}>
-      {/* {console.log(data, "hu data chu")} */}
       <Sider collapsible collapsed={collapsed} onCollapse={onCollapse}>
         <div className="logo" style={{ overflow: "hidden" }}>
           <Logo />
@@ -124,14 +102,7 @@ const Index = (props) => {
               </Menu.Item>
             )}
           </SubMenu>
-          {/* <SubMenu key="colleges" icon={<UserOutlined />} title="Colleges">
-            <Menu.Item key="3">
-              <Link to="/home-services/allColleges">All colleges</Link>
-            </Menu.Item>
-            <Menu.Item key="4">
-              <Link to="/home-services/addCollege">Add college</Link>
-            </Menu.Item>
-          </SubMenu> */}
+          
           <SubMenu key="Services" icon={<TeamOutlined />} title="Services">
             <Menu.Item key="6">
               <Link to="/home-services/allServices?category=all&state=all&city=&name=">
@@ -144,14 +115,7 @@ const Index = (props) => {
               </Menu.Item>
             )}
           </SubMenu>
-          {/* <SubMenu key="students" icon={<TeamOutlined />} title="Students">
-            <Menu.Item key="6">
-              <Link to="/home-services/allStudents">All students</Link>
-            </Menu.Item>
-            <Menu.Item key="8">
-              <Link to="/home-services/addStudent">Add student</Link>
-            </Menu.Item>
-          </SubMenu> */}
+         
           <SubMenu key="13" icon={<PieChartOutlined />} title="Charts">
             <Menu.Item key="1" icon={<RadarChartOutlined />}>
               <Link to="/home-services/charts/categories">
@@ -162,14 +126,7 @@ const Index = (props) => {
               <Link to="/home-services/charts/services">Services charts</Link>
             </Menu.Item>
           </SubMenu>
-          {/* <SubMenu key="13" icon={<PieChartOutlined />} title="Charts">
-            <Menu.Item key="1" icon={<RadarChartOutlined />}>
-              <Link to="/home-services/charts/state">State charts</Link>
-            </Menu.Item>
-            <Menu.Item key="10" icon={<DotChartOutlined />}>
-              <Link to="/home-services/charts/course">course charts</Link>
-            </Menu.Item>
-          </SubMenu> */}
+          
         </Menu>
       </Sider>
       <Layout className="site-layout">
@@ -201,7 +158,6 @@ const Index = (props) => {
                       console.log(value);
                       fieldOnChange("category", value);
                     }}
-                    // defaultValue="all"
                   >
                     <Option value="all">Category (All)</Option>
                     {data.categories.length > 0
@@ -212,7 +168,6 @@ const Index = (props) => {
                   </Select>
                   <Select
                     className="locationState"
-                    // defaultValue="all"
                     style={{
                       width: "15%",
                       color: "white",
@@ -304,10 +259,7 @@ const Index = (props) => {
           </Menu>
         </Header>
         <Content style={{ margin: "0 16px" }}>
-          {/*<Breadcrumb style={{ margin: "16px 0" }}>*/}
-          {/*  <Breadcrumb.Item>User</Breadcrumb.Item>*/}
-          {/*  <Breadcrumb.Item>Bill</Breadcrumb.Item>*/}
-          {/*</Breadcrumb>*/}
+         
           <div className="site-layout-background" style={{ padding: 24 }}>
             {props.children}
           </div>

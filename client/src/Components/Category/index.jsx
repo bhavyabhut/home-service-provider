@@ -1,11 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Card, Avatar } from "antd";
 import { useHistory } from "react-router-dom";
-import {
-  EditOutlined,
-  EllipsisOutlined,
-  SettingOutlined,
-} from "@ant-design/icons";
 import axios from "axios";
 import API from "../../api.js";
 import Spinner from "../Spinner/index.jsx";
@@ -69,22 +64,7 @@ const Cards = () => {
             </Card>
           ))}
 
-          {/* <Card
-        hoverable
-        style={{ width: 300 }}
-        cover={
-          <div
-            className="CustomCARD"
-            style={{
-              background:
-                'url("/images/Card/dominik-scythe-3cIvvzjE6Lk-unsplash.jpg")',
-            }}
-            alt="example"
-          ></div>
-        }
-      >
-        <Meta title="Plumber" description="Total Services: 6" />
-      </Card> */}
+         
         </div>
       ) : (
         <Spinner />

@@ -9,11 +9,6 @@ import Layout from "./Layout";
 import Spinner from "./Components/Spinner";
 
 const routes = [
-  // {
-  //   path: "/signin",
-  //   exact: true,
-  //   Component: lazy(() => import("./Components/Signin")),
-  // },
   {
     path: "/",
     exact: true,
@@ -112,7 +107,6 @@ class Routers extends React.Component {
             <Switch render={({ children }) => ({ children })}>
               <Route exact path="/" render={() => <Redirect to="/signin" />} />
               {routes.map(({ path, Component, exact }) => {
-                // console.log(this.props, `${this.props.match.url}${path}`);
                 return (
                   <Route
                     path={`${this.props.match.url}/${path}`}

@@ -71,7 +71,6 @@ const SignIn = (props) => {
                 console.log("Login ni state no res", res);
 
                 if (res.data.success) {
-                  // console.log("ha moj ", res);
                   dispatch({ type: "SET_STATES", payload: res.data.data });
                 }
               })
@@ -103,7 +102,6 @@ const SignIn = (props) => {
 
   return (
     <>
-      {/* {loader && <Spinner />} */}
       <div className="signin">
         <div className="signin-form">
           <div
@@ -123,18 +121,14 @@ const SignIn = (props) => {
               <Form.Item
                 label="Email"
                 name="email"
-                //   required
-                //   tooltip="This is a required field"
+                
               >
                 <Input placeholder="johndoe@gmail.com" />
               </Form.Item>
               <Form.Item
                 name="password"
                 label="Password"
-                //   tooltip={{
-                //     title: "Password",
-                //     icon: <InfoCircleOutlined />,
-                //   }}
+                
               >
                 <Input.Password
                   placeholder="password"

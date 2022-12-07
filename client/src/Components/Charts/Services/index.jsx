@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Cell, Legend, Pie, PieChart, Tooltip } from "recharts";
-import { Scrollbars } from "react-custom-scrollbars";
 import { useHistory } from "react-router-dom";
 import Spinner from "../../Spinner";
-// import CustomResponsiveContainer from "./Container";
 import { CHART_COLORS } from "../../../config/consts";
 import API from "../../../api";
 import axios from "axios";
@@ -22,12 +20,7 @@ const ChartState = () => {
         setLoading(false);
       }
     });
-    // fetch(API.collegeChart).then((data) => {
-    //   data.json().then((data) => {
-    //     setCollegeData(data.data);
-    //     setLoading(false);
-    //   });
-    // });
+   
   }, []);
 
   return (
@@ -36,13 +29,7 @@ const ChartState = () => {
         <Spinner />
       ) : (
         <>
-          {/* <Scrollbars
-            thumbSize={100}
-            autoHide
-            style={{ height: "100%", width: "100%" }}
-          > */}
-          {console.log(collegeData)}
-          {/* <CustomResponsiveContainer> */}
+          
           <PieChart width={450} height={450}>
             <Pie
               data={collegeData}
@@ -68,12 +55,11 @@ const ChartState = () => {
                 />
               ))}
             </Pie>
-            }
+            
             <Tooltip />
             <Legend />
           </PieChart>
-          {/* </CustomResponsiveContainer> */}
-          {/* </Scrollbars> */}
+        
         </>
       )}
     </>
