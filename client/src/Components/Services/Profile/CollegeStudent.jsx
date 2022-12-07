@@ -1,25 +1,25 @@
-import React from "react";
-import { Card, Row, Tag } from "antd";
-import tagColor from "../../../config/consts";
+import React from 'react';
+import { Card, Row, Tag } from 'antd';
+import tagColor from '../../../config/consts';
 
 const CollegeStudent = ({ data }) => {
   return (
     <Card>
-      <Row className="customRow">
-        <span className="text-dark">Experience:</span>
+      <Row className='customRow'>
+        <span className='text-dark'>Experience:</span>
         <span>{data?.experiance}</span>
       </Row>
-      <Row className="customRow">
-        <span className="text-dark">Total Customer Served:</span>
+      <Row className='customRow'>
+        <span className='text-dark'>Total Customer Served:</span>
         <span>{data?.customers_served}</span>
       </Row>
-      <Row className="customRow">
-        <span className="text-dark">Rating:</span>
+      <Row className='customRow'>
+        <span className='text-dark'>Rating:</span>
         <span>⭐️ ⭐️ ⭐️ ⭐️</span>
       </Row>
-      
-      <Row className="customRow">
-        <span className="text-dark">Feedback:</span>
+
+      <Row className='customRow'>
+        <span className='text-dark'>Feedback:</span>
         <span>Best in area</span>
       </Row>
     </Card>

@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
-import { PageHeader, Table } from "antd";
-import columns from "./columns";
-import API from "../../api";
+import React, { useState, useEffect } from 'react';
+import { PageHeader, Table } from 'antd';
+import columns from './columns';
+import API from '../../api';
 
 const Student = () => {
   const [data, setData] = useState([]);
@@ -17,7 +17,7 @@ const Student = () => {
   }, []);
   return (
     <>
-      <PageHeader title="Students" />
+      <PageHeader title='Students' />
       <Table
         loading={loading}
         columns={columns}

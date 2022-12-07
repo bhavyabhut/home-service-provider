@@ -1,10 +1,10 @@
-const User = require("../schemas/UserModel");
-const bcrypt = require("bcryptjs");
-const nodemailer = require("nodemailer");
-const jwt = require("jsonwebtoken");
+const User = require('../schemas/UserModel');
+const bcrypt = require('bcryptjs');
+const nodemailer = require('nodemailer');
+const jwt = require('jsonwebtoken');
 
 const transporter = nodemailer.createTransport({
-  service: "gmail",
+  service: 'gmail',
   auth: {
     user: process.env.GMAIL,
     pass: process.env.GMAIL_PASSWORD,
@@ -15,27 +15,27 @@ exports.singin = async (req, res, next) => {
   if (!req.body.email || !req.body.password) {
     return res.status(400).json({
       success: false,
-      msg: "email or password not empty",
+      msg: 'email or password not empty',
     });
   }
-  if (req.body.email.trim() === "" || req.body.password.trim() === "") {
+  if (req.body.email.trim() === '' || req.body.password.trim() === '') {
     return res.status(400).json({
       success: false,
-      msg: "email or password not empty",
+      msg: 'email or password not empty',
     });
   }
   const user = await User.find({ email: req.body.email });
   if (user.length === 0) {
     return res.status(400).json({
       success: false,
-      msg: "Wrong email or password",
+      msg: 'Wrong email or password',
     });
   }
   bcrypt.compare(req.body.password, user[0].password, (err, isMatch) => {
     if (err) {
       return res.status(500).json({
         success: false,
-        msg: "SERVER ERROR",
+        msg: 'SERVER ERROR',
       });
     }
     if (isMatch) {
@@ -50,31 +50,30 @@ exports.singin = async (req, res, next) => {
     } else {
       res.status(400).json({
         success: false,
-        msg: "Wrong email or password",
+        msg: 'Wrong email or password',
       });
     }
   });
 };
 
 exports.singup = async (req, res, next) => {
-
   if (!req.body.email || !req.body.password) {
     return res.status(400).json({
       success: false,
-      msg: "email or password not empty",
+      msg: 'email or password not empty',
     });
   }
   if (req.body.password.trim().length < 6) {
     return res.status(400).send({
       success: false,
-      msg: "Password not strong",
+      msg: 'Password not strong',
     });
   }
   const user = await User.find({ email: req.body.email });
   if (user.length !== 0) {
     return res.status(400).send({
       success: false,
-      msg: "Email alerdy taken",
+      msg: 'Email alerdy taken',
     });
   }
   const salt = await bcrypt.genSalt(10);
@@ -89,9 +88,9 @@ exports.singup = async (req, res, next) => {
     });
     const data = await user.save();
     const mailOptions = {
-      from: "greatmastu",
+      from: 'greatmastu',
       to: req.body.email,
-      subject: "Successfully Registered on HomeServices Provider",
+      subject: 'Successfully Registered on HomeServices Provider',
       html: ` <div
       style="
         display: flex;
@@ -120,7 +119,7 @@ exports.singup = async (req, res, next) => {
       if (error) {
         console.log(error);
       } else {
-        console.log("Email sent: " + info.response);
+        console.log('Email sent: ' + info.response);
       }
     });
     res.status(200).json({
@@ -128,7 +127,7 @@ exports.singup = async (req, res, next) => {
       data,
     });
   } catch (e) {
-    if (e.name === "ValidationError") {
+    if (e.name === 'ValidationError') {
       const messages = Object.values(e.errors).map((val) => val.message);
       res.status(400).json({
         success: false,
@@ -137,19 +136,19 @@ exports.singup = async (req, res, next) => {
     } else {
       res.status(500).json({
         success: false,
-        msg: "SERVER ERROR",
+        msg: 'SERVER ERROR',
       });
     }
   }
 };
 
 exports.auth = async (req, res, next) => {
-  const token = req.headers["auth-token"];
-  if (token === "0") {
+  const token = req.headers['auth-token'];
+  if (token === '0') {
     console.log(token);
     return res.status(401).json({
       success: false,
-      msg: "UNAUTHORIZED",
+      msg: 'UNAUTHORIZED',
     });
   }
   if (token) {
@@ -165,20 +164,20 @@ exports.auth = async (req, res, next) => {
         } else {
           return res.status(200).json({
             success: false,
-            msg: "User not Found",
+            msg: 'User not Found',
           });
         }
       }
     } catch (e) {
       return res.status(200).json({
         success: false,
-        msg: "Session Time Out ",
+        msg: 'Session Time Out ',
       });
     }
   } else {
     return res.status(200).json({
       success: false,
-      msg: "User Log Out ",
+      msg: 'User Log Out ',
     });
   }
 };
@@ -186,8 +185,8 @@ exports.auth = async (req, res, next) => {
 const generateOTP = () => {
   // Declare a digits variable
   // which stores all digits
-  var digits = "0123456789";
-  let OTP = "";
+  var digits = '0123456789';
+  let OTP = '';
   for (let i = 0; i < 6; i++) {
     OTP += digits[Math.floor(Math.random() * 10)];
   }
@@ -198,28 +197,28 @@ exports.otp = async (req, res, next) => {
   if (!req.body.email) {
     return res.status(400).json({
       success: false,
-      msg: "email  not empty",
+      msg: 'email  not empty',
     });
   }
-  if (req.body.email.trim() === "") {
+  if (req.body.email.trim() === '') {
     return res.status(400).json({
       success: false,
-      msg: "email  not empty",
+      msg: 'email  not empty',
     });
   }
   const userEmail = await User.find({ email: req.body.email });
   if (userEmail.length === 0) {
     return res.status(400).json({
       success: false,
-      msg: "User not found",
+      msg: 'User not found',
     });
   }
   const otp = generateOTP();
 
   const mailOptions = {
-    from: "greatmastu",
+    from: 'greatmastu',
     to: userEmail[0].email,
-    subject: "OTP verification for reset/forgot password",
+    subject: 'OTP verification for reset/forgot password',
     html: ` <div
     style="
       display: flex;
@@ -250,7 +249,7 @@ exports.otp = async (req, res, next) => {
       if (error) {
         console.log(error);
       } else {
-        console.log("Email sent: " + info.response);
+        console.log('Email sent: ' + info.response);
       }
     });
     const user = await User.findById(userEmail[0]._id);
@@ -262,7 +261,7 @@ exports.otp = async (req, res, next) => {
     res.status(200).json({
       success: true,
       data: newUser,
-      message: "Otp Send Successfully",
+      message: 'Otp Send Successfully',
     });
   }
 };
@@ -271,13 +270,13 @@ exports.verifyOtp = async (req, res, next) => {
   if (!req.body.otp) {
     return res.status(400).json({
       success: false,
-      msg: "otp  not empty",
+      msg: 'otp  not empty',
     });
   }
-  if (req.body.otp.trim() === "") {
+  if (req.body.otp.trim() === '') {
     return res.status(400).json({
       success: false,
-      msg: "otp  not empty",
+      msg: 'otp  not empty',
     });
   }
   const userEmail = await User.find({ otp: req.body.otp });
@@ -285,7 +284,7 @@ exports.verifyOtp = async (req, res, next) => {
   if (userEmail.length === 0) {
     return res.status(400).json({
       success: false,
-      msg: "Wrong Otp",
+      msg: 'Wrong Otp',
     });
   }
   const otpDate = userEmail[0].otpTimeOut;
@@ -293,17 +292,17 @@ exports.verifyOtp = async (req, res, next) => {
   let milliSecond = 1000000000;
   if (otpDate) milliSecond = currentDate.getTime() - otpDate.getTime();
   console.log(
-    "time nu",
+    'time nu',
     otpDate,
     currentDate,
     otpDate.getTime(),
-    currentDate.getTime()
+    currentDate.getTime(),
   );
   const second = milliSecond / 1000;
   if (second > 120) {
     return res.status(400).json({
       success: false,
-      msg: "Otp is Expired",
+      msg: 'Otp is Expired',
     });
   }
   if (userEmail[0]) {
@@ -315,7 +314,7 @@ exports.verifyOtp = async (req, res, next) => {
     res.status(200).json({
       success: true,
       data: newUser,
-      message: "Successfully Verify Otp",
+      message: 'Successfully Verify Otp',
     });
   }
 };
@@ -324,27 +323,27 @@ exports.changePassword = async (req, res, next) => {
   if (!req.body.email || !req.body.password) {
     return res.status(400).json({
       success: false,
-      msg: "email or password not empty",
+      msg: 'email or password not empty',
     });
   }
   if (req.body.password.trim().length < 6) {
     return res.status(400).send({
       success: false,
-      msg: "Password not strong",
+      msg: 'Password not strong',
     });
   }
   const user = await User.find({ email: req.body.email });
   if (user.length === 0) {
     return res.status(400).send({
       success: false,
-      msg: "No User found",
+      msg: 'No User found',
     });
   }
   console.log(user);
   if (user[0].isOtpVerify === false) {
     return res.status(400).send({
       success: false,
-      msg: "Not verify for change password",
+      msg: 'Not verify for change password',
     });
   }
   const newUser = await User.findById(user[0]._id);
@@ -360,6 +359,6 @@ exports.changePassword = async (req, res, next) => {
   res.status(200).json({
     success: true,
     data: saavNew,
-    message: "Password change successfully",
+    message: 'Password change successfully',
   });
 };

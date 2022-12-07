@@ -7,7 +7,9 @@
     "start": "node index.js",
     "start:dev": "nodemon index.js",
     "start:client": "cd client && npm start",
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client",
+    "prepare": "husky install",
+    "pretty": "prettier --write \"**/*.js\""
   },
   "author": "",
   "license": "ISC",
@@ -17,6 +19,8 @@
     "concurrently": "^6.0.0",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-plugin-react": "^7.31.11",
     "express": "^4.17.1",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.10.11",
@@ -28,5 +32,10 @@
   },
   "engines": {
     "node": "16.15.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.29.0",
+    "husky": "^8.0.2",
+    "prettier": "^2.8.0"
   }
 }

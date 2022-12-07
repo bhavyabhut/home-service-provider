@@ -9,6 +9,9 @@
     "@testing-library/user-event": "^12.1.10",
     "antd": "^4.7.3",
     "axios": "^0.21.1",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.2.1",
     "react": "^17.0.1",
     "react-custom-scrollbars": "^4.2.1",
     "react-dom": "^17.0.1",
@@ -25,7 +28,10 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "lint": "eslint src/**/*.js src/**/*.jsx",
+    "lint-fix": "eslint src/**/*.js src/**/*.jsx --fix",
+    "pretty": "prettier --write \"**/*.js\" \"**/*.jsx\""
   },
   "eslintConfig": {
     "extends": [
@@ -44,5 +50,13 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "eslint": "^8.29.0",
+    "eslint-plugin-airbnb": "^0.0.1-security",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-jsx-a11y": "^6.6.1",
+    "eslint-plugin-react": "^7.31.11",
+    "prettier": "^2.8.0"
   }
 }

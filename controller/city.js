@@ -1,6 +1,6 @@
-const Cities = require("../schemas/City");
-const { resourceError, serverError } = require("../helper/errorHandler");
-const { success } = require("../helper/successHandler");
+const Cities = require('../schemas/City');
+const { resourceError, serverError } = require('../helper/errorHandler');
+const { success } = require('../helper/successHandler');
 
 exports.getAllCity = async (req, res) => {
   try {

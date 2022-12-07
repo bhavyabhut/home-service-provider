@@ -1,15 +1,15 @@
-import React from "react";
-import columns from "../../Student/columns";
-import { Table } from "antd";
+import React from 'react';
+import columns from '../../Student/columns';
+import { Table } from 'antd';
 const nestedColumns = [
   {
-    title: "Name",
-    dataIndex: "first_name",
+    title: 'Name',
+    dataIndex: 'first_name',
     render: (text, row) => `${text} ${row.last_name}`,
   },
   {
-    title: "Email",
-    dataIndex: "email",
+    title: 'Email',
+    dataIndex: 'email',
   },
 ];
 const [first, second, ...newColumns] = [...columns];

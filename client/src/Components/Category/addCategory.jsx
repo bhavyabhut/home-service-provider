@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from "react";
-import { Upload, Button, Input, notification } from "antd";
-import { LoadingOutlined, PlusOutlined } from "@ant-design/icons";
-import { useHistory } from "react-router-dom";
-import axios from "axios";
-import API from "../../api";
+import React, { useState, useEffect } from 'react';
+import { Upload, Button, Input, notification } from 'antd';
+import { LoadingOutlined, PlusOutlined } from '@ant-design/icons';
+import { useHistory } from 'react-router-dom';
+import axios from 'axios';
+import API from '../../api';
 
 function getBase64(file) {
   if (file)
@@ -17,31 +17,31 @@ function getBase64(file) {
 }
 export default function AddCategory() {
   const [loader, setLoader] = useState(false);
-  const [fieldData, setFieldData] = useState({ name: "", description: "" });
+  const [fieldData, setFieldData] = useState({ name: '', description: '' });
   const [file, setFile] = useState();
   const [url, setUrl] = useState();
   const history = useHistory();
   const [state, setState] = useState({
     loader: false,
     error: false,
-    message: "",
+    message: '',
   });
   const dummyRequest = ({ file, onSuccess }) => {
     setTimeout(() => {
-      onSuccess("ok");
+      onSuccess('ok');
     }, 0);
   };
   const sendData = () => {
     if (
-      fieldData.name === "" ||
+      fieldData.name === '' ||
       fieldData.name === null ||
       !fieldData.name ||
-      fieldData.name.trim() === ""
+      fieldData.name.trim() === ''
     ) {
       setState({
         ...state,
         error: true,
-        message: "Please enter category name",
+        message: 'Please enter category name',
       });
       return;
     }
@@ -49,21 +49,21 @@ export default function AddCategory() {
       setState({
         ...state,
         error: true,
-        message: "Please select image for category",
+        message: 'Please select image for category',
       });
       return;
     }
     setLoader(true);
     const formData = new FormData();
-    formData.append("name", fieldData.name);
-    formData.append("image", file);
-    formData.append("description", fieldData.description);
+    formData.append('name', fieldData.name);
+    formData.append('image', file);
+    formData.append('description', fieldData.description);
     axios
       .post(API.addCategory, formData)
       .then((res) => {
         if (res.data.success) {
           history.push(
-            "/home-services/allCategories?category=all&state=all&city=&name="
+            '/home-services/allCategories?category=all&state=all&city=&name=',
           );
         }
         setLoader(false);
@@ -72,7 +72,7 @@ export default function AddCategory() {
         if (e.response) {
           setState({ error: true, message: e.response.data.error });
         } else {
-          setState({ error: true, message: "Server Error" });
+          setState({ error: true, message: 'Server Error' });
         }
         setLoader(false);
       });
@@ -81,41 +81,41 @@ export default function AddCategory() {
     if (state.error) {
       notification.open({
         message: state.message,
-        type: "error",
+        type: 'error',
       });
       setState({ ...state, error: false });
     }
   }, [state.error]);
   return (
     <>
-      <div style={{ marginBottom: "2rem" }}>
+      <div style={{ marginBottom: '2rem' }}>
         <h2>Add Category</h2>
       </div>
-      <div style={{ marginBottom: "1rem" }}>
-        <span style={{ fontWeight: "bold" }}> Category Image: *</span>
+      <div style={{ marginBottom: '1rem' }}>
+        <span style={{ fontWeight: 'bold' }}> Category Image: *</span>
         <Upload
-          style={{ marginTop: "1rem" }}
-          accept="image/*"
+          style={{ marginTop: '1rem' }}
+          accept='image/*'
           showUploadList={false}
           customRequest={dummyRequest}
-          listType="picture-card"
+          listType='picture-card'
           onChange={(e, b) => {
             setFile(e.file.originFileObj);
             getBase64(e.file.originFileObj)
               .then((data) => setUrl(data))
               .catch((e) => console.log(e));
           }}
-          name="file"
+          name='file'
         >
           {url ? (
-            <img src={url} alt="avatar" style={{ width: "100%" }} />
+            <img src={url} alt='avatar' style={{ width: '100%' }} />
           ) : (
             <PlusOutlined />
           )}
         </Upload>
       </div>
-      <div style={{ marginBottom: "1rem" }}>
-        <span style={{ fontWeight: "bold", marginBottom: "1rem" }}>
+      <div style={{ marginBottom: '1rem' }}>
+        <span style={{ fontWeight: 'bold', marginBottom: '1rem' }}>
           Category Name: *
         </span>
         {/* {file} */}
@@ -124,11 +124,11 @@ export default function AddCategory() {
           onChange={(e) => {
             setFieldData({ ...fieldData, name: e.target.value });
           }}
-          placeholder="Category Name"
+          placeholder='Category Name'
         />
       </div>
-      <div style={{ marginBottom: "1rem" }}>
-        <span style={{ fontWeight: "bold", marginBottom: "1rem" }}>
+      <div style={{ marginBottom: '1rem' }}>
+        <span style={{ fontWeight: 'bold', marginBottom: '1rem' }}>
           Category Description:
         </span>
         <Input.TextArea
@@ -136,21 +136,21 @@ export default function AddCategory() {
           onChange={(e) => {
             setFieldData({ ...fieldData, description: e.target.value });
           }}
-          placeholder="Category Description"
+          placeholder='Category Description'
         />
       </div>
 
       <Button
         onClick={() =>
           history.push(
-            "/home-services/allCategories?category=all&state=all&city=&name="
+            '/home-services/allCategories?category=all&state=all&city=&name=',
           )
         }
-        style={{ marginRight: "1rem" }}
+        style={{ marginRight: '1rem' }}
       >
         Cancel
       </Button>
-      <Button loading={loader} type="primary" onClick={sendData}>
+      <Button loading={loader} type='primary' onClick={sendData}>
         Submit
       </Button>
     </>

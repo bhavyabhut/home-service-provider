@@ -1,10 +1,10 @@
-import React, { useState } from "react";
-import { Button, Input, Form, Switch, Divider, notification } from "antd";
-import { Link, useHistory } from "react-router-dom";
-import { UnlockOutlined } from "@ant-design/icons";
-import Logo from "../../Layout/Logo";
-import API from "../../api";
-import axios from "axios";
+import React, { useState } from 'react';
+import { Button, Input, Form, Switch, Divider, notification } from 'antd';
+import { Link, useHistory } from 'react-router-dom';
+import { UnlockOutlined } from '@ant-design/icons';
+import Logo from '../../Layout/Logo';
+import API from '../../api';
+import axios from 'axios';
 
 const SignIn = () => {
   const [loading, setLoading] = useState(false);
@@ -22,7 +22,7 @@ const SignIn = () => {
           console.log(res.data.data);
           notification.open({
             message: res.data.message,
-            type: "success",
+            type: 'success',
           });
 
           setLoading(false);
@@ -30,7 +30,7 @@ const SignIn = () => {
         } else {
           notification.open({
             message: res.data.message,
-            type: "error",
+            type: 'error',
           });
         }
       })
@@ -38,7 +38,7 @@ const SignIn = () => {
         if (e.response) {
           notification.open({
             message: e.response.data.msg,
-            type: "error",
+            type: 'error',
           });
         }
         setLoading(false);
@@ -49,42 +49,42 @@ const SignIn = () => {
     counter > 0 && setTimeout(() => setCounter(counter - 1), 1000);
   }, [counter]);
   return (
-    <div className="signin">
-      <div className="signin-form">
+    <div className='signin'>
+      <div className='signin-form'>
         <div
           style={{
-            display: "flex",
-            alignItems: "center",
-            position: "relative",
-            right: "1rem",
+            display: 'flex',
+            alignItems: 'center',
+            position: 'relative',
+            right: '1rem',
           }}
         >
-          <Logo /> <h1 className="title">HomeServices</h1>
+          <Logo /> <h1 className='title'>HomeServices</h1>
         </div>
-        <h2 className="welcomeBack">Welcome back</h2>
-        <p class="loginIntoAccount">Enter your otp to change your password</p>
+        <h2 className='welcomeBack'>Welcome back</h2>
+        <p class='loginIntoAccount'>Enter your otp to change your password</p>
         <div>
-          <Form form={form} layout="vertical">
+          <Form form={form} layout='vertical'>
             <Form.Item
-              label="One Time Password"
+              label='One Time Password'
               //   required
-              name="otp"
+              name='otp'
               //   tooltip="This is a required field"
             >
-              <Input placeholder="Enter one time password" />
+              <Input placeholder='Enter one time password' />
             </Form.Item>
 
-            <Form.Item style={{ width: "100%" }}>
+            <Form.Item style={{ width: '100%' }}>
               <Button
-                type="primary"
-                shape="round"
+                type='primary'
+                shape='round'
                 icon={<UnlockOutlined />}
                 style={{
-                  width: "100%",
-                  height: "2.5rem",
-                  backgroundColor: "rgb(0, 132, 137)",
-                  borderColor: "rgb(0, 132, 137)",
-                  marginBottom: "1rem",
+                  width: '100%',
+                  height: '2.5rem',
+                  backgroundColor: 'rgb(0, 132, 137)',
+                  borderColor: 'rgb(0, 132, 137)',
+                  marginBottom: '1rem',
                 }}
                 loading={loading}
                 onClick={sendOtp}
@@ -92,7 +92,7 @@ const SignIn = () => {
                 Verify Otp
               </Button>
               {counter < 2 ? (
-                <Link to="/forgot-password">Don't get otp? Resend It</Link>
+                <Link to='/forgot-password'>Don't get otp? Resend It</Link>
               ) : (
                 `Resend after ${counter} second`
               )}
@@ -100,7 +100,7 @@ const SignIn = () => {
           </Form>
         </div>
       </div>
-      <div className="signin-image-div" />
+      <div className='signin-image-div' />
     </div>
   );
 };

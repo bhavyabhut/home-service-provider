@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from "react";
-import { Table, Empty } from "antd";
-import columns from "../columns";
-import API from "../../../api";
+import React, { useState, useEffect } from 'react';
+import { Table, Empty } from 'antd';
+import columns from '../columns';
+import API from '../../../api';
 
 const nestedColumns = [
   {
-    title: "Name",
-    dataIndex: "name",
+    title: 'Name',
+    dataIndex: 'name',
   },
 ];
 const [first, ...newColumns] = [...columns];
@@ -15,13 +15,13 @@ const SimilarCollege = ({ location, id }) => {
   const [loading, setLoading] = useState(false);
   useEffect(() => {
     setLoading(true);
-    fetch(API.collegeByLocation.replace(":locationId", location)).then(
+    fetch(API.collegeByLocation.replace(':locationId', location)).then(
       (data) => {
         data.json().then((data) => {
           setData(data.data.filter((college) => college._id !== id));
           setLoading(false);
         });
-      }
+      },
     );
   }, []);
   return (
@@ -38,7 +38,7 @@ const SimilarCollege = ({ location, id }) => {
           emptyText: (
             <Empty
               image={Empty.PRESENTED_IMAGE_SIMPLE}
-              description="No Similar College Found"
+              description='No Similar College Found'
             />
           ),
         }}

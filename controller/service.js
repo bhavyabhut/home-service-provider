@@ -1,9 +1,8 @@
-const Cities = require("../schemas/City");
-const NewServices = require("../schemas/NewServices");
+const Cities = require('../schemas/City');
+const NewServices = require('../schemas/NewServices');
 
-
-const { resourceError, serverError } = require("../helper/errorHandler");
-const { success } = require("../helper/successHandler");
+const { resourceError, serverError } = require('../helper/errorHandler');
+const { success } = require('../helper/successHandler');
 
 exports.getServices = async (req, res) => {
   let newSer = [];
@@ -13,30 +12,30 @@ exports.getServices = async (req, res) => {
     serverError(res, error);
   }
   if (req.body) {
-
-    if (req.body.category && req.body.category !== "all") {
+    if (req.body.category && req.body.category !== 'all') {
       newSer = newSer.filter((ser) => ser.type === req.body.category);
     }
-    if (req.body.state && req.body.state !== "all") {
+    if (req.body.state && req.body.state !== 'all') {
       newSer = newSer.filter((ser) => ser.addressObj.state === req.body.state);
     }
     if (req.body.city) {
       newSer = newSer.filter((ser) =>
         ser.addressObj.newCity.city
           .toLocaleLowerCase()
-          .includes(req.body.city.toLocaleLowerCase())
+          .includes(req.body.city.toLocaleLowerCase()),
       );
     }
     if (req.body.name) {
       newSer = newSer.filter((ser) =>
-        ser.name.toLocaleLowerCase().includes(req.body.name.toLocaleLowerCase())
+        ser.name
+          .toLocaleLowerCase()
+          .includes(req.body.name.toLocaleLowerCase()),
       );
     }
     success(res, newSer);
   } else {
     success(res, newSer);
   }
-
 };
 
 exports.getServiceById = async (req, res) => {
@@ -81,8 +80,6 @@ exports.getServicesChart = async (req, res) => {
     serverError(res, error);
   }
 };
-
-
 
 exports.addService = async (req, res) => {
   try {

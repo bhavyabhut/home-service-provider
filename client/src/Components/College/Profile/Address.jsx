@@ -1,19 +1,19 @@
-import React from "react";
-import { Card, Row } from "antd";
+import React from 'react';
+import { Card, Row } from 'antd';
 
 const Address = ({ data }) => {
   return (
     <Card>
-      <Row className="customRow">
-        <span className="text-dark">City:</span>
+      <Row className='customRow'>
+        <span className='text-dark'>City:</span>
         <span>{data?.city}</span>
       </Row>
-      <Row className="customRow">
-        <span className="text-dark">State:</span>
+      <Row className='customRow'>
+        <span className='text-dark'>State:</span>
         <span>{data?.state}</span>
       </Row>
-      <Row className="customRow">
-        <span className="text-dark">Country:</span>
+      <Row className='customRow'>
+        <span className='text-dark'>Country:</span>
         <span>{data?.country}</span>
       </Row>
     </Card>

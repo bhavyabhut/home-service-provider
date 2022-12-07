@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from "react";
-import { Card, Avatar } from "antd";
-import { useHistory } from "react-router-dom";
-import axios from "axios";
-import API from "../../api.js";
-import Spinner from "../Spinner/index.jsx";
+import React, { useEffect, useState } from 'react';
+import { Card, Avatar } from 'antd';
+import { useHistory } from 'react-router-dom';
+import axios from 'axios';
+import API from '../../api.js';
+import Spinner from '../Spinner/index.jsx';
 const { Meta } = Card;
 const Cards = () => {
   const [cards, setCards] = useState([]);
@@ -30,30 +30,30 @@ const Cards = () => {
       {!loading ? (
         <div
           style={{
-            display: "flex",
-            flexWrap: "wrap",
-            justifyContent: "space-between",
+            display: 'flex',
+            flexWrap: 'wrap',
+            justifyContent: 'space-between',
           }}
         >
           {cards.map((card) => (
             <Card
               onClick={() => {
                 history.push(
-                  `/home-services/allServices?category=${card.id}&state=all&city=&name=`
+                  `/home-services/allServices?category=${card.id}&state=all&city=&name=`,
                 );
               }}
               hoverable
               style={{ width: 300 }}
               cover={
                 <div
-                  className="CustomCARD"
+                  className='CustomCARD'
                   style={{
                     background: `url("${API.categoryImage.replace(
-                      ":id",
-                      card.name
+                      ':id',
+                      card.name,
                     )}")`,
                   }}
-                  alt="example"
+                  alt='example'
                 ></div>
               }
             >
@@ -63,8 +63,6 @@ const Cards = () => {
               />
             </Card>
           ))}
-
-         
         </div>
       ) : (
         <Spinner />

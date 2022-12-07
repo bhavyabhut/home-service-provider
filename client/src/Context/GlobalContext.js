@@ -1,4 +1,5 @@
-import React, { createContext, useReducer } from "react";
+import React, { createContext, useReducer, useMemo } from 'react';
+
 const initial = {
   loading: true,
   isLoggedIn: false,
@@ -11,38 +12,38 @@ const initial = {
   items: [],
   error: {
     error: false,
-    msg: "",
+    msg: '',
   },
   success: {
     error: false,
-    msg: "",
+    msg: '',
   },
   user: {},
   categories: [],
   states: [],
   search: {
-    name: "",
-    state: "",
-    city: "",
-    category: "",
+    name: '',
+    state: '',
+    city: '',
+    category: '',
   },
 };
 export const GlobalContext = createContext(initial);
 const reducer = (state, action) => {
   switch (action.type) {
-    case "LOGIN_SUCCESS":
+    case 'LOGIN_SUCCESS':
       return {
         ...state,
         isLoggedIn: true,
       };
-    case "SET_MERCHANT":
+    case 'SET_MERCHANT':
       return {
         ...state,
         isMerchant: action.isMerchant,
       };
-    case "LOGOUT":
-      localStorage.setItem("auth-token", null);
-      localStorage.setItem("user_id", null);
+    case 'LOGOUT':
+      localStorage.setItem('auth-token', null);
+      localStorage.setItem('user_id', null);
       return {
         ...state,
         page: { login: true, registration: false, item: false },
@@ -50,59 +51,60 @@ const reducer = (state, action) => {
         isLoggedIn: false,
         isMerchant: false,
       };
-    case "SET_SEARCH_PARAMS":
+    case 'SET_SEARCH_PARAMS':
       return {
         ...state,
         search: action.payload,
       };
-    case "SET_CATEGORIES":
+    case 'SET_CATEGORIES':
       return {
         ...state,
         categories: action.payload,
       };
-    case "SET_STATES":
+    case 'SET_STATES':
       return {
         ...state,
         states: action.payload,
       };
-    case "SET_USER":
+    case 'SET_USER':
       return {
         ...state,
         user: action.payload,
       };
-    case "SET_HOBBI":
+    case 'SET_HOBBI':
       return {
         ...state,
         items: action.payload,
         loading: false,
       };
-    case "DELETE_HOBBI":
+    case 'DELETE_HOBBI':
       return {
         ...state,
+        // eslint-disable-next-line no-underscore-dangle
         items: state.items.filter((item) => item._id !== action.payload),
       };
-    case "ADD_HOBBI":
+    case 'ADD_HOBBI':
       return {
         ...state,
         items: [...state.items, action.payload],
       };
-    case "REGISTRACTIONPAGE":
+    case 'REGISTRACTIONPAGE':
       return {
         ...state,
         page: { login: false, registration: true, item: false },
       };
-    case "ITEMPAGE":
+    case 'ITEMPAGE':
       return {
         ...state,
         page: { login: false, registration: false, item: true },
       };
-    case "LOGINPAGE":
+    case 'LOGINPAGE':
       return {
         ...state,
         page: { login: true, registration: false, item: false },
       };
 
-    case "ERROR":
+    case 'ERROR':
       return {
         ...state,
         error: {
@@ -110,7 +112,7 @@ const reducer = (state, action) => {
           msg: action.payload,
         },
       };
-    case "SUCCESS":
+    case 'SUCCESS':
       return {
         ...state,
         success: {
@@ -118,27 +120,26 @@ const reducer = (state, action) => {
           msg: action.payload,
         },
       };
-    case "CLEAR_ERROR":
+    case 'CLEAR_ERROR':
       return {
         ...state,
         error: {
           error: false,
-          msg: "",
+          msg: '',
         },
         success: {
           success: false,
-          msg: "",
+          msg: '',
         },
       };
     default:
       return state;
   }
 };
-export const Provider = ({ children }) => {
+export function Provider({ children }) {
   const [data, dispatch] = useReducer(reducer, initial);
+  const value = useMemo(() => ({ data, dispatch }), [data, dispatch]);
   return (
-    <GlobalContext.Provider value={{ data, dispatch }}>
-      {children}
-    </GlobalContext.Provider>
+    <GlobalContext.Provider value={value}>{children}</GlobalContext.Provider>
   );
-};
+}

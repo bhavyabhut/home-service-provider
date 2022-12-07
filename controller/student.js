@@ -1,7 +1,7 @@
-const Student = require("../schemas/Student");
-const { serverError, resourceError } = require("../helper/errorHandler");
-const { success } = require("../helper/successHandler");
-const { NO_RESOURCE } = require("../consts");
+const Student = require('../schemas/Student');
+const { serverError, resourceError } = require('../helper/errorHandler');
+const { success } = require('../helper/successHandler');
+const { NO_RESOURCE } = require('../consts');
 
 exports.getAllStudents = async (req, res) => {
   try {
@@ -15,7 +15,7 @@ exports.getAllStudents = async (req, res) => {
 exports.getStudentById = async (req, res) => {
   const { studentId } = req.params;
   console.log(studentId);
-  if (!studentId) resourceError(res, "Please enter student");
+  if (!studentId) resourceError(res, 'Please enter student');
   try {
     const student = await Student.findById(studentId);
     if (student) success(res, student);
@@ -27,7 +27,7 @@ exports.getStudentById = async (req, res) => {
 
 exports.getStudentsByCollegeId = async (req, res) => {
   const { collegeId } = req.params;
-  if (!collegeId) resourceError(res, "Please enter college");
+  if (!collegeId) resourceError(res, 'Please enter college');
   try {
     const students = await Student.find({ collegeId });
     if (students) success(res, students);
