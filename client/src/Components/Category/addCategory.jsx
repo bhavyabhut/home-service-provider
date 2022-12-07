@@ -4,7 +4,6 @@ import { LoadingOutlined, PlusOutlined } from "@ant-design/icons";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
 import API from "../../api";
-import e from "cors";
 
 function getBase64(file) {
   if (file)
