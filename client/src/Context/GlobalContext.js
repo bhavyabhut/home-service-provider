@@ -36,7 +36,6 @@ const reducer = (state, action) => {
         isLoggedIn: true,
       };
     case "SET_MERCHANT":
-      // console.log(action, "merchant");
       return {
         ...state,
         isMerchant: action.isMerchant,
@@ -102,14 +101,7 @@ const reducer = (state, action) => {
         ...state,
         page: { login: true, registration: false, item: false },
       };
-    // case "LOGOUT":
-    //   localStorage.setItem("auth-token", "");
-    //   localStorage.setItem("user_id", "");
-    //   return {
-    //     ...state,
-    //     page: { login: true, registration: false, item: false },
-    //     user: {},
-    //   };
+
     case "ERROR":
       return {
         ...state,

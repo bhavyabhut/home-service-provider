@@ -9,12 +9,10 @@ import {
 import Logo from "../../Layout/Logo";
 import API from "../../api";
 import axios from "axios";
-// import Spinner from "../Spinner";
 
 const SignUp = () => {
   const [form] = Form.useForm();
-  // const [loader, setLoader] = useState(false);
-  // const [error, setError] = useState(false);
+
   const [isMerchant, setIsMerchant] = useState(false);
   const [state, setState] = useState({
     loader: false,
@@ -78,26 +76,21 @@ const SignUp = () => {
             <Form.Item
               label="Username"
               name="name"
-              //   required
-              //   tooltip="This is a required field"
+            
             >
               <Input placeholder="john doe" />
             </Form.Item>
             <Form.Item
               label="Email"
               name="email"
-              //   required
-              //   tooltip="This is a required field"
+              
             >
               <Input placeholder="johndoe@gmail.com" />
             </Form.Item>
             <Form.Item
               label="Password"
               name="password"
-              //   tooltip={{
-              //     title: "Password",
-              //     icon: <InfoCircleOutlined />,
-              //   }}
+             
             >
               <Input.Password
                 placeholder="Password"
@@ -108,10 +101,7 @@ const SignUp = () => {
             </Form.Item>
             <Form.Item
               label="Confirm password"
-              //   tooltip={{
-              //     title: "Password",
-              //     icon: <InfoCircleOutlined />,
-              //   }}
+             
             >
               <Input.Password
                 placeholder="Password"

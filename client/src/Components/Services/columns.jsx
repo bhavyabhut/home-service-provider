@@ -27,9 +27,7 @@ const columns = [
   {
     title: "Category",
     dataIndex: ["typeObj", "name"],
-    // render: (text, row) => (
-    //   <Link to={`college/${row._id}`}>{text.slice(0, text.length - 13)}</Link>
-    // ),
+   
   },
   {
     title: "CIty",

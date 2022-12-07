@@ -32,7 +32,6 @@ export default function AddCategory() {
     }, 0);
   };
   const sendData = () => {
-    // console.log("hu ny thato", fieldData.name);
     if (
       fieldData.name === "" ||
       fieldData.name === null ||
@@ -141,7 +140,6 @@ export default function AddCategory() {
         />
       </div>
 
-      {/* <img src="http://localhost:5000/v1/images/dummy" /> */}
       <Button
         onClick={() =>
           history.push(

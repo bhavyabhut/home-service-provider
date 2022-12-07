@@ -69,18 +69,12 @@ const SignIn = () => {
             <Form.Item
               label="Password"
               name="password"
-              //   tooltip={{
-              //     title: "Password",
-              //     icon: <InfoCircleOutlined />,
-              //   }}
+            
             >
               <Input placeholder="Password" />
             </Form.Item>
             <Form.Item
-            //   tooltip={{
-            //     title: "Password",
-            //     icon: <InfoCircleOutlined />,
-            //   }}
+           
             >
               <Input.Password placeholder="Confirm Password" />
             </Form.Item>

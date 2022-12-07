@@ -76,7 +76,6 @@ const Course = () => {
                   />
                 ))}
               </Pie>
-              }
               <Tooltip />
               <Legend />
             </PieChart>

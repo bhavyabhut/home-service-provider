@@ -22,12 +22,7 @@ const ChartState = () => {
         setLoading(false);
       }
     });
-    // fetch(API.collegeChart).then((data) => {
-    //   data.json().then((data) => {
-    //     setCollegeData(data.data);
-    //     setLoading(false);
-    //   });
-    // });
+   
   }, []);
 
   return (
@@ -36,13 +31,7 @@ const ChartState = () => {
         <Spinner />
       ) : (
         <>
-          {/* <Scrollbars
-            thumbSize={100}
-            autoHide
-            style={{ height: "100%", width: "100%" }}
-          > */}
-          {console.log(collegeData)}
-          {/* <CustomResponsiveContainer> */}
+          
           <PieChart width={450} height={450}>
             <Pie
               data={collegeData}
@@ -53,7 +42,6 @@ const ChartState = () => {
               outerRadius={150}
               fill="#8884d8"
               dataKey="count"
-              // nameKey="name"
             >
               {collegeData.map((entry, index) => (
                 <Cell
@@ -68,12 +56,11 @@ const ChartState = () => {
                 />
               ))}
             </Pie>
-            }
+            
             <Tooltip />
             <Legend />
           </PieChart>
-          {/* </CustomResponsiveContainer> */}
-          {/* </Scrollbars> */}
+         
         </>
       )}
     </>

@@ -17,19 +17,7 @@ const CollegeStudent = ({ data }) => {
         <span className="text-dark">Rating:</span>
         <span>⭐️ ⭐️ ⭐️ ⭐️</span>
       </Row>
-      {/* <Row className="customRow">
-        <span className="text-dark">Tags:</span>
-        <span>
-          {data?.tag?.map((prop) => {
-            const num = prop.charCodeAt(0) + prop.charCodeAt(prop.length - 1);
-            return (
-              <Tag style={{ color: "black" }} color={tagColor[num % 11]}>
-                {prop}
-              </Tag>
-            );
-          })}
-        </span>
-      </Row> */}
+      
       <Row className="customRow">
         <span className="text-dark">Feedback:</span>
         <span>Best in area</span>

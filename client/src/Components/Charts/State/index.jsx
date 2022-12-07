@@ -54,7 +54,6 @@ const ChartState = () => {
                   />
                 ))}
               </Pie>
-              }
               <Tooltip />
               <Legend />
             </PieChart>
