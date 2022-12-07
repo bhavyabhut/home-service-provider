@@ -8,7 +8,7 @@
     "start:dev": "nodemon index.js",
     "start:client": "cd client && npm start",
     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client",
-    "prepare": "husky install",
+    "prepare": "node ./prepare.js",
     "pretty": "prettier --write \"**/*.js\""
   },
   "author": "",
