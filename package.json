@@ -2,10 +2,10 @@
   "name": "home-service-provider",
   "version": "1.0.0",
   "description": "",
-  "main": "server.js",
+  "main": "index.js",
   "scripts": {
-    "start": "node server.js",
-    "start:dev": "nodemon server.js",
+    "start": "node index.js",
+    "start:dev": "nodemon index.js",
     "start:client": "cd client && npm start",
     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
   },
