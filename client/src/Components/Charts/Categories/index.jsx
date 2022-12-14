@@ -18,7 +18,13 @@ function ChartState() {
     setLoading(true);
     axios.get(API.categoryDashboard).then((res) => {
       if (res.data.success) {
-        setCollegeData(res.data.data);
+        setCollegeData(
+          res.data.data.map((data) => ({
+            name: data.name,
+            value: data.count,
+            id: data.id,
+          })),
+        );
         setLoading(false);
       }
     });
