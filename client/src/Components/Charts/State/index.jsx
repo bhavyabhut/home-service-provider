@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Cell, Legend, Pie, PieChart, Tooltip } from 'recharts';
-import { Scrollbars } from 'react-custom-scrollbars';
+import { Scrollbars } from 'react-custom-scrollbars-2';
 import { useHistory } from 'react-router-dom';
 import Spinner from '../../Spinner';
 import CustomResponsiveContainer from './Container';

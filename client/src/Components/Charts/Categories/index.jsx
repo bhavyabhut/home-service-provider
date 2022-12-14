@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Cell, Legend, Pie, PieChart, Tooltip } from 'recharts';
-import { Scrollbars } from 'react-custom-scrollbars';
 import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 import Spinner from '../../Spinner';
-// import CustomResponsiveContainer from "./Container";
 import { CHART_COLORS } from '../../../config/consts';
 import API from '../../../api';
 
