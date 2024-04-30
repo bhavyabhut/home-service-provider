@@ -36,7 +36,7 @@ function SignIn(props) {
           path =
             props.location.state.data.pathname +
             props.location.state.data.search;
-        navigate.push(path);
+        navigate(path);
       }
     });
   }, []);

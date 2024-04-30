@@ -144,7 +144,7 @@ export default function AddCategory() {
 
       <Button
         onClick={() =>
-          navigate.push(
+          navigate(
             '/home-services/allCategories?category=all&state=all&city=&name=',
           )
         }

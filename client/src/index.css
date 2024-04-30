@@ -45,6 +45,16 @@ code {
   overflow: hidden;
   word-break: break-word;
 }
+.locationCity::placeholder {
+  color: #f0f0f0 !important;
+  opacity: 1 !important; /* Firefox */
+}
+
+.locationCity::-ms-input-placeholder {
+  /* Edge 12 -18 */
+  color: #f0f0f0 !important;
+}
+
 .customRow {
   margin: 1rem 0;
 }

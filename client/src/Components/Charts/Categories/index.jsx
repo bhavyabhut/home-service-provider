@@ -29,10 +29,8 @@ function ChartState() {
     });
   }, []);
 
-  console.log(collegeData, 'DONE DONE');
-
   return (
-    <>
+    <div className='h-[80vh] flex align-middle items-center justify-center'>
       {loading ? (
         <Spinner />
       ) : (
@@ -65,7 +63,7 @@ function ChartState() {
           <Legend />
         </PieChart>
       )}
-    </>
+    </div>
   );
 }
 

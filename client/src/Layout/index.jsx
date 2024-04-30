@@ -178,13 +178,6 @@ function Index({ children }) {
                     : null}
                 </Select>
                 <Input
-                  prefix={
-                    <i
-                      style={{ marginRight: '0.75rem' }}
-                      className='fa fa-map-marker'
-                      aria-hidden='true'
-                    />
-                  }
                   style={{
                     width: '15%',
                     color: 'white',
@@ -193,8 +186,8 @@ function Index({ children }) {
                   onChange={(value) =>
                     fieldOnChange('city', value.target.value)
                   }
-                  className='locationCity'
                   placeholder='Enter your location'
+                  className='locationCity'
                 />
 
                 <Input
@@ -218,7 +211,7 @@ function Index({ children }) {
                       '0 4px 10px 0 #6c757d6e, 0 0 10px 0 #f8f8f9 !important',
                   }}
                   type='primary'
-                  className='mainSearchButton'
+                  className=' mainSearchButton bg-teal-500 hover:bg-teal-700 text-white font-bold rounded'
                   onClick={() => {
                     navigate(
                       `/home-services/allServices${setUrlString(search)}`,

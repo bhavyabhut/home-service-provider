@@ -21,7 +21,11 @@ const columns = [
   {
     title: 'Name',
     dataIndex: 'name',
-    render: (text, row) => <Link to={`${row.service_id}`}>{text}</Link>,
+    render: (text, row) => (
+      <Link className='text-blue-400' to={`${row.service_id}`}>
+        {text}
+      </Link>
+    ),
   },
   {
     title: 'Category',
