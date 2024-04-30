@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Cell, Legend, Pie, PieChart, Tooltip } from 'recharts';
 import { Scrollbars } from 'react-custom-scrollbars-2';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import Spinner from '../../Spinner';
 import CustomResponsiveContainer from './Container';
 import { CHART_COLORS } from '../../../config/consts';
@@ -12,7 +12,7 @@ const renderCustomizedLabel = ({ percent }) => `${(percent * 100).toFixed(0)}%`;
 function ChartState() {
   const [collegeData, setCollegeData] = useState([]);
   const [loading, setLoading] = useState(false);
-  const history = useHistory();
+  const navigate = useNavigate();
   useEffect(() => {
     setLoading(true);
     fetch(API.collegeChart).then((data) => {
@@ -50,7 +50,7 @@ function ChartState() {
                     style={{ cursor: 'pointer' }}
                     key={`cell-${index}`}
                     fill={CHART_COLORS[index % CHART_COLORS.length]}
-                    onClick={() => history.push(`state/${entry.name}`)}
+                    onClick={() => navigate(`state/${entry.name}`)}
                   />
                 ))}
               </Pie>

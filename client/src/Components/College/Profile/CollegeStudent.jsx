@@ -23,7 +23,7 @@ function CollegeStudent({ data, loading }) {
       bordered
       rowKey={(render) => render._id}
       dataSource={data}
-      pagination
+      pagination={{ pageSize: 20 }}
       scroll={{ x: 1300 }}
     />
   );

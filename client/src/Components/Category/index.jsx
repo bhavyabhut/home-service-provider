@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Card } from 'antd';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import API from '../../api';
 import Spinner from '../Spinner';
@@ -8,7 +8,7 @@ import Spinner from '../Spinner';
 const { Meta } = Card;
 function Cards() {
   const [cards, setCards] = useState([]);
-  const history = useHistory();
+  const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
   useEffect(() => {
     setLoading(true);
@@ -39,9 +39,7 @@ function Cards() {
           {cards.map((card) => (
             <Card
               onClick={() => {
-                history.push(
-                  `/home-services/allServices?category=${card.id}&state=all&city=&name=`,
-                );
+                navigate(`/home-services/allServices?category=${card.id}`);
               }}
               hoverable
               style={{ width: 300 }}

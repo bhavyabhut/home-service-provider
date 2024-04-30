@@ -1,3 +1,5 @@
+/* global process */
+
 const config = {};
 
 const isDevelopment = process.env.NODE_ENV === 'development';

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { Cell, Legend, Pie, PieChart, Tooltip } from 'recharts';
-import { useHistory } from 'react-router-dom';
+import { PieChart, Pie, Cell, Tooltip, Legend } from 'recharts';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Spinner from '../../Spinner';
 import { CHART_COLORS } from '../../../config/consts';
@@ -11,7 +11,8 @@ const renderCustomizedLabel = ({ percent }) => `${(percent * 100).toFixed(0)}%`;
 function ChartState() {
   const [collegeData, setCollegeData] = useState([]);
   const [loading, setLoading] = useState(false);
-  const history = useHistory();
+  const navigate = useNavigate();
+
   useEffect(() => {
     setLoading(true);
     axios.get(API.categoryDashboard).then((res) => {
@@ -19,7 +20,7 @@ function ChartState() {
         setCollegeData(
           res.data.data.map((data) => ({
             name: data.name,
-            value: data.count,
+            count: data.count,
             id: data.id,
           })),
         );
@@ -27,6 +28,8 @@ function ChartState() {
       }
     });
   }, []);
+
+  console.log(collegeData, 'DONE DONE');
 
   return (
     <>
@@ -38,7 +41,7 @@ function ChartState() {
             data={collegeData}
             cx={210}
             cy={210}
-            labelLine
+            labelLine={true}
             label={renderCustomizedLabel}
             outerRadius={150}
             fill='#8884d8'
@@ -46,11 +49,11 @@ function ChartState() {
           >
             {collegeData.map((entry, index) => (
               <Cell
-                style={{ cursor: 'pointer' }}
                 key={`cell-${index}`}
                 fill={CHART_COLORS[index % CHART_COLORS.length]}
+                cursor='pointer'
                 onClick={() =>
-                  history.push(
+                  navigate(
                     `/home-services/allServices?category=${entry.id}&state=all&city=&name=`,
                   )
                 }

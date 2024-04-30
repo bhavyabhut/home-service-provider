@@ -11,7 +11,7 @@ import {
   SettingOutlined,
   SearchOutlined,
 } from '@ant-design/icons';
-import { Link, useHistory, useLocation } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import Avatar from 'antd/lib/avatar/avatar';
 import axios from 'axios';
 import Logo from './Logo';
@@ -27,8 +27,8 @@ const { SubMenu } = Menu;
 function Index({ children }) {
   const [collapsed, setCollapsed] = useState(false);
   const { data, dispatch } = useContext(GlobalContext);
-  const history = useHistory();
-  const { search: urlSearch } = useLocation();
+  const navigate = useNavigate();
+  const { search: urlSearch, pathname } = useLocation();
   const [isHide, setIsHide] = useState(false);
 
   const [search, setSearch] = useState({
@@ -44,7 +44,7 @@ function Index({ children }) {
   const onCollapse = (collapsedData) => {
     setCollapsed(collapsedData);
   };
-  const secondURL = history.location.pathname.split('/')[2];
+  const secondURL = pathname.split('/')[2];
   useEffect(() => {
     if (secondURL === 'addCategory' || secondURL === 'addService')
       setIsHide(true);
@@ -220,7 +220,7 @@ function Index({ children }) {
                   type='primary'
                   className='mainSearchButton'
                   onClick={() => {
-                    history.push(
+                    navigate(
                       `/home-services/allServices${setUrlString(search)}`,
                     );
                     dispatch({ type: 'SET_SEARCH_PARAMS', payload: search });

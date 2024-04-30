@@ -8,5 +8,4 @@ config.NODE_ENV = process.env.NODE_ENV;
 config.DB_STRING = isDevelopment ? '<YOUR_DB_STRING>' : process.env.DB_STRING;
 config.SECREATE = isDevelopment ? 'development' : process.env.SECREATE;
 
-console.log(config, 'config');
 module.exports = { config };

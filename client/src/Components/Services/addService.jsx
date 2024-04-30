@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Input, Button, Select, Row, Col, Collapse, notification } from 'antd';
 import axios from 'axios';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import API from '../../api';
 
@@ -10,7 +10,7 @@ const { Option } = Select;
 
 export default function AddServices() {
   const [field, setField] = useState({});
-  const history = useHistory();
+  const navigate = useNavigate();
   const [loader, setLoader] = useState(false);
 
   const [categoryOption, setCategoryOption] = useState([]);
@@ -122,7 +122,7 @@ export default function AddServices() {
             heading: 'Success',
             type: 'success',
           });
-          history.push(
+          navigate(
             '/home-services/allServices?category=all&state=all&city=&name=',
           );
         } else {
@@ -367,7 +367,7 @@ export default function AddServices() {
       >
         <Button
           onClick={() =>
-            history.push(
+            navigate(
               '/home-services/allServices?category=all&state=all&city=&name=',
             )
           }

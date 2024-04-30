@@ -1,12 +1,16 @@
-import React, { lazy, Suspense } from 'react';
+import React, { lazy, Suspense, useContext } from 'react';
 import {
   Route,
-  Switch,
+  Routes,
   BrowserRouter as Router,
-  Redirect,
+  Navigate,
+  redirect,
+  Outlet,
 } from 'react-router-dom';
-import Layout from './Layout';
 import Spinner from './Components/Spinner';
+import { GlobalContext } from './Context/GlobalContext';
+import { getauth } from './utils/auth';
+import Layout from './Layout';
 
 const routes = [
   {
@@ -77,8 +81,8 @@ const routes = [
   {
     path: 'charts/state/:stateId',
     exact: true,
-    Component: lazy(() =>
-      import('./Components/Charts/State/CollegeChartTable'),
+    Component: lazy(
+      () => import('./Components/Charts/State/CollegeChartTable'),
     ),
   },
   {
@@ -98,30 +102,63 @@ const routes = [
   },
 ];
 
-class Routers extends React.PureComponent {
-  render() {
-    const {
-      match: { url },
-    } = this.props;
-    return (
-      <Router>
-        <Layout>
-          <Suspense fallback={<Spinner />}>
-            <Switch render={({ children }) => ({ children })}>
-              <Route exact path='/' render={() => <Redirect to='/signin' />} />
-              {routes.map(({ path, Component, exact }) => {
-                return (
-                  <Route path={`${url}/${path}`} key={path} exact={exact}>
-                    <Component />
-                  </Route>
-                );
-              })}
-            </Switch>
-          </Suspense>
-        </Layout>
-      </Router>
-    );
-  }
-}
+const PrivateRoutes = ({ isLoggedIn }) =>
+  isLoggedIn ? <Outlet /> : <Navigate to='/signin' replace />;
 
-export default Routers;
+const PublicRoutes = () => {
+  const { data } = useContext(GlobalContext);
+
+  const auth = getauth();
+
+  const isLoggedIn = data.isLoggedIn || !auth;
+
+  return (
+    <Router>
+      <Suspense fallback={<Spinner />}>
+        <Routes>
+          <Route
+            path='/'
+            Component={lazy(() => import('./Components/Signin'))}
+          />
+          <Route
+            path='/signin'
+            Component={lazy(() => import('./Components/Signin'))}
+          />
+          <Route
+            path='/signup'
+            Component={lazy(() => import('./Components/Signup'))}
+          />
+          <Route
+            path='/verifyOtp'
+            Component={lazy(() => import('./Components/VerifyOtp'))}
+          />
+          <Route
+            path='/changePassword/:email'
+            Component={lazy(() => import('./Components/ChangePassword'))}
+          />
+          <Route
+            path='/forgot-password'
+            Component={lazy(() => import('./Components/ForgotPassword'))}
+          />
+          <Route element={<PrivateRoutes isLoggedIn={isLoggedIn} />}>
+            <Route exact path='/' render={() => redirect('/signin')} />
+            {routes.map(({ path, Component, exact }) => (
+              <Route
+                path={`home-services/${path}`}
+                key={path}
+                exact={exact}
+                element={
+                  <Layout>
+                    <Component />
+                  </Layout>
+                }
+              ></Route>
+            ))}
+          </Route>
+        </Routes>
+      </Suspense>
+    </Router>
+  );
+};
+
+export default PublicRoutes;

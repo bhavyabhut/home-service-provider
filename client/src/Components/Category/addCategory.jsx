@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Upload, Button, Input, notification } from 'antd';
 import { PlusOutlined } from '@ant-design/icons';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import API from '../../api';
 
@@ -22,7 +22,7 @@ export default function AddCategory() {
   const [fieldData, setFieldData] = useState({ name: '', description: '' });
   const [file, setFile] = useState();
   const [url, setUrl] = useState();
-  const history = useHistory();
+  const navigate = useNavigate();
   const [state, setState] = useState({
     loader: false,
     error: false,
@@ -64,7 +64,7 @@ export default function AddCategory() {
       .post(API.addCategory, formData)
       .then((res) => {
         if (res.data.success) {
-          history.push(
+          navigate(
             '/home-services/allCategories?category=all&state=all&city=&name=',
           );
         }
@@ -144,7 +144,7 @@ export default function AddCategory() {
 
       <Button
         onClick={() =>
-          history.push(
+          navigate.push(
             '/home-services/allCategories?category=all&state=all&city=&name=',
           )
         }

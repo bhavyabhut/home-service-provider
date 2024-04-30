@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { Button, Input, Form, Switch, Divider, notification } from 'antd';
-import { Link, useHistory, useLocation, useParams } from 'react-router-dom';
+import { Button, Input, Form, Divider, notification, Checkbox } from 'antd';
+import { Link, useNavigate } from 'react-router-dom';
 import {
   EyeInvisibleOutlined,
   EyeTwoTone,
-  UnlockOutlined,
+  GoogleOutlined,
+  FacebookOutlined,
 } from '@ant-design/icons';
 import axios from 'axios';
 import Logo from '../../Layout/Logo';
@@ -12,7 +13,6 @@ import API from '../../api';
 
 function SignUp() {
   const [form] = Form.useForm();
-
   const [isMerchant, setIsMerchant] = useState(false);
   const [state, setState] = useState({
     loader: false,
@@ -20,7 +20,7 @@ function SignUp() {
     message: 'Please provide valid details',
     type: 'error',
   });
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const registration = () => {
     setState({ ...state, loader: true });
@@ -37,7 +37,7 @@ function SignUp() {
             type: 'success',
             error: true,
           });
-          history.push('/signin');
+          navigate('/signin');
         } else {
           setState({ ...state, error: true, loader: false });
         }
@@ -56,120 +56,109 @@ function SignUp() {
       setState({ ...state, error: false });
     }
   }, [state.error, state.message, state.type]);
+
   return (
-    <div className='signin'>
-      <div className='signin-form'>
-        <div
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-            position: 'relative',
-            right: '1rem',
-          }}
-        >
-          <Logo /> <h1 className='title'>HomeServices</h1>
+    <div className='flex min-h-screen justify-center items-center bg-gray-100'>
+      <div className='w-full max-w-xl p-8 bg-white rounded-lg shadow-lg text-center'>
+        <div className='flex align-middle justify-center items-center'>
+          <Logo />
         </div>
-        <h2 className='welcomeBack'>Welcome to HomeServices</h2>
-        <p className='loginIntoAccount'>Please register your account</p>
-        <div>
-          <Form form={form} layout='vertical'>
-            <Form.Item label='Username' name='name'>
-              <Input placeholder='john doe' />
-            </Form.Item>
-            <Form.Item label='Email' name='email'>
-              <Input placeholder='johndoe@gmail.com' />
-            </Form.Item>
-            <Form.Item label='Password' name='password'>
-              <Input.Password
-                placeholder='Password'
-                iconRender={(visible) =>
-                  visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />
-                }
-              />
-            </Form.Item>
-            <Form.Item label='Confirm password'>
-              <Input.Password
-                placeholder='Password'
-                iconRender={(visible) =>
-                  visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />
-                }
-              />
-            </Form.Item>
-            <div
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'space-between',
-                marginBottom: '1.5rem',
-                marginTop: '2rem',
-              }}
-            >
-              <div>
-                <Switch
-                  onChange={(e) => {
-                    setIsMerchant(e);
-                  }}
-                />
-                <span className='remeberMe'>Merchant/Owner/Worker</span>
-              </div>
-            </div>
-            <Form.Item style={{ width: '100%' }}>
-              <Button
-                type='primary'
-                shape='round'
-                icon={<UnlockOutlined />}
-                style={{
-                  width: '100%',
-                  height: '2.5rem',
-                  backgroundColor: 'rgb(0, 132, 137)',
-                  borderColor: 'rgb(0, 132, 137)',
+        <h1 className='text-3xl font-bold mt-4'>Welcome to HomeServices</h1>
+        <p className='text-lg mt-2'>Please register your account</p>
+        <Form form={form} layout='vertical' className='space-y-4 mt-6'>
+          <Form.Item
+            name='name'
+            label='Username'
+            rules={[{ required: true, message: 'Please enter your username' }]}
+          >
+            <Input placeholder='John Doe' />
+          </Form.Item>
+          <Form.Item
+            name='email'
+            label='Email'
+            rules={[{ required: true, message: 'Please enter your email' }]}
+          >
+            <Input placeholder='johndoe@gmail.com' />
+          </Form.Item>
+          <Form.Item
+            name='password'
+            label='Password'
+            rules={[{ required: true, message: 'Please enter your password' }]}
+          >
+            <Input.Password
+              placeholder='Password'
+              iconRender={(visible) =>
+                visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />
+              }
+            />
+          </Form.Item>
+          <Form.Item
+            name='confirmPassword'
+            label='Confirm password'
+            dependencies={['password']}
+            rules={[
+              {
+                required: true,
+                message: 'Please confirm your password',
+              },
+              ({ getFieldValue }) => ({
+                validator(_, value) {
+                  if (!value || getFieldValue('password') === value) {
+                    return Promise.resolve();
+                  }
+                  return Promise.reject(
+                    new Error('The two passwords do not match'),
+                  );
+                },
+              }),
+            ]}
+          >
+            <Input.Password
+              placeholder='Confirm Password'
+              iconRender={(visible) =>
+                visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />
+              }
+            />
+          </Form.Item>
+          <div className='flex justify-between items-center'>
+            <div>
+              <Checkbox
+                onChange={(e) => {
+                  setIsMerchant(e.target.checked);
                 }}
-                loading={state.loader}
-                onClick={registration}
               >
-                Registration
-              </Button>
-            </Form.Item>
-          </Form>
-          <Divider>Or Register Up With</Divider>
-          <div
-            style={{
-              display: 'grid',
-              gridTemplateColumns: '1fr 1fr',
-              columnGap: '1rem',
-              rowGap: '1rem',
-            }}
-          >
-            <Button type='primary'>Facebook</Button>
-            <Button style={{ backgroundColor: 'red' }} type='primary'>
-              Instagram
-            </Button>
-            <Button style={{ backgroundColor: 'red' }} type='primary'>
-              Google
-            </Button>
-            <Button type='primary'>Github</Button>
+                Merchant/Owner/Worker
+              </Checkbox>
+            </div>
           </div>
-          <p
-            style={{
-              textAlign: 'center',
-              margin: '1.5rem 0',
-              fontSize: '1rem',
-              fontWeight: '700',
-              color: 'rgb(119, 119, 119)',
-              fontFamily: 'Loto',
-            }}
+          <Button
+            htmlType='submit'
+            type='primary'
+            size='large'
+            block
+            loading={state.loader}
+            onClick={registration}
+            className='bg-teal-500 hover:bg-teal-700 text-white font-bold py-2 px-4 rounded'
           >
-            Already Have an Account!
-            <Link
-              style={{ color: 'rgb(0, 132, 137)', marginLeft: '0.5rem' }}
-              to='/signin'
-            >
-              Login
-            </Link>
-          </p>
+            {state.loader ? 'Registering...' : 'Registration'}
+          </Button>
+        </Form>
+        <Divider className='mt-8'>Or Register Up With</Divider>
+        <div className='flex justify-center space-x-4'>
+          <Button type='default' size='large' icon={<GoogleOutlined />}>
+            Google
+          </Button>
+          <Button type='default' size='large' icon={<FacebookOutlined />}>
+            Facebook
+          </Button>
         </div>
+        <p className='text-lg mt-8'>
+          Already Have an Account?{' '}
+          <Link className='text-blue-400' to='/signin'>
+            Login
+          </Link>
+        </p>
       </div>
-      <div className='signin-image-div' />
     </div>
   );
 }
