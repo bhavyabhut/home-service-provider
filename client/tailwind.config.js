@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 /** @type {import('tailwindcss').Config} */
 
 // Custom color with css variable color in __theme_color.scss
@@ -71,7 +72,6 @@ module.exports = {
   },
   plugins: [
     require('@tailwindcss/typography'),
-    // require('@tailwindcss/forms'),
     require('@tailwindcss/aspect-ratio'),
   ],
 };
