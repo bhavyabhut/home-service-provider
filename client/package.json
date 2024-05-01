@@ -61,6 +61,7 @@
     "npm": "10.2.4"
   },
   "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "@eslint/eslintrc": "^3.0.2",
     "@eslint/js": "^9.1.1",
     "eslint": "^8.57.0",
