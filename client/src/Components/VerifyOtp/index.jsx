@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Button, Input, Form, notification } from 'antd';
-import { Link, useHistory } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { UnlockOutlined } from '@ant-design/icons';
 import axios from 'axios';
 import Logo from '../../Layout/Logo';
@@ -8,7 +8,7 @@ import API from '../../api';
 
 function SignIn() {
   const [loading, setLoading] = useState(false);
-  const history = useHistory();
+  const navigate = useNavigate();
   const [counter, setCounter] = React.useState(60);
 
   const [form] = Form.useForm();
@@ -26,7 +26,7 @@ function SignIn() {
           });
 
           setLoading(false);
-          history.push(`/changePassword/${res.data.data.email}`);
+          navigate(`/changePassword/${res.data.data.email}`);
         } else {
           notification.open({
             message: res.data.message,

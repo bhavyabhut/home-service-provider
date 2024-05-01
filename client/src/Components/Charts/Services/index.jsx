@@ -1,17 +1,16 @@
 import React, { useEffect, useState } from 'react';
-import { Cell, Legend, Pie, PieChart, Tooltip } from 'recharts';
-import { useHistory } from 'react-router-dom';
+import { PieChart, Pie, Cell, Tooltip, Legend } from 'recharts';
+import { Spin } from 'antd';
 import axios from 'axios';
-import Spinner from '../../Spinner';
+import { useNavigate } from 'react-router-dom';
 import { CHART_COLORS } from '../../../config/consts';
 import API from '../../../api';
 
-const renderCustomizedLabel = ({ percent }) => `${(percent * 100).toFixed(0)}%`;
-
-function ChartState() {
+const ChartState = () => {
   const [collegeData, setCollegeData] = useState([]);
   const [loading, setLoading] = useState(false);
-  const history = useHistory();
+  const navigate = useNavigate();
+
   useEffect(() => {
     setLoading(true);
     axios.get(API.servicesChart).then((res) => {
@@ -19,7 +18,7 @@ function ChartState() {
         setCollegeData(
           res.data.data.map((data) => ({
             name: data.name,
-            value: data.count,
+            count: data.count,
             id: data.id,
           })),
         );
@@ -29,42 +28,47 @@ function ChartState() {
   }, []);
 
   return (
-    <>
-      {loading ? (
-        <Spinner />
-      ) : (
-        <PieChart width={450} height={450}>
-          <Pie
-            data={collegeData}
-            cx={210}
-            cy={210}
-            labelLine
-            label={renderCustomizedLabel}
-            outerRadius={150}
-            fill='#8884d8'
-            dataKey='count'
-            // nameKey="name"
-          >
-            {collegeData.map((entry, index) => (
-              <Cell
-                style={{ cursor: 'pointer' }}
-                key={`cell-${index}`}
-                fill={CHART_COLORS[index % CHART_COLORS.length]}
-                onClick={() =>
-                  history.push(
-                    `/home-services/allServices?category=all&state=all&city=${entry.name}&name=`,
-                  )
-                }
-              />
-            ))}
-          </Pie>
-
-          <Tooltip />
-          <Legend />
-        </PieChart>
-      )}
-    </>
+    <div className='h-screen flex flex-col items-center justify-center bg-gray-100'>
+      <div className='max-w-screen-md w-full h-full flex items-start justify-center'>
+        {loading ? (
+          <Spin />
+        ) : (
+          <PieChart width={400} height={400}>
+            <Pie
+              data={collegeData}
+              cx={200}
+              cy={200}
+              labelLine={true}
+              outerRadius={150}
+              fill='#8884d8'
+              dataKey='count'
+              label={({ percent }) => `${(percent * 100).toFixed(0)}%`}
+            >
+              {collegeData.map((entry, index) => (
+                <Cell
+                  key={`cell-${index}`}
+                  fill={CHART_COLORS[index % CHART_COLORS.length]}
+                  cursor='pointer'
+                  onClick={() =>
+                    navigate(
+                      `/home-services/allServices?category=all&state=all&city=${entry.name}&name=`,
+                    )
+                  }
+                />
+              ))}
+            </Pie>
+            <Tooltip />
+            <Legend
+              align='center'
+              layout='horizontal'
+              verticalAlign='bottom'
+              wrapperStyle={{ paddingBottom: '20px' }}
+            />
+          </PieChart>
+        )}
+      </div>
+    </div>
   );
-}
+};
 
 export default ChartState;

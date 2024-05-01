@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { PageHeader, Table } from 'antd';
+import { Table } from 'antd';
 import columns from './columns';
 import API from '../../api';
 
 function College() {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
+
   useEffect(() => {
     setLoading(true);
     fetch(API.colleges).then((data) => {
@@ -15,20 +16,17 @@ function College() {
       });
     });
   }, []);
+
   return (
-    <>
-      {console.log('hi')}
-      <PageHeader title='Colleges' />
-      <Table
-        loading={loading}
-        columns={columns}
-        bordered
-        rowKey={(render) => render._id}
-        dataSource={data}
-        pagination
-        scroll={{ x: 1300 }}
-      />
-    </>
+    <Table
+      loading={loading}
+      columns={columns}
+      bordered
+      rowKey={(render) => render._id}
+      dataSource={data}
+      pagination={{ pageSize: 20 }}
+      scroll={{ x: 1300 }}
+    />
   );
 }
 

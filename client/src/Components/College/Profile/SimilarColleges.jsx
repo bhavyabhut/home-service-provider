@@ -31,7 +31,7 @@ function SimilarCollege({ location, id }) {
       bordered
       rowKey={(render) => render._id}
       dataSource={data}
-      pagination
+      pagination={{ pageSize: 20 }}
       scroll={{ x: 1300 }}
       locale={{
         emptyText: (

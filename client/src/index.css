@@ -1,14 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
 .logo-svg {
@@ -35,10 +39,32 @@ code {
   border-radius: 5px !important;
   background-color: white;
   margin: 0.5rem 0.1rem !important;
-  box-shadow: 0 4px 10px 0 #6c757d6e, 0 0 10px 0 #f8f8f9 !important;
+  box-shadow:
+    0 4px 10px 0 #6c757d6e,
+    0 0 10px 0 #f8f8f9 !important;
   overflow: hidden;
   word-break: break-word;
 }
+.locationCity::placeholder {
+  color: #f0f0f0 !important;
+  opacity: 1 !important; /* Firefox */
+}
+
+.locationCity::-ms-input-placeholder {
+  /* Edge 12 -18 */
+  color: #f0f0f0 !important;
+}
+
+.collapsed {
+  width: 80px; /* Adjust as needed */
+  overflow-x: hidden;
+  transition: width 0.2s ease; /* Add transition for smooth animation */
+}
+
+.recharts-legend-wrapper {
+  position: inherit !important;
+}
+
 .customRow {
   margin: 1rem 0;
 }
@@ -71,7 +97,7 @@ code {
   /* padding-top: 4rem; */
 }
 .signin-image-div {
-  background: url("images/login-page-2.jpg");
+  background: url('images/login-page-2.jpg');
   background-position: center center;
   height: 100vh;
   background-size: cover;
@@ -188,4 +214,74 @@ code {
   background-repeat: no-repeat !important;
   background-size: cover !important;
   background-position: center center !important;
+}
+
+.bg-blueGray-50 {
+  --tw-bg-opacity: 1;
+  background-color: rgba(248, 250, 252, var(--tw-bg-opacity));
+}
+
+.bg-blueGray-100 {
+  --tw-bg-opacity: 1;
+  background-color: rgba(241, 245, 249, var(--tw-bg-opacity));
+}
+
+.bg-blueGray-200 {
+  --tw-bg-opacity: 1;
+  background-color: rgba(226, 232, 240, var(--tw-bg-opacity));
+}
+
+.bg-blueGray-600 {
+  --tw-bg-opacity: 1;
+  background-color: rgba(71, 85, 105, var(--tw-bg-opacity));
+}
+
+.bg-blueGray-700 {
+  --tw-bg-opacity: 1;
+  background-color: rgba(51, 65, 85, var(--tw-bg-opacity));
+}
+
+.bg-blueGray-800 {
+  --tw-bg-opacity: 1;
+  background-color: rgba(30, 41, 59, var(--tw-bg-opacity));
+}
+
+.active\:bg-blueGray-50:active {
+  --tw-bg-opacity: 1;
+  background-color: rgba(248, 250, 252, var(--tw-bg-opacity));
+}
+
+.active\:bg-blueGray-600:active {
+  --tw-bg-opacity: 1;
+  background-color: rgba(71, 85, 105, var(--tw-bg-opacity));
+}
+
+.border-blueGray-50 {
+  --tw-border-opacity: 1;
+  border-color: rgba(248, 250, 252, var(--tw-border-opacity));
+}
+
+.border-blueGray-100 {
+  --tw-border-opacity: 1;
+  border-color: rgba(241, 245, 249, var(--tw-border-opacity));
+}
+
+.border-blueGray-200 {
+  --tw-border-opacity: 1;
+  border-color: rgba(226, 232, 240, var(--tw-border-opacity));
+}
+
+.border-blueGray-300 {
+  --tw-border-opacity: 1;
+  border-color: rgba(203, 213, 225, var(--tw-border-opacity));
+}
+
+.border-blueGray-500 {
+  --tw-border-opacity: 1;
+  border-color: rgba(100, 116, 139, var(--tw-border-opacity));
+}
+
+.border-blueGray-600 {
+  --tw-border-opacity: 1;
+  border-color: rgba(71, 85, 105, var(--tw-border-opacity));
 }

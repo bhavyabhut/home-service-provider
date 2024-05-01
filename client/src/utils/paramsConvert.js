@@ -3,7 +3,7 @@ export const getArrayParams = (urlString) => {
   urlString
     .slice(1)
     .split('&')
-    .forEach((data) => {
+    ?.forEach((data) => {
       final = { ...final, [data.split('=')[0]]: data.split('=')[1] };
     });
   return final;

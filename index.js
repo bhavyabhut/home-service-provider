@@ -20,7 +20,9 @@ app.use(express.json());
 const corsOptions = {
   exposedHeaders: 'auth',
 };
+
 app.use(cors(corsOptions));
+
 // router
 app.use(`${API_VERSION}/categoryImages/:id`, (req, res) => {
   res.sendFile(path.join(__dirname, `categoryImages/${req.params.id}.png`));
@@ -48,10 +50,7 @@ if (NODE_ENV === 'production') {
 //database connection
 try {
   if (DB_STRING !== '<YOUR_DB_STRING>') {
-    mongoose.connect(DB_STRING, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    });
+    mongoose.connect(DB_STRING);
     const db = mongoose.connection;
     console.log(process.env.NODE_ENV);
     db.on('error', console.error.bind(console, 'connection error:'));

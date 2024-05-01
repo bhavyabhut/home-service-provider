@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Input, Button, Select, Row, Col, Collapse, notification } from 'antd';
 import axios from 'axios';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import API from '../../api';
 
@@ -10,7 +10,7 @@ const { Option } = Select;
 
 export default function AddServices() {
   const [field, setField] = useState({});
-  const history = useHistory();
+  const navigate = useNavigate();
   const [loader, setLoader] = useState(false);
 
   const [categoryOption, setCategoryOption] = useState([]);
@@ -23,9 +23,11 @@ export default function AddServices() {
     heading: '',
     type: 'error',
   });
+
   const validationError = (message) => {
     setState({ error: true, message, heading: 'Validation Error' });
   };
+
   useEffect(() => {
     if (state.error) {
       notification.open({
@@ -38,37 +40,18 @@ export default function AddServices() {
   }, [state.error]);
 
   const submitData = () => {
-    if (!field.name) {
-      validationError('Please enter name');
-      return;
-    }
-    if (!field.type) {
-      validationError('Please select category');
-      return;
-    }
-    if (!field.experiance) {
-      validationError('Please enter experiance');
-      return;
-    }
-    if (!field.description) {
-      validationError('Please enter description');
-      return;
-    }
-    if (!field.street1) {
-      validationError('Please enter address line 1');
-      return;
-    }
-
-    if (!field.country) {
-      validationError('Please select country');
-      return;
-    }
-    if (!field.state) {
-      validationError('Please select state');
-      return;
-    }
-    if (!field.city) {
-      validationError('Please select city');
+    if (
+      !field.name ||
+      !field.type ||
+      !field.experiance ||
+      !field.description ||
+      !field.street1 ||
+      !field.country ||
+      !field.state ||
+      !field.city ||
+      !field.zipcode
+    ) {
+      validationError('Please fill in all required fields');
       return;
     }
     setLoader(true);
@@ -89,28 +72,29 @@ export default function AddServices() {
     const categoryObj = categoryOption.filter((c) => c.id === type)[0];
     const stateObj = stateOption.filter((c) => c.id === state)[0];
 
-    const data = {};
-    data.name = name;
-    data.tag = tag.split(',');
-    data.experiance = experiance;
-    data.type = type;
-    data.description = description;
-    data.service_id = name + type + experiance;
-    data.address = name + street1 + city + experiance;
-    data.customers_served = (+city * 12).toString();
-    data.addressObj = {
-      id: name + street1 + city + experiance,
-      street1,
-      street2,
-      country,
-      state,
-      city,
-      zipcode,
-      newCountry: { country: 'India', calling_code: '91' },
-      newCity: cityObj,
-      newState: stateObj,
+    const data = {
+      name,
+      tag: tag.split(','),
+      experiance,
+      type,
+      description,
+      service_id: name + type + experiance,
+      address: name + street1 + city + experiance,
+      customers_served: (+city * 12).toString(),
+      addressObj: {
+        id: name + street1 + city + experiance,
+        street1,
+        street2,
+        country,
+        state,
+        city,
+        zipcode,
+        newCountry: { country: 'India', calling_code: '91' },
+        newCity: cityObj,
+        newState: stateObj,
+      },
+      typeObj: categoryObj,
     };
-    data.typeObj = categoryObj;
 
     axios
       .post(API.addService, data)
@@ -122,14 +106,14 @@ export default function AddServices() {
             heading: 'Success',
             type: 'success',
           });
-          history.push(
+          navigate(
             '/home-services/allServices?category=all&state=all&city=&name=',
           );
         } else {
           setState({
             error: true,
             message: 'Server Error !!',
-            heading: 'Opps',
+            heading: 'Oops',
             type: 'error',
           });
         }
@@ -139,13 +123,14 @@ export default function AddServices() {
         setState({
           error: true,
           message: 'Server Error !!',
-          heading: 'Opps',
+          heading: 'Oops',
           type: 'error',
         });
         console.log(e);
         setLoader(false);
       });
   };
+
   const setFieldFn = (name, value) => {
     setField({ ...field, [name]: value });
   };
@@ -176,208 +161,196 @@ export default function AddServices() {
       })
       .catch((e) => console.log(e));
   }, []);
+
   return (
-    <div>
-      <Collapse bordered={false} defaultActiveKey='1'>
-        <Panel
-          style={{ fontWeight: 'bold' }}
-          header='Service/Shop information'
-          key='1'
-        >
-          <Row gutter={24}>
-            <Col span='10' offset='1'>
-              <div style={{ marginBottom: '1rem' }}>
-                <div style={{ paddingBottom: '0.5rem', fontWeight: 'bold' }}>
-                  Service/Shop Name: *
+    <div className='w-[100%] h-[80vh] flex items-start justify-center mt-8'>
+      <div className='w-[50%] p-8 bg-white rounded-lg shadow-lg'>
+        <Collapse defaultActiveKey={['1', '2']} bordered={false}>
+          <Panel header='Service/Shop Information' key='1'>
+            <Row gutter={24}>
+              <Col span={10} offset={1}>
+                <div style={{ marginBottom: '1rem' }}>
+                  <div style={{ paddingBottom: '0.5rem', fontWeight: 'bold' }}>
+                    Service/Shop Name: *
+                  </div>
+                  <Input
+                    value={field.name}
+                    onChange={(e) => setFieldFn('name', e.target.value)}
+                    placeholder='Service/Shop Name'
+                  />
                 </div>
-                <Input
-                  value={field.name}
-                  onChange={(e) => setFieldFn('name', e.target.value)}
-                  placeholder='Service/Shop Name'
-                />
-              </div>
-            </Col>
-            <Col span='10' offset='1'>
-              <div style={{ marginBottom: '1rem' }}>
-                <div style={{ paddingBottom: '0.5rem', fontWeight: 'bold' }}>
-                  Category/Type: *
-                </div>
-                <Select
-                  value={field.type}
-                  onChange={(e) => {
-                    console.log(e);
-                    setFieldFn('type', e);
-                  }}
-                  placeholder='Select Category/Type'
-                  style={{ width: '100%', fontWeight: 'normal' }}
-                >
-                  {categoryOption.map((c) => (
-                    <Option key={c.id}>{c.name}</Option>
-                  ))}
-                </Select>
-              </div>
-            </Col>
-          </Row>
-          <Row gutter={24}>
-            <Col span='10' offset='1'>
-              <div style={{ marginBottom: '1rem' }}>
-                <div style={{ paddingBottom: '0.5rem', fontWeight: 'bold' }}>
-                  Total experiance: *
-                </div>
-                <Input
-                  value={field.experiance}
-                  onChange={(e) => setFieldFn('experiance', e.target.value)}
-                  placeholder='1 year 6 months'
-                />
-              </div>
-            </Col>
-            <Col span='10' offset='1'>
-              <div style={{ marginBottom: '1rem' }}>
-                <div style={{ paddingBottom: '0.5rem', fontWeight: 'bold' }}>
-                  Tags:
-                </div>
-                <Input
-                  value={field.tag}
-                  onChange={(e) => setFieldFn('tag', e.target.value)}
-                  placeholder='Cheap,Awesome'
-                />
-              </div>
-            </Col>
-          </Row>
-          <Row>
-            <Col offset='1' span='21'>
-              <div style={{ marginBottom: '1rem' }}>
-                <div style={{ paddingBottom: '0.5rem', fontWeight: 'bold' }}>
-                  Description: *
-                </div>
-                <Input.TextArea
-                  value={field.description}
-                  onChange={(e) => setFieldFn('description', e.target.value)}
-                  placeholder='Enter Description'
-                />
-              </div>
-            </Col>
-          </Row>
-        </Panel>
-
-        <Panel style={{ fontWeight: 'bold' }} header='Address ' key='2'>
-          <Row gutter={24}>
-            <Col span='10' offset='1'>
-              <div style={{ marginBottom: '1rem' }}>
-                <div style={{ paddingBottom: '0.5rem', fontWeight: 'bold' }}>
-                  Address Line 1: *
-                </div>
-                <Input
-                  value={field.street1}
-                  onChange={(e) => setFieldFn('street1', e.target.value)}
-                  placeholder='Address Line 1'
-                />
-              </div>
-            </Col>
-            <Col span='10' offset='1'>
-              <div style={{ marginBottom: '1rem' }}>
-                <div style={{ paddingBottom: '0.5rem', fontWeight: 'bold' }}>
-                  Address Line 2:
-                </div>
-                <Input
-                  value={field.street2}
-                  onChange={(e) => setFieldFn('street2', e.target.value)}
-                  placeholder='Address Line 2'
-                />
-              </div>
-            </Col>
-          </Row>
-          <Row gutter={24}>
-            <Col span='10' offset='1'>
-              <div style={{ marginBottom: '1rem' }}>
-                <div style={{ paddingBottom: '0.5rem', fontWeight: 'bold' }}>
-                  Country: *
-                </div>
-                <Select
-                  placeholder='Select Country'
-                  style={{ width: '100%', fontWeight: 'normal' }}
-                  value={field.country}
-                  onChange={(e) => setFieldFn('country', e)}
-                >
-                  <Option key='91'>India</Option>
-                </Select>
-              </div>
-            </Col>
-            <Col span='10' offset='1'>
-              <div style={{ marginBottom: '1rem' }}>
-                <div style={{ paddingBottom: '0.5rem', fontWeight: 'bold' }}>
-                  State: *
-                </div>
-                <Select
-                  placeholder='Select State'
-                  style={{ width: '100%', fontWeight: 'normal' }}
-                  value={field.state}
-                  onChange={(e) => setFieldFn('state', e)}
-                >
-                  {field.country &&
-                    stateOption.map((c) => (
-                      <Option key={c.id}>{c.state}</Option>
+              </Col>
+              <Col span={10} offset={1}>
+                <div style={{ marginBottom: '1rem' }}>
+                  <div style={{ paddingBottom: '0.5rem', fontWeight: 'bold' }}>
+                    Category/Type: *
+                  </div>
+                  <Select
+                    value={field.type}
+                    onChange={(e) => setFieldFn('type', e)}
+                    placeholder='Select Category/Type'
+                    style={{ width: '100%', fontWeight: 'normal' }}
+                  >
+                    {categoryOption.map((c) => (
+                      <Option key={c.id}>{c.name}</Option>
                     ))}
-                </Select>
-              </div>
-            </Col>
-          </Row>
-
-          <Row gutter={24}>
-            <Col span='10' offset='1'>
-              <div style={{ marginBottom: '1rem' }}>
-                <div style={{ paddingBottom: '0.5rem', fontWeight: 'bold' }}>
-                  City: *
+                  </Select>
                 </div>
-                <Select
-                  placeholder='Select City'
-                  style={{ width: '100%', fontWeight: 'normal' }}
-                  value={field.city}
-                  onChange={(e) => setFieldFn('city', e)}
-                >
-                  {field.state &&
-                    cityOption
-                      .filter((c) => c.state === field.state)
-                      .map((c) => <Option key={c.id}>{c.city}</Option>)}
-                </Select>
-              </div>
-            </Col>
-            <Col span='10' offset='1'>
-              <div style={{ marginBottom: '1rem' }}>
-                <div style={{ paddingBottom: '0.5rem', fontWeight: 'bold' }}>
-                  Zip code:
+              </Col>
+            </Row>
+            <Row gutter={24}>
+              <Col span={10} offset={1}>
+                <div style={{ marginBottom: '1rem' }}>
+                  <div style={{ paddingBottom: '0.5rem', fontWeight: 'bold' }}>
+                    Total experience: *
+                  </div>
+                  <Input
+                    value={field.experiance}
+                    onChange={(e) => setFieldFn('experiance', e.target.value)}
+                    placeholder='1 year 6 months'
+                  />
                 </div>
-                <Input
-                  value={field.zipcode}
-                  onChange={(e) => setFieldFn('zipcode', e.target.value)}
-                  placeholder='Zip code'
-                />
-              </div>
-            </Col>
-          </Row>
-        </Panel>
-      </Collapse>
-      <div
-        style={{
-          padding: '1rem',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'flex-end',
-        }}
-      >
-        <Button
-          onClick={() =>
-            history.push(
-              '/home-services/allServices?category=all&state=all&city=&name=',
-            )
-          }
-          style={{ marginRight: '1rem' }}
-        >
-          Cancel
-        </Button>
-        <Button onClick={() => submitData()} type='primary'>
-          Submit
-        </Button>
+              </Col>
+              <Col span={10} offset={1}>
+                <div style={{ marginBottom: '1rem' }}>
+                  <div style={{ paddingBottom: '0.5rem', fontWeight: 'bold' }}>
+                    Tags:
+                  </div>
+                  <Input
+                    value={field.tag}
+                    onChange={(e) => setFieldFn('tag', e.target.value)}
+                    placeholder='Cheap, Awesome'
+                  />
+                </div>
+              </Col>
+            </Row>
+            <Row>
+              <Col offset={1} span={21}>
+                <div style={{ marginBottom: '1rem' }}>
+                  <div style={{ paddingBottom: '0.5rem', fontWeight: 'bold' }}>
+                    Description: *
+                  </div>
+                  <Input.TextArea
+                    value={field.description}
+                    onChange={(e) => setFieldFn('description', e.target.value)}
+                    placeholder='Enter Description'
+                  />
+                </div>
+              </Col>
+            </Row>
+          </Panel>
+          <Panel header='Address' key='2'>
+            <Row gutter={24}>
+              <Col span={10} offset={1}>
+                <div style={{ marginBottom: '1rem' }}>
+                  <div style={{ paddingBottom: '0.5rem', fontWeight: 'bold' }}>
+                    Address Line 1: *
+                  </div>
+                  <Input
+                    value={field.street1}
+                    onChange={(e) => setFieldFn('street1', e.target.value)}
+                    placeholder='Address Line 1'
+                  />
+                </div>
+              </Col>
+              <Col span={10} offset={1}>
+                <div style={{ marginBottom: '1rem' }}>
+                  <div style={{ paddingBottom: '0.5rem', fontWeight: 'bold' }}>
+                    Address Line 2:
+                  </div>
+                  <Input
+                    value={field.street2}
+                    onChange={(e) => setFieldFn('street2', e.target.value)}
+                    placeholder='Address Line 2'
+                  />
+                </div>
+              </Col>
+            </Row>
+            <Row gutter={24}>
+              <Col span={10} offset={1}>
+                <div style={{ marginBottom: '1rem' }}>
+                  <div style={{ paddingBottom: '0.5rem', fontWeight: 'bold' }}>
+                    Country: *
+                  </div>
+                  <Select
+                    value={field.country}
+                    onChange={(e) => setFieldFn('country', e)}
+                    placeholder='Select Country'
+                    style={{ width: '100%', fontWeight: 'normal' }}
+                  >
+                    <Option key='91'>India</Option>
+                  </Select>
+                </div>
+              </Col>
+              <Col span={10} offset={1}>
+                <div style={{ marginBottom: '1rem' }}>
+                  <div style={{ paddingBottom: '0.5rem', fontWeight: 'bold' }}>
+                    State: *
+                  </div>
+                  <Select
+                    value={field.state}
+                    onChange={(e) => setFieldFn('state', e)}
+                    placeholder='Select State'
+                    style={{ width: '100%', fontWeight: 'normal' }}
+                  >
+                    {field.country &&
+                      stateOption.map((c) => (
+                        <Option key={c.id}>{c.state}</Option>
+                      ))}
+                  </Select>
+                </div>
+              </Col>
+            </Row>
+            <Row gutter={24}>
+              <Col span={10} offset={1}>
+                <div style={{ marginBottom: '1rem' }}>
+                  <div style={{ paddingBottom: '0.5rem', fontWeight: 'bold' }}>
+                    City: *
+                  </div>
+                  <Select
+                    value={field.city}
+                    onChange={(e) => setFieldFn('city', e)}
+                    placeholder='Select City'
+                    style={{ width: '100%', fontWeight: 'normal' }}
+                  >
+                    {field.state &&
+                      cityOption
+                        .filter((c) => c.state === field.state)
+                        .map((c) => <Option key={c.id}>{c.city}</Option>)}
+                  </Select>
+                </div>
+              </Col>
+              <Col span={10} offset={1}>
+                <div style={{ marginBottom: '1rem' }}>
+                  <div style={{ paddingBottom: '0.5rem', fontWeight: 'bold' }}>
+                    Zip code:
+                  </div>
+                  <Input
+                    value={field.zipcode}
+                    onChange={(e) => setFieldFn('zipcode', e.target.value)}
+                    placeholder='Zip code'
+                  />
+                </div>
+              </Col>
+            </Row>
+          </Panel>
+        </Collapse>
+        <div className='flex justify-end mt-4'>
+          <Button
+            onClick={() => navigate('/home-services/allServices')}
+            className='mr-2'
+          >
+            Cancel
+          </Button>
+          <Button
+            loading={loader}
+            type='primary'
+            onClick={() => submitData()}
+            className='bg-teal-500 hover:bg-teal-700 text-white font-bold py-2 px-4 rounded flex items-center'
+          >
+            Submit
+          </Button>
+        </div>
       </div>
     </div>
   );

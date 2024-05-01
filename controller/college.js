@@ -59,7 +59,7 @@ exports.getCollegesChart = async (req, res) => {
     let counts = {};
     let data = [];
     const state = colleges.map((dat) => dat.state);
-    state.forEach((el) => (counts[el] = 1 + (counts[el] || 0)));
+    state?.forEach((el) => (counts[el] = 1 + (counts[el] || 0)));
     const keys = Object.keys(counts);
     const values = Object.values(counts);
     data = keys.map((k, i) => ({ name: k, value: values[i] }));
@@ -74,8 +74,8 @@ exports.getCollegesCourseChart = async (req, res) => {
     let data = [];
     let counts = {};
     const colleges = await College.find();
-    Object.keys(course).forEach((key) =>
-      colleges.forEach((college) => {
+    Object.keys(course)?.forEach((key) =>
+      colleges?.forEach((college) => {
         if (college.courses.includes(course[key]))
           counts[course[key]] = 1 + (counts[course[key]] || 0);
       }),

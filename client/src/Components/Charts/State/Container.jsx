@@ -14,6 +14,7 @@ function CustomResponsiveContainer({ children }) {
     window.addEventListener('resize', resizeWindow);
     return () => window.removeEventListener('resize', resizeWindow);
   }, []);
+
   return (
     <>
       {windowHeight >= 616 && windowWidth >= 616 ? (

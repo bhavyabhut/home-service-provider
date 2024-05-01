@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Button, Input, Form, Switch, Divider, notification } from 'antd';
-import { Link, useHistory } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { SendOutlined } from '@ant-design/icons';
 import axios from 'axios';
 import Logo from '../../Layout/Logo';
@@ -8,7 +8,7 @@ import API from '../../api';
 
 function SignIn() {
   const [loading, setLoading] = useState(false);
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const [form] = Form.useForm();
   const sendOtp = () => {
@@ -25,7 +25,7 @@ function SignIn() {
           });
 
           setLoading(false);
-          history.push('/verifyOtp');
+          navigate('/verifyOtp');
         } else {
           notification.open({
             message: res.data.message,

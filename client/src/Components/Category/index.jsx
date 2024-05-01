@@ -1,15 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import { Card } from 'antd';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import API from '../../api';
 import Spinner from '../Spinner';
 
 const { Meta } = Card;
+
 function Cards() {
   const [cards, setCards] = useState([]);
-  const history = useHistory();
+  const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
+
   useEffect(() => {
     setLoading(true);
     axios
@@ -26,41 +28,35 @@ function Cards() {
         setLoading(false);
       });
   }, []);
+
   return (
     <>
+      <h1 className='text-3xl font-semibold mb-6'>All Categories</h1>
+
       {!loading ? (
-        <div
-          style={{
-            display: 'flex',
-            flexWrap: 'wrap',
-            justifyContent: 'space-between',
-          }}
-        >
+        <div className='grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8'>
           {cards.map((card) => (
             <Card
+              className='mb-2'
+              key={card.id}
               onClick={() => {
-                history.push(
-                  `/home-services/allServices?category=${card.id}&state=all&city=&name=`,
-                );
+                navigate(`/home-services/allServices?category=${card.id}`);
               }}
               hoverable
-              style={{ width: 300 }}
               cover={
-                <div
-                  className='CustomCARD'
-                  style={{
-                    background: `url("${API.categoryImage.replace(
-                      ':id',
-                      card.name,
-                    )}")`,
+                <img
+                  src={`${API.categoryImage.replace(':id', card.name)}`}
+                  alt={card.name}
+                  className='w-full h-48 object-cover'
+                  onError={(e) => {
+                    e.target.src = '../../images/default-placeholder.png';
                   }}
-                  alt='example'
                 />
               }
             >
               <Meta
                 title={card.name}
-                description={`Total Services: ${card.count} `}
+                description={`Total Services: ${card.count}`}
               />
             </Card>
           ))}
