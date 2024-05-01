@@ -7,7 +7,7 @@
     "start": "node index.js",
     "start:dev": "nodemon index.js",
     "start:client": "cd client && npm start",
-    "heroku-postbuild": "CI=false NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client",
+    "heroku-postbuild": "CI=false NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client && npm start ",
     "pretty": "prettier --write \"**/*.js\""
   },
   "author": "",
