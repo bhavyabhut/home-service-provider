@@ -14,6 +14,7 @@ import Logo from '../../Layout/Logo';
 import API from '../../api';
 import { getauth, setauth } from '../../utils/auth';
 import { GlobalContext } from '../../Context/GlobalContext';
+import PublicLayout from '../../Layout/PublicLayout';
 
 function SignIn(props) {
   const [form] = Form.useForm();
@@ -104,115 +105,86 @@ function SignIn(props) {
   }, [state.error]);
 
   return (
-    <main>
-      <section className='relative w-full h-full pt-40 min-h-screen'>
-        <div
-          className='absolute top-0 w-full h-full bg-blueGray-800 bg-no-repeat bg-full'
-          style={{
-            backgroundImage:
-              'url(' + require('./../../images/register_bg_2.png') + ')',
-          }}
-        ></div>
-        <div className='container mx-auto px-4 h-full'>
-          <div className='flex content-center items-center justify-center h-full'>
-            <div className='w-full lg:w-[40%] px-4'>
-              <div className='relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-blueGray-200 border-0'>
-                <div className=' p-8 bg-white rounded-lg shadow-lg text-center'>
-                  <div className='flex align-middle justify-center items-center'>
-                    <Logo />
-                  </div>
-                  <h1 className='text-3xl font-bold mt-4'>
-                    Welcome back to HomeServices
-                  </h1>
-                  <p className='text-lg mt-2'>Please log into your account</p>
-                  <Form
-                    onFinish={login}
-                    form={form}
-                    layout='vertical'
-                    className='space-y-4 mt-6'
-                  >
-                    <Form.Item
-                      name='email'
-                      rules={[
-                        {
-                          required: true,
-                          message: 'Please enter your email',
-                        },
-                      ]}
-                    >
-                      <Input
-                        prefix={<UserOutlined />}
-                        placeholder='Email'
-                        size='large'
-                      />
-                    </Form.Item>
-                    <Form.Item
-                      name='password'
-                      rules={[
-                        {
-                          required: true,
-                          message: 'Please enter your password',
-                        },
-                      ]}
-                    >
-                      <Input.Password
-                        prefix={<LockOutlined />}
-                        placeholder='Password'
-                        size='large'
-                        iconRender={(visible) =>
-                          visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />
-                        }
-                      />
-                    </Form.Item>
-                    <div className='flex justify-between items-center'>
-                      <Form.Item name='remember' valuePropName='checked'>
-                        <Checkbox>Remember me</Checkbox>
-                      </Form.Item>
-                      <Link to='/forgot-password' className='text-blue-400'>
-                        Forgot Password?
-                      </Link>
-                    </div>
-                    <Button
-                      htmlType='submit'
-                      type='primary'
-                      size='large'
-                      block
-                      loading={state.loader}
-                      className='bg-teal-500 hover:bg-teal-700 text-white font-bold py-2 px-4 rounded'
-                    >
-                      {state.loader ? 'Logging in...' : 'Login'}
-                    </Button>
-                  </Form>
-                  <Divider className='mt-8'>Or login with</Divider>
-                  <div className='flex justify-center space-x-4'>
-                    <Button
-                      type='default'
-                      size='large'
-                      icon={<GoogleOutlined />}
-                    >
-                      Google
-                    </Button>
-                    <Button
-                      type='default'
-                      size='large'
-                      icon={<FacebookOutlined />}
-                    >
-                      Facebook
-                    </Button>
-                  </div>
-                  <p className='text-lg mt-8'>
-                    Don't Have an Account?{' '}
-                    <Link className='text-blue-400' to='/signup'>
-                      Register now
-                    </Link>
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
+    <PublicLayout>
+      <div className=' p-8 bg-white rounded-lg shadow-lg text-center'>
+        <div className='flex align-middle justify-center items-center'>
+          <Logo />
         </div>
-      </section>
-    </main>
+        <h1 className='text-3xl font-bold mt-4'>
+          Welcome back to HomeServices
+        </h1>
+        <p className='text-lg mt-2'>Please log into your account</p>
+        <Form
+          onFinish={login}
+          form={form}
+          layout='vertical'
+          className='space-y-4 mt-6'
+        >
+          <Form.Item
+            name='email'
+            rules={[
+              {
+                required: true,
+                message: 'Please enter your email',
+              },
+            ]}
+          >
+            <Input prefix={<UserOutlined />} placeholder='Email' size='large' />
+          </Form.Item>
+          <Form.Item
+            name='password'
+            rules={[
+              {
+                required: true,
+                message: 'Please enter your password',
+              },
+            ]}
+          >
+            <Input.Password
+              prefix={<LockOutlined />}
+              placeholder='Password'
+              size='large'
+              iconRender={(visible) =>
+                visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />
+              }
+            />
+          </Form.Item>
+          <div className='flex justify-between items-center'>
+            <Form.Item name='remember' valuePropName='checked'>
+              <Checkbox>Remember me</Checkbox>
+            </Form.Item>
+            <Link to='/forgot-password' className='text-blue-400'>
+              Forgot Password?
+            </Link>
+          </div>
+          <Button
+            htmlType='submit'
+            type='primary'
+            size='large'
+            block
+            loading={state.loader}
+            className='bg-teal-500 hover:bg-teal-700 text-white font-bold py-2 px-4 rounded'
+          >
+            {state.loader ? 'Logging in...' : 'Login'}
+          </Button>
+        </Form>
+        <Divider className='mt-8'>Or login with</Divider>
+        <div className='flex justify-center space-x-4'>
+          <Button type='default' size='large' icon={<GoogleOutlined />}>
+            Google
+          </Button>
+          <Button type='default' size='large' icon={<FacebookOutlined />}>
+            Facebook
+          </Button>
+        </div>
+        <p className='text-lg mt-8'>
+          Don't Have an Account?{' '}
+          <Link className='text-blue-400' to='/signup'>
+            Register now
+          </Link>
+        </p>
+      </div>
+    </PublicLayout>
   );
 }
 

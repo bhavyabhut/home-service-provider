@@ -8,8 +8,10 @@ import {
   FacebookOutlined,
 } from '@ant-design/icons';
 import axios from 'axios';
+
 import Logo from '../../Layout/Logo';
 import API from '../../api';
+import PublicLayout from '../../Layout/PublicLayout';
 
 function SignUp() {
   const [form] = Form.useForm();
@@ -58,151 +60,118 @@ function SignUp() {
   }, [state.error, state.message, state.type]);
 
   return (
-    <main>
-      <section className='relative w-full h-full pt-12 min-h-screen'>
-        <div
-          className='absolute top-0 w-full h-full bg-blueGray-800 bg-no-repeat bg-full'
-          style={{
-            backgroundImage:
-              'url(' + require('./../../images/register_bg_2.png') + ')',
-          }}
-        ></div>
-        <div className='container mx-auto px-4 h-full'>
-          <div className='flex content-center items-center justify-center h-full'>
-            <div className='w-full lg:w-[40%] px-4'>
-              <div className='relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-blueGray-200 border-0'>
-                <div className='w-full  p-8 bg-white rounded-lg shadow-lg text-center'>
-                  <div className='flex align-middle justify-center items-center'>
-                    <Logo />
-                  </div>
-                  <h1 className='text-3xl font-bold mt-4'>
-                    Welcome to HomeServices
-                  </h1>
-                  <p className='text-lg mt-2'>Please register your account</p>
-                  <Form
-                    form={form}
-                    layout='vertical'
-                    className='space-y-4 mt-6'
-                  >
-                    <Form.Item
-                      name='name'
-                      label='Username'
-                      rules={[
-                        {
-                          required: true,
-                          message: 'Please enter your username',
-                        },
-                      ]}
-                    >
-                      <Input placeholder='John Doe' />
-                    </Form.Item>
-                    <Form.Item
-                      name='email'
-                      label='Email'
-                      rules={[
-                        { required: true, message: 'Please enter your email' },
-                      ]}
-                    >
-                      <Input placeholder='johndoe@gmail.com' />
-                    </Form.Item>
-                    <Form.Item
-                      name='password'
-                      label='Password'
-                      rules={[
-                        {
-                          required: true,
-                          message: 'Please enter your password',
-                        },
-                      ]}
-                    >
-                      <Input.Password
-                        placeholder='Password'
-                        iconRender={(visible) =>
-                          visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />
-                        }
-                      />
-                    </Form.Item>
-                    <Form.Item
-                      name='confirmPassword'
-                      label='Confirm password'
-                      dependencies={['password']}
-                      rules={[
-                        {
-                          required: true,
-                          message: 'Please confirm your password',
-                        },
-                        ({ getFieldValue }) => ({
-                          validator(_, value) {
-                            if (!value || getFieldValue('password') === value) {
-                              return Promise.resolve();
-                            }
-                            return Promise.reject(
-                              new Error('The two passwords do not match'),
-                            );
-                          },
-                        }),
-                      ]}
-                    >
-                      <Input.Password
-                        placeholder='Confirm Password'
-                        iconRender={(visible) =>
-                          visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />
-                        }
-                      />
-                    </Form.Item>
-                    <div className='flex justify-between items-center'>
-                      <div>
-                        <Checkbox
-                          onChange={(e) => {
-                            setIsMerchant(e.target.checked);
-                          }}
-                        >
-                          Merchant/Owner/Worker
-                        </Checkbox>
-                      </div>
-                    </div>
-                    <Button
-                      htmlType='submit'
-                      type='primary'
-                      size='large'
-                      block
-                      loading={state.loader}
-                      onClick={registration}
-                      className='bg-teal-500 hover:bg-teal-700 text-white font-bold py-2 px-4 rounded'
-                    >
-                      {state.loader ? 'Registering...' : 'Registration'}
-                    </Button>
-                  </Form>
-                  <Divider className='mt-8'>Or Register Up With</Divider>
-                  <div className='flex justify-center space-x-4'>
-                    <Button
-                      type='default'
-                      size='large'
-                      icon={<GoogleOutlined />}
-                    >
-                      Google
-                    </Button>
-                    <Button
-                      type='default'
-                      size='large'
-                      icon={<FacebookOutlined />}
-                    >
-                      Facebook
-                    </Button>
-                  </div>
-                  <p className='text-lg mt-8'>
-                    Already Have an Account?{' '}
-                    <Link className='text-blue-400' to='/signin'>
-                      Login
-                    </Link>
-                  </p>
-                </div>
-              </div>
+    <PublicLayout>
+      <div className='w-full  p-8 bg-white rounded-lg shadow-lg text-center'>
+        <div className='flex align-middle justify-center items-center'>
+          <Logo />
+        </div>
+        <h1 className='text-3xl font-bold mt-4'>Welcome to HomeServices</h1>
+        <p className='text-lg mt-2'>Please register your account</p>
+        <Form form={form} layout='vertical' className='space-y-4 mt-6'>
+          <Form.Item
+            name='name'
+            label='Username'
+            rules={[
+              {
+                required: true,
+                message: 'Please enter your username',
+              },
+            ]}
+          >
+            <Input placeholder='John Doe' />
+          </Form.Item>
+          <Form.Item
+            name='email'
+            label='Email'
+            rules={[{ required: true, message: 'Please enter your email' }]}
+          >
+            <Input placeholder='johndoe@gmail.com' />
+          </Form.Item>
+          <Form.Item
+            name='password'
+            label='Password'
+            rules={[
+              {
+                required: true,
+                message: 'Please enter your password',
+              },
+            ]}
+          >
+            <Input.Password
+              placeholder='Password'
+              iconRender={(visible) =>
+                visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />
+              }
+            />
+          </Form.Item>
+          <Form.Item
+            name='confirmPassword'
+            label='Confirm password'
+            dependencies={['password']}
+            rules={[
+              {
+                required: true,
+                message: 'Please confirm your password',
+              },
+              ({ getFieldValue }) => ({
+                validator(_, value) {
+                  if (!value || getFieldValue('password') === value) {
+                    return Promise.resolve();
+                  }
+                  return Promise.reject(
+                    new Error('The two passwords do not match'),
+                  );
+                },
+              }),
+            ]}
+          >
+            <Input.Password
+              placeholder='Confirm Password'
+              iconRender={(visible) =>
+                visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />
+              }
+            />
+          </Form.Item>
+          <div className='flex justify-between items-center'>
+            <div>
+              <Checkbox
+                onChange={(e) => {
+                  setIsMerchant(e.target.checked);
+                }}
+              >
+                Merchant/Owner/Worker
+              </Checkbox>
             </div>
           </div>
+          <Button
+            htmlType='submit'
+            type='primary'
+            size='large'
+            block
+            loading={state.loader}
+            onClick={registration}
+            className='bg-teal-500 hover:bg-teal-700 text-white font-bold py-2 px-4 rounded'
+          >
+            {state.loader ? 'Registering...' : 'Registration'}
+          </Button>
+        </Form>
+        <Divider className='mt-8'>Or Register Up With</Divider>
+        <div className='flex justify-center space-x-4'>
+          <Button type='default' size='large' icon={<GoogleOutlined />}>
+            Google
+          </Button>
+          <Button type='default' size='large' icon={<FacebookOutlined />}>
+            Facebook
+          </Button>
         </div>
-      </section>
-    </main>
+        <p className='text-lg mt-8'>
+          Already Have an Account?{' '}
+          <Link className='text-blue-400' to='/signin'>
+            Login
+          </Link>
+        </p>
+      </div>
+    </PublicLayout>
   );
 }
 
