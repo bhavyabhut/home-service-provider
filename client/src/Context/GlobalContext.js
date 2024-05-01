@@ -42,8 +42,8 @@ const reducer = (state, action) => {
         isMerchant: action.isMerchant,
       };
     case 'LOGOUT':
-      localStorage.setItem('auth-token', null);
-      localStorage.setItem('user_id', null);
+      localStorage.removeItem('auth-token');
+      localStorage.removeItem('user_id');
       return {
         ...state,
         page: { login: true, registration: false, item: false },

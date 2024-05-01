@@ -103,14 +103,16 @@ const routes = [
 ];
 
 const PrivateRoutes = ({ isLoggedIn }) =>
-  isLoggedIn ? <Outlet /> : <Navigate to='/signin' replace />;
+  isLoggedIn ? <Outlet /> : <Navigate to='/signin' />;
 
 const PublicRoutes = () => {
   const { data } = useContext(GlobalContext);
 
   const auth = getauth();
 
-  const isLoggedIn = data.isLoggedIn || !auth;
+  const isLoggedIn = data.isLoggedIn || !!auth;
+
+  console.log(isLoggedIn, auth, 'Is Loggedin');
 
   return (
     <Router>
@@ -141,7 +143,6 @@ const PublicRoutes = () => {
             Component={lazy(() => import('./Components/ForgotPassword'))}
           />
           <Route element={<PrivateRoutes isLoggedIn={isLoggedIn} />}>
-            <Route exact path='/' render={() => redirect('/signin')} />
             {routes.map(({ path, Component, exact }) => (
               <Route
                 path={`home-services/${path}`}

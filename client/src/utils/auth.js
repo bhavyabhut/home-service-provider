@@ -14,6 +14,6 @@ export const getauth = () => {
 };
 
 export const clearToken = () => {
-  localStorage.setItem('auth-token', null);
-  localStorage.setItem('user_id', null);
+  localStorage.removeItem('auth-token');
+  localStorage.removeItem('user_id');
 };

@@ -55,6 +55,16 @@ code {
   color: #f0f0f0 !important;
 }
 
+.collapsed {
+  width: 80px; /* Adjust as needed */
+  overflow-x: hidden;
+  transition: width 0.2s ease; /* Add transition for smooth animation */
+}
+
+.recharts-legend-wrapper {
+  position: inherit !important;
+}
+
 .customRow {
   margin: 1rem 0;
 }
