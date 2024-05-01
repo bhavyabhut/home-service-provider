@@ -115,11 +115,9 @@ function Index({ children }) {
                 All Categories
               </Link>
             </Menu.Item>
-            {data.isMerchant && (
-              <Menu.Item key='67' icon={<UserOutlined />}>
-                <Link to='/home-services/addCategory'>Add Category</Link>
-              </Menu.Item>
-            )}
+            <Menu.Item key='67' icon={<UserOutlined />}>
+              <Link to='/home-services/addCategory'>Add Category</Link>
+            </Menu.Item>
           </SubMenu>
           <SubMenu key={'2'} title='Services' icon={<TeamOutlined />}>
             <Menu.Item key='6' icon={<TeamOutlined />}>
@@ -127,11 +125,10 @@ function Index({ children }) {
                 All Services
               </Link>
             </Menu.Item>
-            {data.isMerchant && (
-              <Menu.Item key='8' icon={<TeamOutlined />}>
-                <Link to='/home-services/addService'>Add Service</Link>
-              </Menu.Item>
-            )}
+
+            <Menu.Item key='8' icon={<TeamOutlined />}>
+              <Link to='/home-services/addService'>Add Service</Link>
+            </Menu.Item>
           </SubMenu>
           <SubMenu key='13' icon={<PieChartOutlined />} title='Charts'>
             <Menu.Item key='1' icon={<RadarChartOutlined />}>
