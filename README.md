@@ -14,6 +14,7 @@ The **Home Service Provider** project refers to the facilities-based carrier or 
 #### Other library and modules
  ##### Frontend
 
+![](https://img.shields.io/badge/Framework-Tailwind-pink)
 ![](https://img.shields.io/badge/Framework-Antd-blue)
 ![](https://img.shields.io/badge/Framework-ReactStrap-blue)
 ![](https://img.shields.io/badge/Framework-Bootstrap-blue)
@@ -28,19 +29,41 @@ The **Home Service Provider** project refers to the facilities-based carrier or 
 ![](https://img.shields.io/badge/Middleware-cors-pink)
 ![](https://img.shields.io/badge/server-nodemon-orange)
 
-### Getting start
+### Getting Started
 - #### Installation
-    using `npm install` or `yarn install` or `npm run installtion`
+    Use `npm install` or `yarn install` to install dependencies.
 
-- #### Start project
-    Use `npm start` or `yarn start` <br/>
-    Runs the app in the development mode.<br />
-    Open [http://localhost:5000](http://localhost:5000) to view it in the browser.
-    
-- #### Start frontend
-    Use `npm run server` or `yarn run server` <br/>
-    Open [http://localhost:5000](http://localhost:5000) to view it in the browser.
-    
-- #### Start backend
-    Use `npm run client` or `yarn run client` <br/>
+- #### Start Frontend
+    Use `npm run start:client` or `yarn run start:client` to start the frontend.
     Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+
+- #### Start Backend
+    To start the backend server, follow these steps:
+
+    1. **Environment Setup**:
+       - Create a `.env` file in the root directory of your project.
+       - Add the following environment variables to the `.env` file:
+
+       ```plaintext
+       PORT=5000
+       DB_STRING=<YOUR_DB_STRING>
+       NODE_ENV=development
+       API_VERSION=/v1
+       SECREATE=<YOUR_KEY>
+       GMAIL=<YOUR_GMAIL>
+       GMAIL_PASSWORD=<YOUR_GMAIL_PASSWORD>
+       ```
+
+       Replace `<YOUR_DB_STRING>`, `<YOUR_KEY>`, `<YOUR_GMAIL>`, and `<YOUR_GMAIL_PASSWORD>` with your actual database connection string, secret key, Gmail address, and Gmail password respectively.
+
+    2. **Dependencies Installation**:
+       - Run `npm install` or `yarn install` to install the required dependencies.
+
+    3. **Starting the Server**:
+       - Run `npm run start:dev` or `yarn run start:dev` to start the backend server.
+       - This command will use Nodemon to watch for changes and restart the server automatically.
+       - The server will be running on [http://localhost:5000](http://localhost:5000).
+
+
+
+
