@@ -3,8 +3,8 @@ import { PieChart, Pie, Cell, Tooltip, Legend } from 'recharts';
 import { Spin } from 'antd';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import { CHART_COLORS } from '../../../config/consts';
-import API from '../../../api';
+import { CHART_COLORS } from '../../config/consts';
+import API from '../../api';
 
 const ChartState = () => {
   const [collegeData, setCollegeData] = useState([]);
@@ -13,7 +13,7 @@ const ChartState = () => {
 
   useEffect(() => {
     setLoading(true);
-    axios.get(API.categoryDashboard).then((res) => {
+    axios.get(API.servicesChart).then((res) => {
       if (res.data.success) {
         setCollegeData(
           res.data.data.map((data) => ({
@@ -51,7 +51,7 @@ const ChartState = () => {
                   cursor='pointer'
                   onClick={() =>
                     navigate(
-                      `/home-services/allServices?category=${entry.id}&state=all&city=&name=`,
+                      `/home-services/allServices?category=all&state=all&city=${entry.name}&name=`,
                     )
                   }
                 />
@@ -62,7 +62,7 @@ const ChartState = () => {
               align='center'
               layout='horizontal'
               verticalAlign='bottom'
-              style={{ paddingTop: '250px', position: 'inherit' }}
+              wrapperStyle={{ paddingBottom: '20px' }}
             />
           </PieChart>
         )}

@@ -1,8 +1,8 @@
 import React from 'react';
 import { Card, Row, Tag } from 'antd';
-import tagColor from '../../../config/consts';
+import tagColor from '../../config/consts';
 
-function CollegeStudent({ data }) {
+function OtherInfo({ data }) {
   return (
     <Card>
       <Row className='customRow'>
@@ -26,4 +26,4 @@ function CollegeStudent({ data }) {
   );
 }
 
-export default CollegeStudent;
+export default OtherInfo;

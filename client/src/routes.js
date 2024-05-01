@@ -4,10 +4,9 @@ import {
   Routes,
   BrowserRouter as Router,
   Navigate,
-  redirect,
   Outlet,
 } from 'react-router-dom';
-import Spinner from './Components/Spinner';
+import Spinner from './pages/Spinner';
 import { GlobalContext } from './Context/GlobalContext';
 import { getauth } from './utils/auth';
 import Layout from './Layout';
@@ -16,94 +15,47 @@ const routes = [
   {
     path: '/',
     exact: true,
-    Component: lazy(() => import('./Components/College')),
-  },
-  {
-    path: 'allColleges',
-    exact: true,
-    Component: lazy(() => import('./Components/College')),
+    Component: lazy(() => import('./pages/AllCategory')),
   },
   {
     path: 'allCategories',
     exact: true,
-    Component: lazy(() => import('./Components/Category')),
+    Component: lazy(() => import('./pages/AllCategory')),
   },
   {
     path: 'addCategory',
     exact: true,
-    Component: lazy(() => import('./Components/Category/addCategory')),
+    Component: lazy(() => import('./pages/AddCategory')),
   },
   {
     path: 'allServices',
     exact: true,
-    Component: lazy(() => import('./Components/Services')),
+    Component: lazy(() => import('./pages/AllService')),
   },
   {
     path: 'addService',
     exact: true,
-    Component: lazy(() => import('./Components/Services/addService')),
+    Component: lazy(() => import('./pages/AddService')),
   },
   {
     path: 'allServices/:serviceId',
     exact: true,
-    Component: lazy(() => import('./Components/Services/Profile')),
+    Component: lazy(() => import('./pages/ServiceDetail')),
   },
   {
     path: 'charts/services',
     exact: true,
-    Component: lazy(() => import('./Components/Charts/Services')),
+    Component: lazy(() => import('./pages/ServiceChart')),
   },
   {
     path: 'charts/categories',
     exact: true,
-    Component: lazy(() => import('./Components/Charts/Categories')),
-  },
-  {
-    path: 'addCollege',
-    exact: true,
-    Component: lazy(() => import('./Components/ComingSoon')),
-  },
-  {
-    path: 'allStudents',
-    exact: true,
-    Component: lazy(() => import('./Components/Student')),
-  },
-  {
-    path: 'addStudent',
-    exact: true,
-    Component: lazy(() => import('./Components/ComingSoon')),
-  },
-  {
-    path: 'charts/state',
-    exact: true,
-    Component: lazy(() => import('./Components/Charts/State')),
-  },
-  {
-    path: 'charts/state/:stateId',
-    exact: true,
-    Component: lazy(
-      () => import('./Components/Charts/State/CollegeChartTable'),
-    ),
-  },
-  {
-    path: 'charts/course',
-    exact: true,
-    Component: lazy(() => import('./Components/Charts/Course')),
-  },
-  {
-    path: 'student/:studentId',
-    exact: true,
-    Component: lazy(() => import('./Components/Student/Profile')),
-  },
-  {
-    path: 'college/:collegeId',
-    exact: true,
-    Component: lazy(() => import('./Components/College/Profile')),
+    Component: lazy(() => import('./pages/CategoryChart')),
   },
 ];
 
 const PrivateRoutes = ({ isLoggedIn }) =>
-  isLoggedIn ? <Outlet /> : <Navigate to='/signin' />;
+  isLoggedIn ? <Outlet /> : <Navigate to='/login' />;
 
 const PublicRoutes = () => {
   const { data } = useContext(GlobalContext);
@@ -118,29 +70,26 @@ const PublicRoutes = () => {
     <Router>
       <Suspense fallback={<Spinner />}>
         <Routes>
+          <Route path='/' Component={lazy(() => import('./pages/Login'))} />
           <Route
-            path='/'
-            Component={lazy(() => import('./Components/Signin'))}
+            path='/login'
+            Component={lazy(() => import('./pages/Login'))}
           />
           <Route
-            path='/signin'
-            Component={lazy(() => import('./Components/Signin'))}
-          />
-          <Route
-            path='/signup'
-            Component={lazy(() => import('./Components/Signup'))}
+            path='/registration'
+            Component={lazy(() => import('./pages/Registration'))}
           />
           <Route
             path='/verifyOtp'
-            Component={lazy(() => import('./Components/VerifyOtp'))}
+            Component={lazy(() => import('./pages/VerifyOtp'))}
           />
           <Route
             path='/changePassword/:email'
-            Component={lazy(() => import('./Components/ChangePassword'))}
+            Component={lazy(() => import('./pages/ChangePassword'))}
           />
           <Route
             path='/forgot-password'
-            Component={lazy(() => import('./Components/ForgotPassword'))}
+            Component={lazy(() => import('./pages/ForgotPassword'))}
           />
           <Route element={<PrivateRoutes isLoggedIn={isLoggedIn} />}>
             {routes.map(({ path, Component, exact }) => (
