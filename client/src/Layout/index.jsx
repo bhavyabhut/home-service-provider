@@ -87,7 +87,7 @@ function Index({ children }) {
         icon={<LogoutOutlined />}
         onClick={() => dispatch({ type: 'LOGOUT' })}
       >
-        <Link to='/signin'>Logout</Link>
+        <Link to='/login'>Logout</Link>
       </Menu.Item>
     </Menu>
   );

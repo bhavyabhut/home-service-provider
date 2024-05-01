@@ -1,6 +1,6 @@
 import React from 'react';
 import { Card, Tag } from 'antd';
-import tagColor from '../../../config/consts';
+import tagColor from '../../config/consts';
 
 function MainDetails({ data }) {
   return (

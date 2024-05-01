@@ -3,16 +3,16 @@ import { useParams } from 'react-router-dom';
 import { Tabs } from 'antd';
 import { AppleOutlined, AndroidOutlined } from '@ant-design/icons';
 import axios from 'axios';
-import Spinner from '../../Spinner';
-import API from '../../../api';
+import Spinner from '../Spinner';
+import API from '../../api';
 import MainDetails from './MainDetails';
-import CollegeStudent from './CollegeStudent';
+import OtherInfo from './OtherInfo';
 import Address from './Address';
-import SimilarCollege from './SimilarColleges';
+import OwnerInfo from './OwnerInfo';
 
 const { TabPane } = Tabs;
 
-function CollegeProfile() {
+function ServiceDetail() {
   const [collegeData, setCollegeData] = useState(null);
   const [collegeLoading, setCollegeLoading] = useState(false);
   const { serviceId } = useParams();
@@ -70,7 +70,7 @@ function CollegeProfile() {
             }
             key='3'
           >
-            <CollegeStudent data={collegeData} />
+            <OtherInfo data={collegeData} />
           </TabPane>
           <TabPane
             tab={
@@ -81,7 +81,7 @@ function CollegeProfile() {
             }
             key='4'
           >
-            <SimilarCollege data={collegeData} />
+            <OwnerInfo data={collegeData} />
           </TabPane>
         </Tabs>
       )}
@@ -89,4 +89,4 @@ function CollegeProfile() {
   );
 }
 
-export default CollegeProfile;
+export default ServiceDetail;

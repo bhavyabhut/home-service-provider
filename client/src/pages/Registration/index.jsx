@@ -39,7 +39,7 @@ function SignUp() {
             type: 'success',
             error: true,
           });
-          navigate('/signin');
+          navigate('/login');
         } else {
           setState({ ...state, error: true, loader: false });
         }
@@ -166,7 +166,7 @@ function SignUp() {
         </div>
         <p className='text-lg mt-8'>
           Already Have an Account?{' '}
-          <Link className='text-blue-400' to='/signin'>
+          <Link className='text-blue-400' to='/login'>
             Login
           </Link>
         </p>

@@ -179,7 +179,7 @@ function SignIn(props) {
         </div>
         <p className='text-lg mt-8'>
           Don't Have an Account?{' '}
-          <Link className='text-blue-400' to='/signup'>
+          <Link className='text-blue-400' to='/registration'>
             Register now
           </Link>
         </p>
