@@ -6,6 +6,7 @@
     "@ant-design/icons": "^5.3.6",
     "@ant-design/pro-components": "^2.7.1",
     "@babel/eslint-parser": "^7.24.5",
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "@tailwindcss/aspect-ratio": "^0.4.2",
     "@tailwindcss/forms": "^0.2.1",
     "@tailwindcss/typography": "^0.5.13",
@@ -61,6 +62,8 @@
     "npm": "10.2.4"
   },
   "devDependencies": {
+    "@babel/preset-env": "^7.24.5",
+    "@babel/preset-react": "^7.24.1",
     "@eslint/eslintrc": "^3.0.2",
     "@eslint/js": "^9.1.1",
     "eslint": "^8.57.0",
