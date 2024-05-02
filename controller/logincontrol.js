@@ -163,7 +163,6 @@ exports.singup = async (req, res, next) => {
 exports.auth = async (req, res, next) => {
   const token = req.headers['auth-token'];
   if (token === '0') {
-    console.log(token);
     return res.status(401).json({
       success: false,
       msg: 'UNAUTHORIZED',
@@ -318,7 +317,6 @@ exports.verifyOtp = async (req, res, next) => {
     });
   }
   const userEmail = await User.find({ otp: req.body.otp });
-  console.log(userEmail);
   if (userEmail.length === 0) {
     return res.status(400).json({
       success: false,
@@ -329,13 +327,6 @@ exports.verifyOtp = async (req, res, next) => {
   const currentDate = new Date();
   let milliSecond = 1000000000;
   if (otpDate) milliSecond = currentDate.getTime() - otpDate.getTime();
-  console.log(
-    'time nu',
-    otpDate,
-    currentDate,
-    otpDate.getTime(),
-    currentDate.getTime(),
-  );
   const second = milliSecond / 1000;
   if (second > 120) {
     return res.status(400).json({

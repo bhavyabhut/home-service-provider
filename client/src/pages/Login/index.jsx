@@ -43,10 +43,8 @@ function SignIn(props) {
   }, []);
 
   const login = () => {
-    console.log(data, 'loginData');
     setState({ ...state, loader: true });
     const datas = form.getFieldsValue();
-    console.log('sfdfd', form.getFieldsValue());
     axios
       .post(API.login, datas)
       .then((res) => {
@@ -56,13 +54,11 @@ function SignIn(props) {
           if (!isMerchant) isMerchant = false;
 
           dispatch({ type: 'SET_MERCHANT', isMerchant });
-          console.log(data.categories.length, res);
 
           if (data.categories.length === 0)
             axios
               .get(API.categories)
               .then((res) => {
-                console.log('Login ni category no res', res);
                 if (res.data.success) {
                   dispatch({ type: 'SET_CATEGORIES', payload: res.data.data });
                 }
@@ -72,8 +68,6 @@ function SignIn(props) {
             axios
               .get(API.states)
               .then((res) => {
-                console.log('Login ni state no res', res);
-
                 if (res.data.success) {
                   dispatch({ type: 'SET_STATES', payload: res.data.data });
                 }

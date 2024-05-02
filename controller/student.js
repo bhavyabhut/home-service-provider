@@ -14,7 +14,6 @@ exports.getAllStudents = async (req, res) => {
 
 exports.getStudentById = async (req, res) => {
   const { studentId } = req.params;
-  console.log(studentId);
   if (!studentId) resourceError(res, 'Please enter student');
   try {
     const student = await Student.findById(studentId);

@@ -17,6 +17,7 @@ export default [
   {
     ignores: ['build/**'],
     rules: {
+      'react-hooks/exhaustive-deps': 'off',
       'react/prop-types': 'off',
       'react/jsx-filename-extension': [
         'warn',

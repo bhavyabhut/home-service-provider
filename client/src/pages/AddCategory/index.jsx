@@ -88,16 +88,6 @@ export default function AddCategory() {
     }
   }, [state.error]);
 
-  const handleImageChange = (event) => {
-    const image = event?.target?.files[0];
-    if (image) {
-      setFile(image);
-      getBase64(image)
-        .then((data) => setUrl(data))
-        .catch((e) => console.log(e));
-    }
-  };
-
   return (
     <div className='w-[100%] h-[80vh] flex items-start justify-center mt-8'>
       <div className='w-[50%] p-8 bg-white rounded-lg shadow-lg text-center'>

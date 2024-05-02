@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactGA from 'react-ga';
+import ReactGA from 'react-ga4';
 import { createRoot } from 'react-dom/client';
 
 import PublicRoutes from './routes';
@@ -9,7 +9,11 @@ import config from './config';
 import './index.css';
 
 ReactGA.initialize(config.GA_KEY);
-ReactGA.pageview(window.location.pathname + window.location.search);
+ReactGA.send({
+  hitType: 'pageview',
+  page: window.location.pathname,
+  title: window.location.pathname,
+});
 
 const container = document.getElementById('root');
 const root = createRoot(container);
