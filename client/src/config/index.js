@@ -9,6 +9,6 @@ config.VERSION = 'v1';
 
 config.API_END_POINT = isDevelopment ? 'http://localhost:5000/' : '/';
 
-config.GA_KEY = 'G-73LXHGW8XW';
+config.GA_KEY = 'G-LBL46ZSPN5';
 
 export default config;

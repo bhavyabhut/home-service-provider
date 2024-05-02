@@ -40,11 +40,9 @@ exports.getServices = async (req, res) => {
 
 exports.getServiceById = async (req, res) => {
   const { id } = req.params;
-  console.log(id);
   try {
     const newSer = await NewServices.find();
     const ser = newSer.filter((service) => service.service_id === id);
-    console.log(ser);
     success(res, ser);
   } catch (error) {
     serverError(res, error);
@@ -53,7 +51,6 @@ exports.getServiceById = async (req, res) => {
 
 exports.getServicesChart = async (req, res) => {
   const { id } = req.params;
-  console.log(id);
   let countCategories = {};
   let finalCategories = [];
   try {
@@ -74,7 +71,6 @@ exports.getServicesChart = async (req, res) => {
         count: countCategories[category.city],
       };
     });
-    console.log(finalCategories);
     success(res, finalCategories);
   } catch (error) {
     serverError(res, error);

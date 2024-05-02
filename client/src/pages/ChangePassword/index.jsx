@@ -6,11 +6,10 @@ import axios from 'axios';
 import Logo from '../../Layout/Logo';
 import API from '../../api';
 
-function SignIn() {
+function ChangePassword() {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const params = useParams();
-  console.log(params);
 
   const [form] = Form.useForm();
   const sendOtp = () => {
@@ -21,9 +20,7 @@ function SignIn() {
         ...form.getFieldsValue(),
       })
       .then((res) => {
-        console.log(res);
         if (res.data.success) {
-          console.log(res.data.data);
           notification.open({
             message: res.data.message,
             type: 'success',
@@ -46,7 +43,6 @@ function SignIn() {
           });
         }
         setLoading(false);
-        console.log(e.response);
       });
   };
   return (
@@ -74,7 +70,6 @@ function SignIn() {
             </Form.Item>
 
             <Form.Item style={{ width: '100%' }}>
-              {console.log('hi')}
               <Button
                 type='primary'
                 shape='round'
@@ -99,4 +94,4 @@ function SignIn() {
   );
 }
 
-export default SignIn;
+export default ChangePassword;

@@ -27,7 +27,6 @@ exports.getCategories = async (req, res) => {
 exports.addCategory = async (req, res) => {
   try {
     const categories = await Categories.find();
-    console.log(categories, req.body);
     if (
       categories.filter(
         (c) => c.name.toLowerCase() == req.body.name.toLowerCase(),

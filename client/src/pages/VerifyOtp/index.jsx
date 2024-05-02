@@ -17,9 +17,7 @@ function SignIn() {
     axios
       .post(API.verifyOtp, form.getFieldsValue())
       .then((res) => {
-        console.log(res);
         if (res.data.success) {
-          console.log(res.data.data);
           notification.open({
             message: res.data.message,
             type: 'success',
@@ -42,7 +40,6 @@ function SignIn() {
           });
         }
         setLoading(false);
-        console.log(e.response);
       });
   };
   React.useEffect(() => {

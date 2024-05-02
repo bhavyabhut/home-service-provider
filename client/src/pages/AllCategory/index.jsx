@@ -17,7 +17,6 @@ function Cards() {
     axios
       .get(API.categoryDashboard)
       .then((res) => {
-        console.log(res);
         if (res.data.success) {
           setCards(res.data.data);
           setLoading(false);

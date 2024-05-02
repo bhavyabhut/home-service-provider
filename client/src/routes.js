@@ -64,8 +64,6 @@ const PublicRoutes = () => {
 
   const isLoggedIn = data.isLoggedIn || !!auth;
 
-  console.log(isLoggedIn, auth, 'Is Loggedin');
-
   return (
     <Router>
       <Suspense fallback={<Spinner />}>
