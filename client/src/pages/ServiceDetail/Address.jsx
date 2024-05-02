@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, Row, Space } from 'antd';
+import { Card } from 'antd';
 
 function Address({ data }) {
   return (

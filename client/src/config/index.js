@@ -1,5 +1,4 @@
-/* global process */
-
+/* eslint-disable no-undef */
 const config = {};
 
 const isDevelopment = process.env.NODE_ENV === 'development';
