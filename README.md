@@ -4,6 +4,7 @@
 The **Home Service Provider** project refers to the facilities-based carrier or reseller with whom the customer contracts for the provision of mobile telecommunications services. Users can create an account and log in. They can use our app's chart visualisation to find the best services near them or around the world, as well as different types of categories. 
 
 ## [Live](https://home-service.onrender.com/) demo
+*Please note:* Website loading times may vary. While waiting, you can explore our new blog website platform [AllBlogs](https://allblogs.in).
 
 
 ### Technology Overview

@@ -1,0 +1,27 @@
+services:
+- type: web
+  name: home-service
+  runtime: node
+  repo: https://github.com/bhavyabhut/home-service-provider
+  plan: free
+  envVars:
+  - key: GMAIL_PASSWORD
+    sync: false
+  - key: GMAIL
+    sync: false
+  - key: SECREATE
+    sync: false
+  - key: PORT
+    sync: false
+  - key: NODE_ENV
+    sync: false
+  - key: DB_STRING
+    sync: false
+  - key: API_VERSION
+    sync: false
+  region: oregon
+  buildCommand: npm install && npm install --prefix client && npm run build --prefix
+    client
+  startCommand: node index.js
+  autoDeploy: true
+version: "1"
