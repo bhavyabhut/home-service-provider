@@ -15,6 +15,10 @@ const UserSchema = Schema({
     type: String,
     required: [true, 'password not empty'],
   },
+  oldPassword: {
+    type: String,
+    required: [true, 'password not empty'],
+  },
   date: {
     type: Date,
     default: Date.now(),
