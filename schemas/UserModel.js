@@ -17,7 +17,7 @@ const UserSchema = Schema({
   },
   oldPassword: {
     type: String,
-    required: [true, 'password not empty'],
+    required: [false, 'password not empty'],
   },
   date: {
     type: Date,

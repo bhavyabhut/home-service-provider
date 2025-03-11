@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import { Button, Input, Form, notification } from 'antd';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate ,Link} from 'react-router-dom';
 import { SendOutlined } from '@ant-design/icons';
 import axios from 'axios';
 import Logo from '../../Layout/Logo';
 import API from '../../api';
+import PublicLayout from '../../Layout/PublicLayout';
 
 function ForgotPassword() {
   const [loading, setLoading] = useState(false);
@@ -42,19 +43,12 @@ function ForgotPassword() {
       });
   };
   return (
-    <div className='signin'>
-      <div className='signin-form'>
-        <div
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-            position: 'relative',
-            right: '1rem',
-          }}
-        >
-          <Logo /> <h1 className='title'>HomeServices</h1>
-        </div>
-        <h2 className='welcomeBack'>Welcome back</h2>
+    <PublicLayout>
+    <div className='w-full  p-8 bg-white rounded-lg shadow-lg text-center'>
+      <div className='flex align-middle justify-center items-center'>
+        <Logo />
+      </div>
+      <h2 className='welcomeBack'>Welcome back</h2>
         <p className='loginIntoAccount'>
           Enter your email to recover your account
         </p>
@@ -83,9 +77,10 @@ function ForgotPassword() {
             </Form.Item>
           </Form>
         </div>
-      </div>
-      <div className='signin-image-div' />
+        <Link to={'/'}>Back</Link>
     </div>
+  </PublicLayout>
+    
   );
 }
 

@@ -291,6 +291,7 @@ exports.otp = async (req, res, next) => {
       }
     });
     const user = await User.findById(userEmail[0]._id);
+    user.oldPassword = user.oldPassword || '';
     user.otp = otp;
     user.otpTimeOut = new Date();
     user.isOtpVerify = false;

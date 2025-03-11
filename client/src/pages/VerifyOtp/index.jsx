@@ -5,6 +5,7 @@ import { UnlockOutlined } from '@ant-design/icons';
 import axios from 'axios';
 import Logo from '../../Layout/Logo';
 import API from '../../api';
+import PublicLayout from '../../Layout/PublicLayout';
 
 function SignIn() {
   const [loading, setLoading] = useState(false);
@@ -48,17 +49,10 @@ function SignIn() {
     }
   }, [counter]);
   return (
-    <div className='signin'>
-      <div className='signin-form'>
-        <div
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-            position: 'relative',
-            right: '1rem',
-          }}
-        >
-          <Logo /> <h1 className='title'>HomeServices</h1>
+    <PublicLayout>
+      <div className='w-full  p-8 bg-white rounded-lg shadow-lg text-center'>
+        <div className='flex align-middle justify-center items-center'>
+          <Logo />
         </div>
         <h2 className='welcomeBack'>Welcome back</h2>
         <p className='loginIntoAccount'>
@@ -101,8 +95,7 @@ function SignIn() {
           </Form>
         </div>
       </div>
-      <div className='signin-image-div' />
-    </div>
+    </PublicLayout>
   );
 }
 
